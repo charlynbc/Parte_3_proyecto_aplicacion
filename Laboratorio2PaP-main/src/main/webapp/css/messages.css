@@ -1,0 +1,50 @@
+/* ========================================
+   MESSAGE COMPONENTS
+   ======================================== */
+
+/* Messages */
+.error-message,
+.success-message,
+.info-message,
+.warning-message {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    display: block;
+    font-weight: 500;
+}
+
+.error-message {
+    background: #fee;
+    color: #c33;
+    border-left: 4px solid #c33;
+}
+
+.success-message {
+    background: #efe;
+    color: #3c3;
+    border-left: 4px solid #3c3;
+}
+
+.info-message {
+    background: #e3f2fd;
+    color: #1976d2;
+    border-left: 4px solid #1976d2;
+}
+
+.warning-message {
+    background: #fff3cd;
+    color: #856404;
+    border-left: 4px solid #ffc107;
+}
+
+/* Login Footer */
+.login-footer {
+    margin-top: 2rem;
+    text-align: center;
+    color: #718096;
+}
+
+.login-footer p {
+    margin-bottom: 0.5rem;
+}
