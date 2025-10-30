@@ -1,0 +1,15 @@
+/* ========================================
+   TURISMO.UY - LEGACY STYLES
+   This file maintains compatibility with existing pages
+   New pages should use main.css instead
+   ======================================== */
+
+/* Import all modular CSS files */
+@import url('base.css');
+@import url('layout.css');
+@import url('navbar.css');
+@import url('footer.css');
+@import url('forms.css');
+@import url('buttons.css');
+@import url('cards.css');
+@import url('messages.css');
