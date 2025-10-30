@@ -1277,3 +1277,2777 @@ Stacktrace:] with root cause
 30-Oct-2025 17:52:06.029 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
 30-Oct-2025 17:52:06.029 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
 30-Oct-2025 17:52:06.030 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@611aa153')
+30-Oct-2025 17:54:42.765 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+30-Oct-2025 17:54:42.765 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+30-Oct-2025 17:54:53.894 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+30-Oct-2025 17:54:53.895 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+30-Oct-2025 17:54:53.896 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@70faac9f')
+30-Oct-2025 17:55:59.908 SEVERE [http-nio-8080-exec-4] org.apache.catalina.core.ApplicationDispatcher.invoke Servlet.service() for servlet [jsp] threw exception
+	java.lang.ClassCastException: class java.util.Arrays$ArrayList cannot be cast to class [Llogica.DataActividad; (java.util.Arrays$ArrayList is in module java.base of loader 'bootstrap'; [Llogica.DataActividad; is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @53d808ea)
+		at org.apache.jsp.WEB_002dINF.activities_jsp._jspService(activities_jsp.java:167)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:64)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:434)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 17:55:59.909 SEVERE [http-nio-8080-exec-4] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [ActivitiesServlet] in context with path [/Laboratorio2PaP] threw exception [An exception occurred processing [/WEB-INF/activities.jsp] at line [34]
+
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 DataActividad[] activities = (DataActividad[]) request.getAttribute("activities");
+35:                 String errorMessage = (String) request.getAttribute("error");
+36:                 
+37:                 if (errorMessage != null) {
+
+
+Stacktrace:] with root cause
+	java.lang.ClassCastException: class java.util.Arrays$ArrayList cannot be cast to class [Llogica.DataActividad; (java.util.Arrays$ArrayList is in module java.base of loader 'bootstrap'; [Llogica.DataActividad; is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @53d808ea)
+		at org.apache.jsp.WEB_002dINF.activities_jsp._jspService(activities_jsp.java:167)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:64)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:434)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 17:58:55.781 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+30-Oct-2025 17:58:55.781 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+30-Oct-2025 17:59:05.743 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+30-Oct-2025 17:59:05.743 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+30-Oct-2025 17:59:05.745 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@7890fa09')
+30-Oct-2025 17:59:19.973 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.ApplicationDispatcher.invoke Servlet.service() for servlet [jsp] threw exception
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+35:                 String errorMessage = (String) request.getAttribute("error");
+36:                 
+37:                 if (errorMessage != null) {
+
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+35:                 String errorMessage = (String) request.getAttribute("error");
+36:                 
+37:                 if (errorMessage != null) {
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 17:59:19.975 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [ActivitiesServlet] in context with path [/Laboratorio2PaP] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+35:                 String errorMessage = (String) request.getAttribute("error");
+36:                 
+37:                 if (errorMessage != null) {
+
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+35:                 String errorMessage = (String) request.getAttribute("error");
+36:                 
+37:                 if (errorMessage != null) {
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+35:                 String errorMessage = (String) request.getAttribute("error");
+36:                 
+37:                 if (errorMessage != null) {
+
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+35:                 String errorMessage = (String) request.getAttribute("error");
+36:                 
+37:                 if (errorMessage != null) {
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:00:41.655 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+30-Oct-2025 18:00:41.657 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+30-Oct-2025 18:00:51.809 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+30-Oct-2025 18:00:51.809 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+30-Oct-2025 18:00:51.811 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@5a315754')
+30-Oct-2025 18:01:06.741 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.ApplicationDispatcher.invoke Servlet.service() for servlet [jsp] threw exception
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+34:                 String errorMessage = (String) request.getAttribute("error");
+35:                 
+36:                 if (errorMessage != null) {
+
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+34:                 String errorMessage = (String) request.getAttribute("error");
+35:                 
+36:                 if (errorMessage != null) {
+
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+34:                 String errorMessage = (String) request.getAttribute("error");
+35:                 
+36:                 if (errorMessage != null) {
+
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+34:                 String errorMessage = (String) request.getAttribute("error");
+35:                 
+36:                 if (errorMessage != null) {
+
+
+An error occurred at line: [43] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+40:                 </div>
+41:             <%
+42:                 } else if (activities != null && !activities.isEmpty()) {
+43:                     for (DataActividad act : activities) {
+44:             %>
+45:                         <div class="card">
+46:                             <div class="card-image">
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:01:06.741 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [ActivitiesServlet] in context with path [/Laboratorio2PaP] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+34:                 String errorMessage = (String) request.getAttribute("error");
+35:                 
+36:                 if (errorMessage != null) {
+
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+34:                 String errorMessage = (String) request.getAttribute("error");
+35:                 
+36:                 if (errorMessage != null) {
+
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+34:                 String errorMessage = (String) request.getAttribute("error");
+35:                 
+36:                 if (errorMessage != null) {
+
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+34:                 String errorMessage = (String) request.getAttribute("error");
+35:                 
+36:                 if (errorMessage != null) {
+
+
+An error occurred at line: [43] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+40:                 </div>
+41:             <%
+42:                 } else if (activities != null && !activities.isEmpty()) {
+43:                     for (DataActividad act : activities) {
+44:             %>
+45:                         <div class="card">
+46:                             <div class="card-image">
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+34:                 String errorMessage = (String) request.getAttribute("error");
+35:                 
+36:                 if (errorMessage != null) {
+
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+34:                 String errorMessage = (String) request.getAttribute("error");
+35:                 
+36:                 if (errorMessage != null) {
+
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+34:                 String errorMessage = (String) request.getAttribute("error");
+35:                 
+36:                 if (errorMessage != null) {
+
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = (List<DataActividad>) request.getAttribute("activities");
+34:                 String errorMessage = (String) request.getAttribute("error");
+35:                 
+36:                 if (errorMessage != null) {
+
+
+An error occurred at line: [43] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+40:                 </div>
+41:             <%
+42:                 } else if (activities != null && !activities.isEmpty()) {
+43:                     for (DataActividad act : activities) {
+44:             %>
+45:                         <div class="card">
+46:                             <div class="card-image">
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:02:54.631 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+30-Oct-2025 18:02:54.631 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+30-Oct-2025 18:03:04.349 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+30-Oct-2025 18:03:04.349 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+30-Oct-2025 18:03:04.350 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@647e335b')
+30-Oct-2025 18:03:11.332 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.ApplicationDispatcher.invoke Servlet.service() for servlet [jsp] threw exception
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<DataActividad>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<DataActividad>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [46] in the jsp file: [/WEB-INF/activities.jsp]
+org.apache.commons.lang3.exception.ExceptionUtils cannot be resolved to a type
+43:             %>
+44:                 <div class="alert alert-error">
+45:                     <strong>Error JSP:</strong> <%= jspError.getClass().getName() %> - <%= jspError.getMessage() %>
+46:                     <pre><%= org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace(jspError) %></pre>
+47:                 </div>
+48:             <%
+49:                 } else if (errorMessage != null) {
+
+
+An error occurred at line: [56] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+53:                 </div>
+54:             <%
+55:                 } else if (activities != null && !activities.isEmpty()) {
+56:                     for (DataActividad act : activities) {
+57:             %>
+58:                         <div class="card">
+59:                             <div class="card-image">
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:03:11.337 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [ActivitiesServlet] in context with path [/Laboratorio2PaP] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<DataActividad>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<DataActividad>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [46] in the jsp file: [/WEB-INF/activities.jsp]
+org.apache.commons.lang3.exception.ExceptionUtils cannot be resolved to a type
+43:             %>
+44:                 <div class="alert alert-error">
+45:                     <strong>Error JSP:</strong> <%= jspError.getClass().getName() %> - <%= jspError.getMessage() %>
+46:                     <pre><%= org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace(jspError) %></pre>
+47:                 </div>
+48:             <%
+49:                 } else if (errorMessage != null) {
+
+
+An error occurred at line: [56] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+53:                 </div>
+54:             <%
+55:                 } else if (activities != null && !activities.isEmpty()) {
+56:                     for (DataActividad act : activities) {
+57:             %>
+58:                         <div class="card">
+59:                             <div class="card-image">
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<DataActividad>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<DataActividad>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [46] in the jsp file: [/WEB-INF/activities.jsp]
+org.apache.commons.lang3.exception.ExceptionUtils cannot be resolved to a type
+43:             %>
+44:                 <div class="alert alert-error">
+45:                     <strong>Error JSP:</strong> <%= jspError.getClass().getName() %> - <%= jspError.getMessage() %>
+46:                     <pre><%= org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace(jspError) %></pre>
+47:                 </div>
+48:             <%
+49:                 } else if (errorMessage != null) {
+
+
+An error occurred at line: [56] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+53:                 </div>
+54:             <%
+55:                 } else if (activities != null && !activities.isEmpty()) {
+56:                     for (DataActividad act : activities) {
+57:             %>
+58:                         <div class="card">
+59:                             <div class="card-image">
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:04:57.764 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+30-Oct-2025 18:04:57.764 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+30-Oct-2025 18:05:08.243 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+30-Oct-2025 18:05:08.244 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+30-Oct-2025 18:05:08.247 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@2bc38e13')
+30-Oct-2025 18:05:20.665 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.ApplicationDispatcher.invoke Servlet.service() for servlet [jsp] threw exception
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<DataActividad>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<DataActividad>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [55] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+52:                 </div>
+53:             <%
+54:                 } else if (activities != null && !activities.isEmpty()) {
+55:                     for (DataActividad act : activities) {
+56:             %>
+57:                         <div class="card">
+58:                             <div class="card-image">
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:05:20.665 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [ActivitiesServlet] in context with path [/Laboratorio2PaP] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<DataActividad>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<DataActividad>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [55] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+52:                 </div>
+53:             <%
+54:                 } else if (activities != null && !activities.isEmpty()) {
+55:                     for (DataActividad act : activities) {
+56:             %>
+57:                         <div class="card">
+58:                             <div class="card-image">
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<DataActividad> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<DataActividad>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<DataActividad>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [55] in the jsp file: [/WEB-INF/activities.jsp]
+DataActividad cannot be resolved to a type
+52:                 </div>
+53:             <%
+54:                 } else if (activities != null && !activities.isEmpty()) {
+55:                     for (DataActividad act : activities) {
+56:             %>
+57:                         <div class="card">
+58:                             <div class="card-image">
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:06:46.487 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+30-Oct-2025 18:06:46.490 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+30-Oct-2025 18:06:56.788 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+30-Oct-2025 18:06:56.788 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+30-Oct-2025 18:06:56.790 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@647e335b')
+30-Oct-2025 18:07:03.542 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.ApplicationDispatcher.invoke Servlet.service() for servlet [jsp] threw exception
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<?> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<?>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [66] in the jsp file: [/WEB-INF/activities.jsp]
+The method getNombre() is undefined for the type Object
+63:                                 </div>
+64:                             </div>
+65:                             <div class="card-content">
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+
+
+An error occurred at line: [68] in the jsp file: [/WEB-INF/activities.jsp]
+The method getDescripcion() is undefined for the type Object
+65:                             <div class="card-content">
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+
+
+An error occurred at line: [69] in the jsp file: [/WEB-INF/activities.jsp]
+The method getDuracion() is undefined for the type Object
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+
+
+An error occurred at line: [70] in the jsp file: [/WEB-INF/activities.jsp]
+The method getCosto() is undefined for the type Object
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+
+
+An error occurred at line: [71] in the jsp file: [/WEB-INF/activities.jsp]
+The method getCiudad() is undefined for the type Object
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+
+
+An error occurred at line: [72] in the jsp file: [/WEB-INF/activities.jsp]
+The method getEstado() is undefined for the type Object
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+
+
+An error occurred at line: [73] in the jsp file: [/WEB-INF/activities.jsp]
+The method getProveedor() is undefined for the type Object
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+76:                                     <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+
+
+An error occurred at line: [76] in the jsp file: [/WEB-INF/activities.jsp]
+The method getNombre() is undefined for the type Object
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+76:                                     <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+77:                                 </div>
+78:                             </div>
+79:                         </div>
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:07:03.543 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [ActivitiesServlet] in context with path [/Laboratorio2PaP] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<?> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<?>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [66] in the jsp file: [/WEB-INF/activities.jsp]
+The method getNombre() is undefined for the type Object
+63:                                 </div>
+64:                             </div>
+65:                             <div class="card-content">
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+
+
+An error occurred at line: [68] in the jsp file: [/WEB-INF/activities.jsp]
+The method getDescripcion() is undefined for the type Object
+65:                             <div class="card-content">
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+
+
+An error occurred at line: [69] in the jsp file: [/WEB-INF/activities.jsp]
+The method getDuracion() is undefined for the type Object
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+
+
+An error occurred at line: [70] in the jsp file: [/WEB-INF/activities.jsp]
+The method getCosto() is undefined for the type Object
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+
+
+An error occurred at line: [71] in the jsp file: [/WEB-INF/activities.jsp]
+The method getCiudad() is undefined for the type Object
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+
+
+An error occurred at line: [72] in the jsp file: [/WEB-INF/activities.jsp]
+The method getEstado() is undefined for the type Object
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+
+
+An error occurred at line: [73] in the jsp file: [/WEB-INF/activities.jsp]
+The method getProveedor() is undefined for the type Object
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+76:                                     <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+
+
+An error occurred at line: [76] in the jsp file: [/WEB-INF/activities.jsp]
+The method getNombre() is undefined for the type Object
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+76:                                     <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+77:                                 </div>
+78:                             </div>
+79:                         </div>
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<?> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<?>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [66] in the jsp file: [/WEB-INF/activities.jsp]
+The method getNombre() is undefined for the type Object
+63:                                 </div>
+64:                             </div>
+65:                             <div class="card-content">
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+
+
+An error occurred at line: [68] in the jsp file: [/WEB-INF/activities.jsp]
+The method getDescripcion() is undefined for the type Object
+65:                             <div class="card-content">
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+
+
+An error occurred at line: [69] in the jsp file: [/WEB-INF/activities.jsp]
+The method getDuracion() is undefined for the type Object
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+
+
+An error occurred at line: [70] in the jsp file: [/WEB-INF/activities.jsp]
+The method getCosto() is undefined for the type Object
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+
+
+An error occurred at line: [71] in the jsp file: [/WEB-INF/activities.jsp]
+The method getCiudad() is undefined for the type Object
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+
+
+An error occurred at line: [72] in the jsp file: [/WEB-INF/activities.jsp]
+The method getEstado() is undefined for the type Object
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+
+
+An error occurred at line: [73] in the jsp file: [/WEB-INF/activities.jsp]
+The method getProveedor() is undefined for the type Object
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+76:                                     <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+
+
+An error occurred at line: [76] in the jsp file: [/WEB-INF/activities.jsp]
+The method getNombre() is undefined for the type Object
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+76:                                     <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+77:                                 </div>
+78:                             </div>
+79:                         </div>
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:07:31.392 SEVERE [http-nio-8080-exec-5] org.apache.catalina.core.ApplicationDispatcher.invoke Servlet.service() for servlet [jsp] threw exception
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<?> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<?>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [66] in the jsp file: [/WEB-INF/activities.jsp]
+The method getNombre() is undefined for the type Object
+63:                                 </div>
+64:                             </div>
+65:                             <div class="card-content">
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+
+
+An error occurred at line: [68] in the jsp file: [/WEB-INF/activities.jsp]
+The method getDescripcion() is undefined for the type Object
+65:                             <div class="card-content">
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+
+
+An error occurred at line: [69] in the jsp file: [/WEB-INF/activities.jsp]
+The method getDuracion() is undefined for the type Object
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+
+
+An error occurred at line: [70] in the jsp file: [/WEB-INF/activities.jsp]
+The method getCosto() is undefined for the type Object
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+
+
+An error occurred at line: [71] in the jsp file: [/WEB-INF/activities.jsp]
+The method getCiudad() is undefined for the type Object
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+
+
+An error occurred at line: [72] in the jsp file: [/WEB-INF/activities.jsp]
+The method getEstado() is undefined for the type Object
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+
+
+An error occurred at line: [73] in the jsp file: [/WEB-INF/activities.jsp]
+The method getProveedor() is undefined for the type Object
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+76:                                     <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+
+
+An error occurred at line: [76] in the jsp file: [/WEB-INF/activities.jsp]
+The method getNombre() is undefined for the type Object
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+76:                                     <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+77:                                 </div>
+78:                             </div>
+79:                         </div>
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:07:31.393 SEVERE [http-nio-8080-exec-5] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [ActivitiesServlet] in context with path [/Laboratorio2PaP] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<?> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<?>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [66] in the jsp file: [/WEB-INF/activities.jsp]
+The method getNombre() is undefined for the type Object
+63:                                 </div>
+64:                             </div>
+65:                             <div class="card-content">
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+
+
+An error occurred at line: [68] in the jsp file: [/WEB-INF/activities.jsp]
+The method getDescripcion() is undefined for the type Object
+65:                             <div class="card-content">
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+
+
+An error occurred at line: [69] in the jsp file: [/WEB-INF/activities.jsp]
+The method getDuracion() is undefined for the type Object
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+
+
+An error occurred at line: [70] in the jsp file: [/WEB-INF/activities.jsp]
+The method getCosto() is undefined for the type Object
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+
+
+An error occurred at line: [71] in the jsp file: [/WEB-INF/activities.jsp]
+The method getCiudad() is undefined for the type Object
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+
+
+An error occurred at line: [72] in the jsp file: [/WEB-INF/activities.jsp]
+The method getEstado() is undefined for the type Object
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+
+
+An error occurred at line: [73] in the jsp file: [/WEB-INF/activities.jsp]
+The method getProveedor() is undefined for the type Object
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+76:                                     <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+
+
+An error occurred at line: [76] in the jsp file: [/WEB-INF/activities.jsp]
+The method getNombre() is undefined for the type Object
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+76:                                     <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+77:                                 </div>
+78:                             </div>
+79:                         </div>
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [33] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+30: 
+31:         <div class="card-grid">
+32:             <%
+33:                 List<?> activities = null;
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+
+
+An error occurred at line: [37] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+34:                 String errorMessage = null;
+35:                 Exception jspError = null;
+36:                 try {
+37:                     activities = (List<?>) request.getAttribute("activities");
+38:                     errorMessage = (String) request.getAttribute("error");
+39:                 } catch (Exception ex) {
+40:                     jspError = ex;
+
+
+An error occurred at line: [66] in the jsp file: [/WEB-INF/activities.jsp]
+The method getNombre() is undefined for the type Object
+63:                                 </div>
+64:                             </div>
+65:                             <div class="card-content">
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+
+
+An error occurred at line: [68] in the jsp file: [/WEB-INF/activities.jsp]
+The method getDescripcion() is undefined for the type Object
+65:                             <div class="card-content">
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+
+
+An error occurred at line: [69] in the jsp file: [/WEB-INF/activities.jsp]
+The method getDuracion() is undefined for the type Object
+66:                                 <div class="card-title"><%= act.getNombre() %></div>
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+
+
+An error occurred at line: [70] in the jsp file: [/WEB-INF/activities.jsp]
+The method getCosto() is undefined for the type Object
+67:                                 <div class="card-description">
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+
+
+An error occurred at line: [71] in the jsp file: [/WEB-INF/activities.jsp]
+The method getCiudad() is undefined for the type Object
+68:                                     <%= act.getDescripcion() %><br><br>
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+
+
+An error occurred at line: [72] in the jsp file: [/WEB-INF/activities.jsp]
+The method getEstado() is undefined for the type Object
+69:                                     <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+
+
+An error occurred at line: [73] in the jsp file: [/WEB-INF/activities.jsp]
+The method getProveedor() is undefined for the type Object
+70:                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
+71:                                     <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
+72:                                     <strong>Estado:</strong> <%= act.getEstado() %><br>
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+76:                                     <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+
+
+An error occurred at line: [76] in the jsp file: [/WEB-INF/activities.jsp]
+The method getNombre() is undefined for the type Object
+73:                                     <strong>Proveedor:</strong> <%= act.getProveedor() %>
+74:                                 </div>
+75:                                 <div class="card-actions">
+76:                                     <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+77:                                 </div>
+78:                             </div>
+79:                         </div>
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:14:43.364 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+30-Oct-2025 18:14:43.364 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+30-Oct-2025 18:14:53.773 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+30-Oct-2025 18:14:53.774 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+30-Oct-2025 18:14:53.775 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@647e335b')
+30-Oct-2025 18:15:38.081 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+30-Oct-2025 18:15:38.082 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+30-Oct-2025 18:15:48.788 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+30-Oct-2025 18:15:48.788 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+30-Oct-2025 18:15:48.791 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@7890fa09')
+30-Oct-2025 18:15:55.477 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.ApplicationDispatcher.invoke Servlet.service() for servlet [jsp] threw exception
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<DataActividad> activities = null;
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+
+
+An error occurred at line: [38] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+38:                     activities = (List<DataActividad>) request.getAttribute("activities");
+39:                     errorMessage = (String) request.getAttribute("error");
+40:                 } catch (Exception ex) {
+41:                     jspError = ex;
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:15:55.479 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [ActivitiesServlet] in context with path [/Laboratorio2PaP] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<DataActividad> activities = null;
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+
+
+An error occurred at line: [38] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+38:                     activities = (List<DataActividad>) request.getAttribute("activities");
+39:                     errorMessage = (String) request.getAttribute("error");
+40:                 } catch (Exception ex) {
+41:                     jspError = ex;
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<DataActividad> activities = null;
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+
+
+An error occurred at line: [38] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+38:                     activities = (List<DataActividad>) request.getAttribute("activities");
+39:                     errorMessage = (String) request.getAttribute("error");
+40:                 } catch (Exception ex) {
+41:                     jspError = ex;
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:19:37.207 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+30-Oct-2025 18:19:37.207 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+30-Oct-2025 18:19:47.874 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+30-Oct-2025 18:19:47.875 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+30-Oct-2025 18:19:47.876 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@611aa153')
+30-Oct-2025 18:20:02.329 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.ApplicationDispatcher.invoke Servlet.service() for servlet [jsp] threw exception
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<DataActividad> activities = null;
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+
+
+An error occurred at line: [38] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+38:                     activities = (List<DataActividad>) request.getAttribute("activities");
+39:                     errorMessage = (String) request.getAttribute("error");
+40:                 } catch (Exception ex) {
+41:                     jspError = ex;
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:20:02.332 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [ActivitiesServlet] in context with path [/Laboratorio2PaP] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<DataActividad> activities = null;
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+
+
+An error occurred at line: [38] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+38:                     activities = (List<DataActividad>) request.getAttribute("activities");
+39:                     errorMessage = (String) request.getAttribute("error");
+40:                 } catch (Exception ex) {
+41:                     jspError = ex;
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<DataActividad> activities = null;
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+
+
+An error occurred at line: [38] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+38:                     activities = (List<DataActividad>) request.getAttribute("activities");
+39:                     errorMessage = (String) request.getAttribute("error");
+40:                 } catch (Exception ex) {
+41:                     jspError = ex;
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:20:57.468 SEVERE [http-nio-8080-exec-4] org.apache.catalina.core.ApplicationDispatcher.invoke Servlet.service() for servlet [jsp] threw exception
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<DataActividad> activities = null;
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+
+
+An error occurred at line: [38] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+38:                     activities = (List<DataActividad>) request.getAttribute("activities");
+39:                     errorMessage = (String) request.getAttribute("error");
+40:                 } catch (Exception ex) {
+41:                     jspError = ex;
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:20:57.470 SEVERE [http-nio-8080-exec-4] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [ActivitiesServlet] in context with path [/Laboratorio2PaP] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<DataActividad> activities = null;
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+
+
+An error occurred at line: [38] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+38:                     activities = (List<DataActividad>) request.getAttribute("activities");
+39:                     errorMessage = (String) request.getAttribute("error");
+40:                 } catch (Exception ex) {
+41:                     jspError = ex;
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<DataActividad> activities = null;
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+
+
+An error occurred at line: [38] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+38:                     activities = (List<DataActividad>) request.getAttribute("activities");
+39:                     errorMessage = (String) request.getAttribute("error");
+40:                 } catch (Exception ex) {
+41:                     jspError = ex;
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:45)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:22:24.795 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+30-Oct-2025 18:22:24.795 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+30-Oct-2025 18:22:35.525 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+30-Oct-2025 18:22:35.525 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+30-Oct-2025 18:22:35.532 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@1b11b5d1')
+30-Oct-2025 18:22:45.463 SEVERE [http-nio-8080-exec-2] org.apache.catalina.core.ApplicationDispatcher.invoke Servlet.service() for servlet [jsp] threw exception
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<?> activities = null;
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+
+
+An error occurred at line: [38] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+38:                     activities = (List<?>) request.getAttribute("activities");
+39:                     errorMessage = (String) request.getAttribute("error");
+40:                 } catch (Exception ex) {
+41:                     jspError = ex;
+
+
+An error occurred at line: [83] in the jsp file: [/WEB-INF/activities.jsp]
+The method getNombre() is undefined for the type Map<String,Object>
+80:                                     <strong>Proveedor:</strong> <%= proveedor %>
+81:                                 </div>
+82:                                 <div class="card-actions">
+83:                                     <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+84:                                 </div>
+85:                             </div>
+86:                         </div>
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:56)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:22:45.468 SEVERE [http-nio-8080-exec-2] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [ActivitiesServlet] in context with path [/Laboratorio2PaP] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<?> activities = null;
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+
+
+An error occurred at line: [38] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+38:                     activities = (List<?>) request.getAttribute("activities");
+39:                     errorMessage = (String) request.getAttribute("error");
+40:                 } catch (Exception ex) {
+41:                     jspError = ex;
+
+
+An error occurred at line: [83] in the jsp file: [/WEB-INF/activities.jsp]
+The method getNombre() is undefined for the type Map<String,Object>
+80:                                     <strong>Proveedor:</strong> <%= proveedor %>
+81:                                 </div>
+82:                                 <div class="card-actions">
+83:                                     <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+84:                                 </div>
+85:                             </div>
+86:                         </div>
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [34] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+31: 
+32:         <div class="card-grid">
+33:             <%
+34:                 List<?> activities = null;
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+
+
+An error occurred at line: [38] in the jsp file: [/WEB-INF/activities.jsp]
+List cannot be resolved to a type
+35:                 String errorMessage = null;
+36:                 Exception jspError = null;
+37:                 try {
+38:                     activities = (List<?>) request.getAttribute("activities");
+39:                     errorMessage = (String) request.getAttribute("error");
+40:                 } catch (Exception ex) {
+41:                     jspError = ex;
+
+
+An error occurred at line: [83] in the jsp file: [/WEB-INF/activities.jsp]
+The method getNombre() is undefined for the type Map<String,Object>
+80:                                     <strong>Proveedor:</strong> <%= proveedor %>
+81:                                 </div>
+82:                                 <div class="card-actions">
+83:                                     <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+84:                                 </div>
+85:                             </div>
+86:                         </div>
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:392)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:321)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:266)
+		at servlets.ActivitiesServlet.doGet(ActivitiesServlet.java:56)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 18:28:19.777 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+30-Oct-2025 18:28:19.778 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+30-Oct-2025 18:28:30.894 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+30-Oct-2025 18:28:30.895 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+30-Oct-2025 18:28:30.897 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@70faac9f')
+30-Oct-2025 18:33:25.805 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+30-Oct-2025 18:33:25.805 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+30-Oct-2025 18:33:36.707 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+30-Oct-2025 18:33:36.708 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+30-Oct-2025 18:33:36.710 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@5a315754')
