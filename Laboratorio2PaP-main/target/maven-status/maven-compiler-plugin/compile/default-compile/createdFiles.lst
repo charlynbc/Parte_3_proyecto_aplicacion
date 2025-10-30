@@ -1,0 +1,17 @@
+servlets/TestDatabaseServlet.class
+servlets/CreateDepartureServlet.class
+servlets/ActivityDetailServlet.class
+servlets/UsersServlet.class
+servlets/ActivitiesServlet.class
+servlets/LogoutServlet.class
+servlets/CreateDepartureViewServlet.class
+servlets/DashboardServlet.class
+servlets/UserProfileServlet.class
+servlets/UpdateProfileServlet.class
+servlets/DeparturesServlet.class
+servlets/DepartureDetailServlet.class
+servlets/CreateActivityServlet.class
+servlets/LoginServlet.class
+servlets/RegisterProviderServlet.class
+servlets/RegisterTouristServlet.class
+servlets/InscriptionServlet.class

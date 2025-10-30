@@ -1,0 +1,25 @@
+/* ========================================
+   FOOTER COMPONENT
+   ======================================== */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #666;
+    margin-top: 3rem;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: #667eea;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #5568d3;
+    text-decoration: underline;
+}

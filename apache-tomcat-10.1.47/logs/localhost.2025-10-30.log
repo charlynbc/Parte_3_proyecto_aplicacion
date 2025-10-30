@@ -1,0 +1,553 @@
+30-Oct-2025 12:27:48.581 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+30-Oct-2025 12:27:48.582 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+30-Oct-2025 12:27:48.583 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@58d4238e')
+30-Oct-2025 12:27:59.244 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [jsp] in context with path [] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [14] in the generated java file: [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/work/Catalina/localhost/ROOT/org/apache/jsp/testds_jsp.java]
+Only a type can be imported. jakarta.naming.InitialContext resolves to a package
+
+An error occurred at line: [15] in the generated java file: [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/work/Catalina/localhost/ROOT/org/apache/jsp/testds_jsp.java]
+Only a type can be imported. jakarta.sql.DataSource resolves to a package
+
+An error occurred at line: [6] in the jsp file: [/testds.jsp]
+InitialContext cannot be resolved to a type
+3: <%@ page import="java.sql.Connection" %>
+4: <%
+5:     try {
+6:         InitialContext ic = new InitialContext();
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+
+
+An error occurred at line: [6] in the jsp file: [/testds.jsp]
+InitialContext cannot be resolved to a type
+3: <%@ page import="java.sql.Connection" %>
+4: <%
+5:     try {
+6:         InitialContext ic = new InitialContext();
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+
+
+An error occurred at line: [9] in the jsp file: [/testds.jsp]
+DataSource cannot be resolved to a type
+6:         InitialContext ic = new InitialContext();
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+10:             DataSource ds = (DataSource) obj;
+11:             try (Connection c = ds.getConnection()) {
+12:                 out.println("<br/>Got connection: OK");
+
+
+An error occurred at line: [10] in the jsp file: [/testds.jsp]
+DataSource cannot be resolved to a type
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+10:             DataSource ds = (DataSource) obj;
+11:             try (Connection c = ds.getConnection()) {
+12:                 out.println("<br/>Got connection: OK");
+13:             } catch (Exception e) {
+
+
+An error occurred at line: [10] in the jsp file: [/testds.jsp]
+DataSource cannot be resolved to a type
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+10:             DataSource ds = (DataSource) obj;
+11:             try (Connection c = ds.getConnection()) {
+12:                 out.println("<br/>Got connection: OK");
+13:             } catch (Exception e) {
+
+
+An error occurred at line: [19] in the jsp file: [/testds.jsp]
+The method printStackTrace(PrintStream) in the type Throwable is not applicable for the arguments (JspWriter)
+16:         }
+17:     } catch (Exception e) {
+18:         out.println("Lookup exception: " + e.getMessage());
+19:         e.printStackTrace(out);
+20:     }
+21: %>
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [14] in the generated java file: [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/work/Catalina/localhost/ROOT/org/apache/jsp/testds_jsp.java]
+Only a type can be imported. jakarta.naming.InitialContext resolves to a package
+
+An error occurred at line: [15] in the generated java file: [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/work/Catalina/localhost/ROOT/org/apache/jsp/testds_jsp.java]
+Only a type can be imported. jakarta.sql.DataSource resolves to a package
+
+An error occurred at line: [6] in the jsp file: [/testds.jsp]
+InitialContext cannot be resolved to a type
+3: <%@ page import="java.sql.Connection" %>
+4: <%
+5:     try {
+6:         InitialContext ic = new InitialContext();
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+
+
+An error occurred at line: [6] in the jsp file: [/testds.jsp]
+InitialContext cannot be resolved to a type
+3: <%@ page import="java.sql.Connection" %>
+4: <%
+5:     try {
+6:         InitialContext ic = new InitialContext();
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+
+
+An error occurred at line: [9] in the jsp file: [/testds.jsp]
+DataSource cannot be resolved to a type
+6:         InitialContext ic = new InitialContext();
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+10:             DataSource ds = (DataSource) obj;
+11:             try (Connection c = ds.getConnection()) {
+12:                 out.println("<br/>Got connection: OK");
+
+
+An error occurred at line: [10] in the jsp file: [/testds.jsp]
+DataSource cannot be resolved to a type
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+10:             DataSource ds = (DataSource) obj;
+11:             try (Connection c = ds.getConnection()) {
+12:                 out.println("<br/>Got connection: OK");
+13:             } catch (Exception e) {
+
+
+An error occurred at line: [10] in the jsp file: [/testds.jsp]
+DataSource cannot be resolved to a type
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+10:             DataSource ds = (DataSource) obj;
+11:             try (Connection c = ds.getConnection()) {
+12:                 out.println("<br/>Got connection: OK");
+13:             } catch (Exception e) {
+
+
+An error occurred at line: [19] in the jsp file: [/testds.jsp]
+The method printStackTrace(PrintStream) in the type Throwable is not applicable for the arguments (JspWriter)
+16:         }
+17:     } catch (Exception e) {
+18:         out.println("Lookup exception: " + e.getMessage());
+19:         e.printStackTrace(out);
+20:     }
+21: %>
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 12:28:11.933 SEVERE [http-nio-8080-exec-2] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [jsp] in context with path [] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [14] in the generated java file: [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/work/Catalina/localhost/ROOT/org/apache/jsp/testds_jsp.java]
+Only a type can be imported. jakarta.naming.InitialContext resolves to a package
+
+An error occurred at line: [15] in the generated java file: [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/work/Catalina/localhost/ROOT/org/apache/jsp/testds_jsp.java]
+Only a type can be imported. jakarta.sql.DataSource resolves to a package
+
+An error occurred at line: [6] in the jsp file: [/testds.jsp]
+InitialContext cannot be resolved to a type
+3: <%@ page import="java.sql.Connection" %>
+4: <%
+5:     try {
+6:         InitialContext ic = new InitialContext();
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+
+
+An error occurred at line: [6] in the jsp file: [/testds.jsp]
+InitialContext cannot be resolved to a type
+3: <%@ page import="java.sql.Connection" %>
+4: <%
+5:     try {
+6:         InitialContext ic = new InitialContext();
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+
+
+An error occurred at line: [9] in the jsp file: [/testds.jsp]
+DataSource cannot be resolved to a type
+6:         InitialContext ic = new InitialContext();
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+10:             DataSource ds = (DataSource) obj;
+11:             try (Connection c = ds.getConnection()) {
+12:                 out.println("<br/>Got connection: OK");
+
+
+An error occurred at line: [10] in the jsp file: [/testds.jsp]
+DataSource cannot be resolved to a type
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+10:             DataSource ds = (DataSource) obj;
+11:             try (Connection c = ds.getConnection()) {
+12:                 out.println("<br/>Got connection: OK");
+13:             } catch (Exception e) {
+
+
+An error occurred at line: [10] in the jsp file: [/testds.jsp]
+DataSource cannot be resolved to a type
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+10:             DataSource ds = (DataSource) obj;
+11:             try (Connection c = ds.getConnection()) {
+12:                 out.println("<br/>Got connection: OK");
+13:             } catch (Exception e) {
+
+
+An error occurred at line: [19] in the jsp file: [/testds.jsp]
+The method printStackTrace(PrintStream) in the type Throwable is not applicable for the arguments (JspWriter)
+16:         }
+17:     } catch (Exception e) {
+18:         out.println("Lookup exception: " + e.getMessage());
+19:         e.printStackTrace(out);
+20:     }
+21: %>
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [14] in the generated java file: [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/work/Catalina/localhost/ROOT/org/apache/jsp/testds_jsp.java]
+Only a type can be imported. jakarta.naming.InitialContext resolves to a package
+
+An error occurred at line: [15] in the generated java file: [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/work/Catalina/localhost/ROOT/org/apache/jsp/testds_jsp.java]
+Only a type can be imported. jakarta.sql.DataSource resolves to a package
+
+An error occurred at line: [6] in the jsp file: [/testds.jsp]
+InitialContext cannot be resolved to a type
+3: <%@ page import="java.sql.Connection" %>
+4: <%
+5:     try {
+6:         InitialContext ic = new InitialContext();
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+
+
+An error occurred at line: [6] in the jsp file: [/testds.jsp]
+InitialContext cannot be resolved to a type
+3: <%@ page import="java.sql.Connection" %>
+4: <%
+5:     try {
+6:         InitialContext ic = new InitialContext();
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+
+
+An error occurred at line: [9] in the jsp file: [/testds.jsp]
+DataSource cannot be resolved to a type
+6:         InitialContext ic = new InitialContext();
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+10:             DataSource ds = (DataSource) obj;
+11:             try (Connection c = ds.getConnection()) {
+12:                 out.println("<br/>Got connection: OK");
+
+
+An error occurred at line: [10] in the jsp file: [/testds.jsp]
+DataSource cannot be resolved to a type
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+10:             DataSource ds = (DataSource) obj;
+11:             try (Connection c = ds.getConnection()) {
+12:                 out.println("<br/>Got connection: OK");
+13:             } catch (Exception e) {
+
+
+An error occurred at line: [10] in the jsp file: [/testds.jsp]
+DataSource cannot be resolved to a type
+7:         Object obj = ic.lookup("java:comp/env/jdbc/railway");
+8:         out.println("Lookup returned: " + (obj == null ? "null" : obj.getClass().getName()));
+9:         if (obj instanceof DataSource) {
+10:             DataSource ds = (DataSource) obj;
+11:             try (Connection c = ds.getConnection()) {
+12:                 out.println("<br/>Got connection: OK");
+13:             } catch (Exception e) {
+
+
+An error occurred at line: [19] in the jsp file: [/testds.jsp]
+The method printStackTrace(PrintStream) in the type Throwable is not applicable for the arguments (JspWriter)
+16:         }
+17:     } catch (Exception e) {
+18:         out.println("Lookup exception: " + e.getMessage());
+19:         e.printStackTrace(out);
+20:     }
+21: %>
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 12:33:05.339 SEVERE [http-nio-8080-exec-4] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [jsp] in context with path [] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [14] in the generated java file: [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/work/Catalina/localhost/ROOT/org/apache/jsp/testemf_jsp.java]
+Only a type can be imported. jakarta.persistence.Persistence resolves to a package
+
+An error occurred at line: [15] in the generated java file: [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/work/Catalina/localhost/ROOT/org/apache/jsp/testemf_jsp.java]
+Only a type can be imported. jakarta.persistence.EntityManagerFactory resolves to a package
+
+An error occurred at line: [5] in the jsp file: [/testemf.jsp]
+EntityManagerFactory cannot be resolved to a type
+2: <%@ page import="jakarta.persistence.EntityManagerFactory" %>
+3: <%
+4:     out.println("Testing Persistence.createEntityManagerFactory(\"emf\")...<br/>");
+5:     EntityManagerFactory emf = null;
+6:     try {
+7:         emf = Persistence.createEntityManagerFactory("emf");
+8:         if (emf != null) {
+
+
+An error occurred at line: [7] in the jsp file: [/testemf.jsp]
+Persistence cannot be resolved
+4:     out.println("Testing Persistence.createEntityManagerFactory(\"emf\")...<br/>");
+5:     EntityManagerFactory emf = null;
+6:     try {
+7:         emf = Persistence.createEntityManagerFactory("emf");
+8:         if (emf != null) {
+9:             out.println("EntityManagerFactory created successfully.<br/>");
+10:         } else {
+
+
+An error occurred at line: [16] in the jsp file: [/testemf.jsp]
+The method printStackTrace(PrintStream) in the type Throwable is not applicable for the arguments (JspWriter)
+13:     } catch (Throwable t) {
+14:         out.println("Exception creating EMF: " + t.toString() + "<br/>");
+15:         out.println("<pre>");
+16:         t.printStackTrace(out);
+17:         out.println("</pre>");
+18:     } finally {
+19:         try { if (emf != null && emf.isOpen()) emf.close(); } catch (Exception e) { }
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [14] in the generated java file: [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/work/Catalina/localhost/ROOT/org/apache/jsp/testemf_jsp.java]
+Only a type can be imported. jakarta.persistence.Persistence resolves to a package
+
+An error occurred at line: [15] in the generated java file: [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/work/Catalina/localhost/ROOT/org/apache/jsp/testemf_jsp.java]
+Only a type can be imported. jakarta.persistence.EntityManagerFactory resolves to a package
+
+An error occurred at line: [5] in the jsp file: [/testemf.jsp]
+EntityManagerFactory cannot be resolved to a type
+2: <%@ page import="jakarta.persistence.EntityManagerFactory" %>
+3: <%
+4:     out.println("Testing Persistence.createEntityManagerFactory(\"emf\")...<br/>");
+5:     EntityManagerFactory emf = null;
+6:     try {
+7:         emf = Persistence.createEntityManagerFactory("emf");
+8:         if (emf != null) {
+
+
+An error occurred at line: [7] in the jsp file: [/testemf.jsp]
+Persistence cannot be resolved
+4:     out.println("Testing Persistence.createEntityManagerFactory(\"emf\")...<br/>");
+5:     EntityManagerFactory emf = null;
+6:     try {
+7:         emf = Persistence.createEntityManagerFactory("emf");
+8:         if (emf != null) {
+9:             out.println("EntityManagerFactory created successfully.<br/>");
+10:         } else {
+
+
+An error occurred at line: [16] in the jsp file: [/testemf.jsp]
+The method printStackTrace(PrintStream) in the type Throwable is not applicable for the arguments (JspWriter)
+13:     } catch (Throwable t) {
+14:         out.println("Exception creating EMF: " + t.toString() + "<br/>");
+15:         out.println("<pre>");
+16:         t.printStackTrace(out);
+17:         out.println("</pre>");
+18:     } finally {
+19:         try { if (emf != null && emf.isOpen()) emf.close(); } catch (Exception e) { }
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 12:33:49.545 SEVERE [http-nio-8080-exec-5] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [jsp] in context with path [] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [26] in the jsp file: [/testemf.jsp]
+The method printStackTrace(PrintStream) in the type Throwable is not applicable for the arguments (JspWriter)
+23:     } catch (Throwable t) {
+24:         out.println("Exception creating EMF: " + t.toString() + "<br/>");
+25:         out.println("<pre>");
+26:         t.printStackTrace(out);
+27:         out.println("</pre>");
+28:     }
+29: %>
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [26] in the jsp file: [/testemf.jsp]
+The method printStackTrace(PrintStream) in the type Throwable is not applicable for the arguments (JspWriter)
+23:     } catch (Throwable t) {
+24:         out.println("Exception creating EMF: " + t.toString() + "<br/>");
+25:         out.println("<pre>");
+26:         t.printStackTrace(out);
+27:         out.println("</pre>");
+28:     }
+29: %>
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:553)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:374)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+30-Oct-2025 12:34:34.635 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+30-Oct-2025 12:34:34.635 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+30-Oct-2025 12:34:40.935 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+30-Oct-2025 12:34:40.935 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+30-Oct-2025 12:34:40.936 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@6801b4a4')
+30-Oct-2025 12:35:43.322 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+30-Oct-2025 12:35:43.322 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+30-Oct-2025 12:35:50.047 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+30-Oct-2025 12:35:50.047 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+30-Oct-2025 12:35:50.048 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@6801b4a4')

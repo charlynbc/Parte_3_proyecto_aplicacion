@@ -17,10 +17,10 @@
         <class>logica.Inscripcion</class>
 
         <properties>
-            <!-- Configuración JDBC -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://shortline.proxy.rlwy.net:42806/railway?serverTimezone=UTC"/>
+            <!-- Configuración JDBC CONFIGURAR LA NUEVA BASE DE DATOS IGUAL A ESO PERO DIFERENTE, CREALA Y CAMBIAS ESOS VALORES -->
+            <!--<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://shortline.proxy.rlwy.net:42806/railway?serverTimezone=UTC"/>
             <property name="jakarta.persistence.jdbc.user" value="root"/>
-            <property name="jakarta.persistence.jdbc.password" value="qKbEKYnriXxQvaVbqxfUIQbgsVRhBaNA"/>
+            <property name="jakarta.persistence.jdbc.password" value="qKbEKYnriXxQvaVbqxfUIQbgsVRhBaNA"/>-->
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 
             <!-- Acción sobre el esquema -->

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <!-- Configuración del DataSource JNDI para PostgreSQL -->
+    <Resource name="jdbc/railway"
+              auth="Container"
+              type="javax.sql.DataSource"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              driverClassName="org.postgresql.Driver"
+              url="jdbc:postgresql://localhost:5432/laboratoriopap"
+              username="laboratorio_user"
+              password="laboratorio_pass"
+              maxTotal="20"
+              maxIdle="10"
+              maxWaitMillis="10000"
+              testOnBorrow="true"
+              validationQuery="SELECT 1"
+              removeAbandonedOnBorrow="true"
+              removeAbandonedTimeout="60"
+              logAbandoned="true" />
+</Context>
