@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.List" %>
 <%@ page import="logica.DataActividad" %>
 <!DOCTYPE html>
 <html lang="es">
@@ -31,17 +32,37 @@
 
         <div class="card-grid">
             <%
-                DataActividad[] activities = (DataActividad[]) request.getAttribute("activities");
-                String errorMessage = (String) request.getAttribute("error");
-                
-                if (errorMessage != null) {
+                List<?> activities = null;
+                String errorMessage = null;
+                Exception jspError = null;
+                try {
+                    activities = (List<?>) request.getAttribute("activities");
+                    errorMessage = (String) request.getAttribute("error");
+                } catch (Exception ex) {
+                    jspError = ex;
+                }
+                if (jspError != null) {
+            %>
+                <div class="alert alert-error">
+                    <strong>Error JSP:</strong> <%= jspError.getClass().getName() %> - <%= jspError.getMessage() %>
+                </div>
+            <%
+                } else if (errorMessage != null) {
             %>
                 <div class="alert alert-error">
                     Error: <%= errorMessage %>
                 </div>
             <%
-                } else if (activities != null && activities.length > 0) {
-                    for (DataActividad act : activities) {
+                } else if (activities != null && !activities.isEmpty()) {
+                    for (Object obj : activities) {
+                        java.util.Map<String, Object> act = (java.util.Map<String, Object>) obj;
+                        String nombre = act.get("nombre") != null ? act.get("nombre").toString() : "(sin nombre)";
+                        String descripcion = act.get("descripcion") != null ? act.get("descripcion").toString() : "";
+                        String ciudad = act.get("ciudad") != null ? act.get("ciudad").toString() : "";
+                        String estado = act.get("estado") != null ? act.get("estado").toString() : "";
+                        String proveedor = act.get("proveedor") != null ? act.get("proveedor").toString() : "";
+                        int duracion = act.get("duracion") != null ? ((Number)act.get("duracion")).intValue() : 0;
+                        float costo = act.get("costo") != null ? ((Number)act.get("costo")).floatValue() : 0;
             %>
                         <div class="card">
                             <div class="card-image">
@@ -50,17 +71,17 @@
                                 </div>
                             </div>
                             <div class="card-content">
-                                <div class="card-title"><%= act.getNombre() %></div>
+                                <div class="card-title"><%= nombre %></div>
                                 <div class="card-description">
-                                    <%= act.getDescripcion() %><br><br>
-                                    <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
-                                    <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
-                                    <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
-                                    <strong>Estado:</strong> <%= act.getEstado() %><br>
-                                    <strong>Proveedor:</strong> <%= act.getProveedor() %>
+                                    <%= descripcion %><br><br>
+                                    <strong>Duración:</strong> <%= duracion %> horas<br>
+                                    <strong>Costo:</strong> $<%= costo %> UYU<br>
+                                    <strong>Ciudad:</strong> <%= ciudad %><br>
+                                    <strong>Estado:</strong> <%= estado %><br>
+                                    <strong>Proveedor:</strong> <%= proveedor %>
                                 </div>
                                 <div class="card-actions">
-                                    <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+                                    <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode((String)act.get("nombre"), "UTF-8") %>" class="btn-small">Ver Detalles</a>
                                 </div>
                             </div>
                         </div>
