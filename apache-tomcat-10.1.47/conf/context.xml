@@ -28,15 +28,17 @@
     <!--
     <Manager pathname="SESSIONS.ser" />
     -->
-  <!-- JNDI DataSource para Railway -->
+  <!-- JNDI DataSource para Railway (MySQL, proxy público) -->
   <Resource name="jdbc/railway"
-        auth="Container"
-        type="javax.sql.DataSource"
-        driverClassName="com.mysql.cj.jdbc.Driver"
-        url="jdbc:mysql://mysql.railway.internal:3306/railway"
-        username="root"
-        password="RfpxZHvphzVbjvKwVWOLqBFsucCezmtb"
-        maxTotal="20"
-        maxIdle="10"
-        maxWaitMillis="10000"/>
+    auth="Container"
+    type="javax.sql.DataSource"
+    driverClassName="com.mysql.cj.jdbc.Driver"
+    url="jdbc:mysql://autorack.proxy.rlwy.net:13046/railway?serverTimezone=UTC&amp;autoReconnect=true&amp;allowPublicKeyRetrieval=true&amp;useSSL=true"
+    username="root"
+    password="OqlJKLJHzKixCFCeqgVSKjNJzpAXspeQ"
+    maxTotal="20"
+    maxIdle="10"
+    maxWaitMillis="10000"
+    testOnBorrow="true"
+    validationQuery="SELECT 1"/>
 </Context>

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/vscode/tasks.json",
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Deploy to Tomcat 10",
+      "type": "shell",
+      "command": "bash",
+      "args": ["./deploy-tomcat10.sh"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": "build"
+    }
+  ]
+}
