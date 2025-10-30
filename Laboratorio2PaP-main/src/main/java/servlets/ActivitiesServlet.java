@@ -13,6 +13,7 @@ import java.util.List;
 import logica.Fabrica;
 import logica.IControladorActividad;
 import logica.DataActividad;
+import excepciones.ActividadNoExisteException;
 
 @WebServlet(name = "ActivitiesServlet", urlPatterns = {"/activities"})
 public class ActivitiesServlet extends HttpServlet {
@@ -34,6 +35,9 @@ public class ActivitiesServlet extends HttpServlet {
             DataActividad[] resultado = controladorActividad.getActividades();
             actividades = resultado != null ? Arrays.asList(resultado) : Collections.emptyList();
             request.setAttribute("activities", actividades);
+        } catch (ActividadNoExisteException ex) {
+            // Sin actividades: mostrar estado vacío, no es un error
+            request.setAttribute("activities", Collections.emptyList());
         } catch (Exception e) {
             request.setAttribute("error", "No se pudieron cargar las actividades. Verifica la conexión a la base de datos.");
         }

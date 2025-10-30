@@ -43,21 +43,19 @@ public class DashboardServlet extends HttpServlet {
             if ("turista".equals(tipoUsuario)) {
                 // Dashboard para turista
                 loadTuristaDashboard(request, em, (Turista) usuario);
-                request.getRequestDispatcher("/WEB-INF/jsp/dashboard-turista.jsp").forward(request, response);
-                
+                request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
             } else if ("proveedor".equals(tipoUsuario)) {
                 // Dashboard para proveedor
                 loadProveedorDashboard(request, em, (Proveedor) usuario);
-                request.getRequestDispatcher("/WEB-INF/jsp/dashboard-proveedor.jsp").forward(request, response);
-                
+                request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
             } else {
                 // Dashboard genérico
-                request.getRequestDispatcher("/WEB-INF/jsp/dashboard.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
             }
             
         } catch (PersistenceException e) {
             request.setAttribute("error", "No es posible cargar el dashboard por problemas de conexión con la base de datos.");
-            request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
             return;
         } finally {
             if (em != null && em.isOpen()) {
