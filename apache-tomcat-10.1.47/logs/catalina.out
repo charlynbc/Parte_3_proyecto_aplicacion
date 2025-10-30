@@ -295,3 +295,570 @@
 30-Oct-2025 12:40:42.006 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/Laboratorio2PaP.war]
 30-Oct-2025 12:40:44.208 INFO [Catalina-utility-2] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
 30-Oct-2025 12:40:44.219 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/Laboratorio2PaP.war] has finished in [2,213] ms
+LoginServlet initialized - connected to Laboratorio1.jar persistence
+=== LOGIN SERVLET HIT ===
+EntityManagerFactory creado para: emf
+[EL Info]: 2025-10-30 13:53:53.049--ServerSession(1083368162)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+[EL Severe]: ejb: 2025-10-30 13:53:53.295--ServerSession(1083368162)--Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+UsersServlet initialized - connected to Laboratorio1.jar
+
+=== Users List Request ===
+[EL Fine]: server: 2025-10-30 13:53:57.16--Thread(Thread[http-nio-8080-exec-2,5,main])--Configured server platform: org.eclipse.persistence.platform.server.NoServerPlatform
+[EL Config]: metadata: 2025-10-30 13:53:57.187--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The access type for the persistent class [class logica.Usuario] is set to [FIELD].
+[EL Config]: metadata: 2025-10-30 13:53:57.19--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The access type for the persistent class [class logica.Turista] is set to [FIELD].
+[EL Config]: metadata: 2025-10-30 13:53:57.192--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The access type for the persistent class [class logica.Actividad] is set to [FIELD].
+[EL Config]: metadata: 2025-10-30 13:53:57.193--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The target entity (reference) class for the many to one mapping element [field proveedor] is being defaulted to: class logica.Proveedor.
+[EL Config]: metadata: 2025-10-30 13:53:57.193--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The target entity (reference) class for the one to many mapping element [field salidas] is being defaulted to: class logica.Salida.
+[EL Config]: metadata: 2025-10-30 13:53:57.194--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The access type for the persistent class [class logica.Inscripcion] is set to [FIELD].
+[EL Config]: metadata: 2025-10-30 13:53:57.195--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The target entity (reference) class for the many to one mapping element [field turista] is being defaulted to: class logica.Turista.
+[EL Config]: metadata: 2025-10-30 13:53:57.196--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The target entity (reference) class for the many to one mapping element [field salida] is being defaulted to: class logica.Salida.
+[EL Config]: metadata: 2025-10-30 13:53:57.196--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The access type for the persistent class [class logica.Salida] is set to [FIELD].
+[EL Config]: metadata: 2025-10-30 13:53:57.197--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The target entity (reference) class for the one to many mapping element [field inscripciones] is being defaulted to: class logica.Inscripcion.
+[EL Config]: metadata: 2025-10-30 13:53:57.197--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The target entity (reference) class for the many to one mapping element [field actividad] is being defaulted to: class logica.Actividad.
+[EL Config]: metadata: 2025-10-30 13:53:57.198--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The access type for the persistent class [class logica.Proveedor] is set to [FIELD].
+[EL Config]: metadata: 2025-10-30 13:53:57.199--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The target entity (reference) class for the one to many mapping element [field actividades] is being defaulted to: class logica.Actividad.
+[EL Config]: metadata: 2025-10-30 13:53:57.199--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The alias name for the entity class [class logica.Turista] is being defaulted to: Turista.
+[EL Config]: metadata: 2025-10-30 13:53:57.199--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The alias name for the entity class [class logica.Usuario] is being defaulted to: Usuario.
+[EL Config]: metadata: 2025-10-30 13:53:57.201--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The primary key column name for the inheritance class [class logica.Turista] is being defaulted to: nickname.
+[EL Config]: metadata: 2025-10-30 13:53:57.202--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The foreign key column name for the inheritance class [logica.Turista] is being defaulted to: nickname.
+[EL Config]: metadata: 2025-10-30 13:53:57.202--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The alias name for the entity class [class logica.Actividad] is being defaulted to: Actividad.
+[EL Config]: metadata: 2025-10-30 13:53:57.203--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The alias name for the entity class [class logica.Inscripcion] is being defaulted to: Inscripcion.
+[EL Config]: metadata: 2025-10-30 13:53:57.204--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The alias name for the entity class [class logica.Salida] is being defaulted to: Salida.
+[EL Config]: metadata: 2025-10-30 13:53:57.205--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The alias name for the entity class [class logica.Proveedor] is being defaulted to: Proveedor.
+[EL Config]: metadata: 2025-10-30 13:53:57.205--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The primary key column name for the inheritance class [class logica.Proveedor] is being defaulted to: nickname.
+[EL Config]: metadata: 2025-10-30 13:53:57.205--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--The foreign key column name for the inheritance class [logica.Proveedor] is being defaulted to: nickname.
+[EL Info]: 2025-10-30 13:53:57.249--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+[EL Fine]: connection: 2025-10-30 13:53:57.255--ServerSession(1703823967)--Connection(304349865)--Thread(Thread[http-nio-8080-exec-2,5,main])--connecting(DatabaseLogin(
+	platform=>MySQLPlatform
+	user name=> "root"
+	datasource URL=> "jdbc:mysql://shortline.proxy.rlwy.net:42806/railway?serverTimezone=UTC"
+))
+[EL Config]: connection: 2025-10-30 13:53:58.112--ServerSession(1703823967)--Connection(1769616755)--Thread(Thread[http-nio-8080-exec-2,5,main])--Connected: jdbc:mysql://shortline.proxy.rlwy.net:42806/railway?serverTimezone=UTC
+	User: root@100.64.0.5
+	Database: MySQL  Version: 9.4.0
+	Driver: MySQL Connector/J  Version: mysql-connector-j-8.3.0 (Revision: 805f872a57875f311cb82487efcfb070411a3fa0)
+[EL Fine]: connection: 2025-10-30 13:53:58.149--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--/file:/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/Laboratorio2PaP/WEB-INF/lib/Laboratorio1.jar_emf login successful
+[EL Fine]: 2025-10-30 13:53:58.163--Thread(Thread[http-nio-8080-exec-2,5,main])--JsonPlatformProvider class org.eclipse.persistence.pgsql.PostgreSQLJsonPlatformProvider was not found
+[EL Fine]: 2025-10-30 13:53:58.169--Thread(Thread[http-nio-8080-exec-2,5,main])--JsonPlatformProvider class org.eclipse.persistence.platform.database.oracle.json.OracleJsonPlatformProvider was not found
+[EL Fine]: 2025-10-30 13:53:58.169--Thread(Thread[http-nio-8080-exec-2,5,main])--JsonPlatformProvider class org.eclipse.persistence.json.DefaultJsonPlatformProvider was not found
+[EL Fine]: sql: 2025-10-30 13:53:58.454--ServerSession(1703823967)--Connection(1769616755)--Thread(Thread[http-nio-8080-exec-2,5,main])--ALTER TABLE actividad ADD CONSTRAINT FK_actividad_proveedor FOREIGN KEY (proveedor) REFERENCES usuarios (nickname)
+[EL Fine]: sql: 2025-10-30 13:53:58.469--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--SELECT 1
+[EL Warning]: 2025-10-30 13:53:58.477--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Duplicate foreign key constraint name 'FK_actividad_proveedor'
+Error Code: 1826
+Call: ALTER TABLE actividad ADD CONSTRAINT FK_actividad_proveedor FOREIGN KEY (proveedor) REFERENCES usuarios (nickname)
+Query: DataModifyQuery(sql="ALTER TABLE actividad ADD CONSTRAINT FK_actividad_proveedor FOREIGN KEY (proveedor) REFERENCES usuarios (nickname)")
+[EL Fine]: sql: 2025-10-30 13:53:58.479--ServerSession(1703823967)--Connection(1769616755)--Thread(Thread[http-nio-8080-exec-2,5,main])--ALTER TABLE proveedores ADD CONSTRAINT FK_proveedores_nickname FOREIGN KEY (nickname) REFERENCES usuarios (nickname)
+[EL Fine]: sql: 2025-10-30 13:53:58.488--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--SELECT 1
+[EL Warning]: 2025-10-30 13:53:58.496--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Duplicate foreign key constraint name 'FK_proveedores_nickname'
+Error Code: 1826
+Call: ALTER TABLE proveedores ADD CONSTRAINT FK_proveedores_nickname FOREIGN KEY (nickname) REFERENCES usuarios (nickname)
+Query: DataModifyQuery(sql="ALTER TABLE proveedores ADD CONSTRAINT FK_proveedores_nickname FOREIGN KEY (nickname) REFERENCES usuarios (nickname)")
+[EL Fine]: sql: 2025-10-30 13:53:58.497--ServerSession(1703823967)--Connection(1769616755)--Thread(Thread[http-nio-8080-exec-2,5,main])--ALTER TABLE turista ADD CONSTRAINT FK_turista_nickname FOREIGN KEY (nickname) REFERENCES usuarios (nickname)
+[EL Fine]: sql: 2025-10-30 13:53:58.504--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--SELECT 1
+[EL Warning]: 2025-10-30 13:53:58.512--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Duplicate foreign key constraint name 'FK_turista_nickname'
+Error Code: 1826
+Call: ALTER TABLE turista ADD CONSTRAINT FK_turista_nickname FOREIGN KEY (nickname) REFERENCES usuarios (nickname)
+Query: DataModifyQuery(sql="ALTER TABLE turista ADD CONSTRAINT FK_turista_nickname FOREIGN KEY (nickname) REFERENCES usuarios (nickname)")
+[EL Fine]: sql: 2025-10-30 13:53:58.512--ServerSession(1703823967)--Connection(1769616755)--Thread(Thread[http-nio-8080-exec-2,5,main])--ALTER TABLE salida ADD CONSTRAINT FK_salida_actividad_nombre FOREIGN KEY (actividad_nombre) REFERENCES actividad (nombre)
+[EL Fine]: sql: 2025-10-30 13:53:58.521--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--SELECT 1
+[EL Warning]: 2025-10-30 13:53:58.529--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Duplicate foreign key constraint name 'FK_salida_actividad_nombre'
+Error Code: 1826
+Call: ALTER TABLE salida ADD CONSTRAINT FK_salida_actividad_nombre FOREIGN KEY (actividad_nombre) REFERENCES actividad (nombre)
+Query: DataModifyQuery(sql="ALTER TABLE salida ADD CONSTRAINT FK_salida_actividad_nombre FOREIGN KEY (actividad_nombre) REFERENCES actividad (nombre)")
+[EL Fine]: sql: 2025-10-30 13:53:58.529--ServerSession(1703823967)--Connection(1769616755)--Thread(Thread[http-nio-8080-exec-2,5,main])--ALTER TABLE inscripcion ADD CONSTRAINT FK_inscripcion_salida FOREIGN KEY (salida) REFERENCES salida (nombre)
+[EL Fine]: sql: 2025-10-30 13:53:58.537--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--SELECT 1
+[EL Warning]: 2025-10-30 13:53:58.544--ServerSession(1703823967)--Thread(Thread[http-nio-8080-exec-2,5,main])--Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Duplicate foreign key constraint name 'FK_inscripcion_salida'
+Error Code: 1826
+Call: ALTER TABLE inscripcion ADD CONSTRAINT FK_inscripcion_salida FOREIGN KEY (salida) REFERENCES salida (nombre)
+Query: DataModifyQuery(sql="ALTER TABLE inscripcion ADD CONSTRAINT FK_inscripcion_salida FOREIGN KEY (salida) REFERENCES salida (nombre)")
+[EL Info]: 2025-10-30 13:53:58.55--ServerSession(1083368162)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+[EL Severe]: ejb: 2025-10-30 13:53:58.554--ServerSession(1083368162)--Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+Error retrieving users: Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+jakarta.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:856)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:221)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.createEntityManagerImpl(EntityManagerFactoryDelegate.java:328)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.createEntityManagerImpl(EntityManagerFactoryImpl.java:343)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.createEntityManager(EntityManagerFactoryImpl.java:306)
+	at persistence.JPAUtil.getEntityManager(JPAUtil.java:29)
+	at logica.ManejadorUsuario.getUsuarios(ManejadorUsuario.java:50)
+	at logica.ControladorUsuario.getUsuarios(ControladorUsuario.java:70)
+	at servlets.UsersServlet.doGet(UsersServlet.java:42)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:319)
+	at org.eclipse.persistence.sessions.JNDIConnector.connect(JNDIConnector.java:152)
+	at org.eclipse.persistence.sessions.DatasourceLogin.connectToDatasource(DatasourceLogin.java:174)
+	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.setOrDetectDatasource(DatabaseSessionImpl.java:226)
+	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.loginAndDetectDatasource(DatabaseSessionImpl.java:809)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryProvider.login(EntityManagerFactoryProvider.java:259)
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:771)
+	... 35 more
+Caused by: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:641)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createDataSource(BasicDataSource.java:544)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:719)
+	at org.eclipse.persistence.sessions.JNDIConnector.connect(JNDIConnector.java:140)
+	... 40 more
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
+	at org.apache.tomcat.dbcp.dbcp2.DriverConnectionFactory.createConnection(DriverConnectionFactory.java:52)
+	at org.apache.tomcat.dbcp.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:481)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.validateConnectionFactory(BasicDataSource.java:113)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:637)
+	... 43 more
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:104)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:149)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:165)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:88)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:935)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:805)
+	... 50 more
+Caused by: java.net.UnknownHostException: mysql.railway.internal
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:797)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1509)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1368)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1302)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:130)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:62)
+	... 53 more
+=== LOGIN SERVLET HIT ===
+RegisterTouristServlet initialized - connected to Laboratorio1.jar persistence
+
+=== Register Tourist Debug Info ===
+1. Form data received:
+- Nickname: Charly
+- Email: charly_nbc@h.com
+- Nationality: Uruguaya
+2. Birth date parsed: Tue Oct 29 00:00:00 UTC 1991
+4. DataTurista object created
+[EL Info]: 2025-10-30 14:05:52.941--ServerSession(1083368162)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+[EL Severe]: ejb: 2025-10-30 14:05:53.165--ServerSession(1083368162)--Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+Error during tourist registration: Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+jakarta.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:856)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:221)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.createEntityManagerImpl(EntityManagerFactoryDelegate.java:328)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.createEntityManagerImpl(EntityManagerFactoryImpl.java:343)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.createEntityManager(EntityManagerFactoryImpl.java:306)
+	at persistence.JPAUtil.getEntityManager(JPAUtil.java:29)
+	at logica.ManejadorUsuario.obtenerUsuarioXNick(ManejadorUsuario.java:66)
+	at logica.ControladorUsuario.registrarUsuario(ControladorUsuario.java:16)
+	at servlets.RegisterTouristServlet.doPost(RegisterTouristServlet.java:117)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:319)
+	at org.eclipse.persistence.sessions.JNDIConnector.connect(JNDIConnector.java:152)
+	at org.eclipse.persistence.sessions.DatasourceLogin.connectToDatasource(DatasourceLogin.java:174)
+	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.setOrDetectDatasource(DatabaseSessionImpl.java:226)
+	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.loginAndDetectDatasource(DatabaseSessionImpl.java:809)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryProvider.login(EntityManagerFactoryProvider.java:259)
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:771)
+	... 35 more
+Caused by: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:641)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createDataSource(BasicDataSource.java:544)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:719)
+	at org.eclipse.persistence.sessions.JNDIConnector.connect(JNDIConnector.java:140)
+	... 40 more
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
+	at org.apache.tomcat.dbcp.dbcp2.DriverConnectionFactory.createConnection(DriverConnectionFactory.java:52)
+	at org.apache.tomcat.dbcp.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:481)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.validateConnectionFactory(BasicDataSource.java:113)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:637)
+	... 43 more
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:104)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:149)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:165)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:88)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:935)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:805)
+	... 50 more
+Caused by: java.net.UnknownHostException: mysql.railway.internal: Name or service not known
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:929)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1519)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:848)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1509)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1368)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1302)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:130)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:62)
+	... 53 more
+=== LOGIN SERVLET HIT ===
+
+=== Users List Request ===
+[EL Info]: 2025-10-30 14:13:41.485--ServerSession(1083368162)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+[EL Severe]: ejb: 2025-10-30 14:13:41.604--ServerSession(1083368162)--Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+Error retrieving users: Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+jakarta.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:856)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:221)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.createEntityManagerImpl(EntityManagerFactoryDelegate.java:328)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.createEntityManagerImpl(EntityManagerFactoryImpl.java:343)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.createEntityManager(EntityManagerFactoryImpl.java:306)
+	at persistence.JPAUtil.getEntityManager(JPAUtil.java:29)
+	at logica.ManejadorUsuario.getUsuarios(ManejadorUsuario.java:50)
+	at logica.ControladorUsuario.getUsuarios(ControladorUsuario.java:70)
+	at servlets.UsersServlet.doGet(UsersServlet.java:42)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:319)
+	at org.eclipse.persistence.sessions.JNDIConnector.connect(JNDIConnector.java:152)
+	at org.eclipse.persistence.sessions.DatasourceLogin.connectToDatasource(DatasourceLogin.java:174)
+	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.setOrDetectDatasource(DatabaseSessionImpl.java:226)
+	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.loginAndDetectDatasource(DatabaseSessionImpl.java:809)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryProvider.login(EntityManagerFactoryProvider.java:259)
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:771)
+	... 35 more
+Caused by: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:641)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createDataSource(BasicDataSource.java:544)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:719)
+	at org.eclipse.persistence.sessions.JNDIConnector.connect(JNDIConnector.java:140)
+	... 40 more
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
+	at org.apache.tomcat.dbcp.dbcp2.DriverConnectionFactory.createConnection(DriverConnectionFactory.java:52)
+	at org.apache.tomcat.dbcp.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:481)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.validateConnectionFactory(BasicDataSource.java:113)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:637)
+	... 43 more
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:104)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:149)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:165)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:88)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:935)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:805)
+	... 50 more
+Caused by: java.net.UnknownHostException: mysql.railway.internal: Name or service not known
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:929)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1519)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:848)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1509)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1368)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1302)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:130)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:62)
+	... 53 more
+[EL Info]: 2025-10-30 14:13:43.365--ServerSession(1083368162)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+[EL Severe]: ejb: 2025-10-30 14:13:43.366--ServerSession(1083368162)--Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+=== LOGIN SERVLET HIT ===
+=== LOGIN SERVLET HIT ===
+
+=== Register Tourist Debug Info ===
+1. Form data received:
+- Nickname: Charly
+- Email: tu@mail.com
+- Nationality: Uruguaya
+2. Birth date parsed: Tue Oct 29 00:00:00 UTC 1991
+4. DataTurista object created
+[EL Info]: 2025-10-30 14:21:45.37--ServerSession(1083368162)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+[EL Severe]: ejb: 2025-10-30 14:21:45.524--ServerSession(1083368162)--Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+Error during tourist registration: Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+jakarta.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:856)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:221)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.createEntityManagerImpl(EntityManagerFactoryDelegate.java:328)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.createEntityManagerImpl(EntityManagerFactoryImpl.java:343)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.createEntityManager(EntityManagerFactoryImpl.java:306)
+	at persistence.JPAUtil.getEntityManager(JPAUtil.java:29)
+	at logica.ManejadorUsuario.obtenerUsuarioXNick(ManejadorUsuario.java:66)
+	at logica.ControladorUsuario.registrarUsuario(ControladorUsuario.java:16)
+	at servlets.RegisterTouristServlet.doPost(RegisterTouristServlet.java:117)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:115)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:90)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:664)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: Exception [EclipseLink-4002] (Eclipse Persistence Services - 4.0.2.v202306130914): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Error Code: 0
+	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:319)
+	at org.eclipse.persistence.sessions.JNDIConnector.connect(JNDIConnector.java:152)
+	at org.eclipse.persistence.sessions.DatasourceLogin.connectToDatasource(DatasourceLogin.java:174)
+	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.setOrDetectDatasource(DatabaseSessionImpl.java:226)
+	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.loginAndDetectDatasource(DatabaseSessionImpl.java:809)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryProvider.login(EntityManagerFactoryProvider.java:259)
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:771)
+	... 35 more
+Caused by: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:641)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createDataSource(BasicDataSource.java:544)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:719)
+	at org.eclipse.persistence.sessions.JNDIConnector.connect(JNDIConnector.java:140)
+	... 40 more
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
+	at org.apache.tomcat.dbcp.dbcp2.DriverConnectionFactory.createConnection(DriverConnectionFactory.java:52)
+	at org.apache.tomcat.dbcp.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:481)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.validateConnectionFactory(BasicDataSource.java:113)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:637)
+	... 43 more
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:104)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:149)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:165)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:88)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:935)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:805)
+	... 50 more
+Caused by: java.net.UnknownHostException: mysql.railway.internal: Name or service not known
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:929)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1519)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:848)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1509)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1368)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1302)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:130)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:62)
+	... 53 more
