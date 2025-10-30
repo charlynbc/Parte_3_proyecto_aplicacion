@@ -5,8 +5,7 @@
                 version="3.0">
 
      <persistence-unit name="emf" transaction-type="RESOURCE_LOCAL">
-          <!-- Usamos JNDI DataSource definido en Tomcat -->
-          <non-jta-data-source>java:comp/env/jdbc/railway</non-jta-data-source>
+          <!-- Proveedor JPA -->
           <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
           <!-- Entidades -->
@@ -18,10 +17,17 @@
           <class>logica.Inscripcion</class>
 
           <properties>
-               <!-- No incluir credenciales aquí cuando se usa JNDI -->
-               <property name="eclipselink.logging.level" value="INFO"/>
-               <!-- Desactivar generación de esquema automática por seguridad -->
+               <!-- Driver (URL/usuario/password se inyectan en runtime por utils.JpaUtil) -->
+               <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+               <property name="eclipselink.target-database" value="MySQL"/>
+
+               <!-- Generación de esquema deshabilitada (BD ya provisionada) -->
                <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+               <property name="eclipselink.ddl-generation" value="none"/>
+
+               <!-- Logging moderado en producción -->
+               <property name="eclipselink.logging.level" value="WARNING"/>
+               <property name="eclipselink.logging.level.sql" value="OFF"/>
           </properties>
      </persistence-unit>
 

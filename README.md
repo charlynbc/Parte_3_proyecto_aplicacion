@@ -8,7 +8,7 @@ Sistema web de inscripciones desarrollado con Java EE/Jakarta EE, desplegado en 
 - **Apache Tomcat 10.1**
 - **Jakarta EE** (Servlets, JSP)
 - **Maven** para gestión de dependencias
-- **MySQL/PostgreSQL** para base de datos
+- **MySQL** (Railway) para base de datos
 - **HTML/CSS/JavaScript** para frontend
 
 ## Estructura del Proyecto
@@ -52,23 +52,21 @@ Laboratorio2PaP-main/
 
 ### Comandos de Compilación
 ```bash
-# Compilar proyecto
-mvn clean compile
+# Compilar y empaquetar (sin tests)
+mvn -DskipTests package -f Laboratorio2PaP-main/pom.xml
 
-# Generar WAR
-mvn package -DskipTests
+# Desplegar con script (recomendado)
+./deploy-tomcat10.sh
 
-# Desplegar en Tomcat
-cp target/Laboratorio2PaP.war /opt/tomcat/webapps/
+# Alternativa: copiar WAR manualmente
+cp Laboratorio2PaP-main/target/Laboratorio2PaP.war apache-tomcat-10.1.47/webapps/
 ```
 
 ### Iniciar Aplicación
-```bash
-# Iniciar Tomcat
-/opt/tomcat/bin/startup.sh
+Tomcat se inicia/recicla automáticamente con el script de despliegue. Para ver logs:
 
-# Verificar despliegue
-tail -f /opt/tomcat/logs/catalina.out
+```bash
+tail -f apache-tomcat-10.1.47/logs/catalina.out
 ```
 
 ## Acceso a la Aplicación
@@ -83,42 +81,58 @@ tail -f /opt/tomcat/logs/catalina.out
 - `/admin` - Panel de administración
 
 ## Base de Datos
-El sistema está configurado para trabajar con la nueva estructura de base de datos que incluye:
+El sistema usa MySQL (Railway). Entidades principales y tablas relacionadas:
 
-### Tablas Principales
-- `usuarios` - Información de usuarios
-- `actividades` - Catálogo de actividades
-- `inscripciones` - Registro de inscripciones
-- `categorias` - Categorías de actividades
+- `usuarios`
+- `turista`
+- `proveedores`
+- `actividad`
+- `salida`
+- `inscripcion`
 
 ## Configuración
-Variables de entorno requeridas:
+Variables de entorno requeridas (no commitear credenciales reales):
+
 ```
-DB_URL=jdbc:mysql://autorack.proxy.rlwy.net:13046/railway?serverTimezone=UTC&autoReconnect=true&allowPublicKeyRetrieval=true&useSSL=true
-DB_USER=root
-DB_PASSWORD=OqlJKLJHzKixCFCeqgVSKjNJzpAXspeQ
+# Conexión directa JDBC (preferida)
+DB_URL=jdbc:mysql://<host>.proxy.rlwy.net:<port>/railway?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=true
+DB_USER=<usuario>
+DB_PASSWORD=<password>
+
+# Opcional: tamaño de pool / timeouts
 DB_MAX_POOL=20
 DB_LOGIN_TIMEOUT=30
+
+# Opcional SOLO para inicializar esquema (ver siguiente sección)
+# Valores posibles: none | create-tables | drop-and-create-tables | create-or-extend-tables
+DB_DDL=create-or-extend-tables
 ```
 
+Si no se define `DB_URL`, la app intentará usar un DataSource JNDI (`jdbc/railway`) de Tomcat si existe.
+
+### Inicialización de esquema (DDL)
+Cuando la base está vacía (p. ej., un nuevo Railway), se puede pedir a EclipseLink que cree las tablas automáticamente:
+
+1) Definir temporalmente `DB_DDL=create-or-extend-tables` en el entorno.
+2) Desplegar la app y revisar `catalina.out`. Verás mensajes `ddl:` y posibles advertencias de claves foráneas duplicadas si ya existen.
+3) Una vez creado el esquema, QUITAR `DB_DDL` (o poner `none`) para evitar que en cada arranque se reintente alterar tablas y se llenen los logs.
+
+Nota: repetir el arranque con `DB_DDL` activo puede generar advertencias tipo "Duplicate foreign key constraint name". Es esperado si el esquema ya está creado.
+
 ## Desarrollo
-Para desarrollo local:
+Para desarrollo local usa el script de despliegue (incluye build y redeploy en Tomcat 10):
 
 ```bash
-# Modo desarrollo con hot-reload
-mvn tomcat7:run
-
-# O usar el script de despliegue
 ./deploy-tomcat10.sh
 ```
 
 ## Logs y Monitoreo
 ```bash
 # Ver logs de aplicación
-tail -f /opt/tomcat/logs/catalina.out
+tail -f apache-tomcat-10.1.47/logs/catalina.out
 
 # Ver logs específicos
-tail -f /opt/tomcat/logs/localhost.*.log
+tail -f apache-tomcat-10.1.47/logs/localhost.*.log
 
 # Verificar estado
 ps aux | grep tomcat
