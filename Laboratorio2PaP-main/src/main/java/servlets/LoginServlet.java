@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
         }
         
         // Mostrar página de login
-        request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+    request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
         if ((email == null || email.trim().isEmpty()) && 
             (nickname == null || nickname.trim().isEmpty())) {
             request.setAttribute("error", "Email o nickname son requeridos");
-            request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;
         }
         
@@ -101,12 +101,12 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("error", "Usuario no encontrado");
                 request.setAttribute("email", email);
                 request.setAttribute("nickname", nickname);
-                request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             }
             
         } catch (PersistenceException e) {
             request.setAttribute("error", "No se pudo conectar a la base de datos. Intenta nuevamente en unos minutos.");
-            request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;
         } finally {
             if (em != null && em.isOpen()) {

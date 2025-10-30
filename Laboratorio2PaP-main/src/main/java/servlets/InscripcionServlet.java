@@ -20,7 +20,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 
-@WebServlet("/inscripcion")
+@WebServlet("/inscripcion-jpa")
 public class InscripcionServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

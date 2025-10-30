@@ -4,6 +4,7 @@
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/servlets/TestDatabaseServlet.java
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/servlets/ActividadServlet.java
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/servlets/DashboardServlet.java
+/workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/persistence/JPAUtil.java
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/servlets/RegisterProviderServlet.java
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/servlets/InscriptionServlet.java
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/servlets/LogoutServlet.java

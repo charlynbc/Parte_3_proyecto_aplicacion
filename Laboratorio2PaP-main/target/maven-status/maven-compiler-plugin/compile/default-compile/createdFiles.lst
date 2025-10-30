@@ -9,6 +9,7 @@ servlets/CreateDepartureViewServlet.class
 servlets/DashboardServlet.class
 servlets/UserProfileServlet.class
 servlets/UpdateProfileServlet.class
+persistence/JPAUtil.class
 servlets/DeparturesServlet.class
 utils/JpaUtil.class
 servlets/DepartureDetailServlet.class

@@ -114,8 +114,9 @@ public class RegisterTouristServlet extends HttpServlet {
 
             // 7. Try to register the tourist using Central Server
             try {
+                System.out.println("5. Calling controladorUsuario.registrarUsuario(...)");
                 controladorUsuario.registrarUsuario(newTurista);
-                System.out.println("5. Tourist registered successfully in database");
+                System.out.println("6. Tourist registered successfully in database");
                 
                 // 8. Set success message and redirect to login
                 request.getSession().setAttribute("successMessage", 
@@ -126,13 +127,20 @@ public class RegisterTouristServlet extends HttpServlet {
                 System.out.println("5. Registration failed - user already exists: " + e.getMessage());
                 request.setAttribute("error", "El nickname o email ya está registrado. Por favor elija otro.");
                 request.getRequestDispatcher("/WEB-INF/register-tourist.jsp").forward(request, response);
+            } catch (Throwable t) {
+                System.err.println("[RegisterTouristServlet] Fatal error during registration: " + t.getClass().getName() + ": " + t.getMessage());
+                t.printStackTrace();
+                request.setAttribute("error", "Error inesperado al registrar: " + t.getMessage());
+                request.getRequestDispatcher("/WEB-INF/register-tourist.jsp").forward(request, response);
+                return;
             }
 
         } catch (Exception e) {
-            System.err.println("Error during tourist registration: " + e.getMessage());
+            System.err.println("[RegisterTouristServlet] Error during tourist registration: " + e.getClass().getName() + ": " + e.getMessage());
             e.printStackTrace();
             request.setAttribute("error", "Error al registrar: " + e.getMessage());
             request.getRequestDispatcher("/WEB-INF/register-tourist.jsp").forward(request, response);
+            return;
         }
     }
 
