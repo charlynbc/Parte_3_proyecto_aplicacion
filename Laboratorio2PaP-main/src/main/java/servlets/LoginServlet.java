@@ -1,187 +1,117 @@
 package servlets;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import logica.Usuario;
+import logica.Turista;
+import logica.Proveedor;
+
 import java.io.IOException;
+import java.util.List;
 
-// Import classes from Laboratorio1.jar
-import logica.Fabrica;
-import logica.IControladorUsuario;
-import logica.DataUsuario;
-import logica.DataTurista;
-import logica.DataProveedor;
-import excepciones.UsuarioNoExisteException;
+import jakarta.persistence.PersistenceException;
+import utils.JpaUtil;
 
-@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-    
-    private IControladorUsuario controladorUsuario;
-    
+    private static final long serialVersionUID = 1L;
+
     @Override
-    public void init() throws ServletException {
-        super.init();
-        try {
-            // Initialize the business logic controller from Laboratorio1.jar
-            controladorUsuario = Fabrica.getInstance().getIControladorUsuario();
-            System.out.println("LoginServlet initialized - connected to Laboratorio1.jar persistence");
-        } catch (Exception e) {
-            System.err.println("Error initializing LoginServlet: " + e.getMessage());
-            e.printStackTrace();
-            throw new ServletException("Failed to initialize central server connection", e);
-        }
-    }
-    
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        System.out.println("=== LOGIN SERVLET HIT ===");
         
-        // Check if user is already logged in
+        // Si ya está logueado, redirigir al dashboard
         HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("username") != null) {
+        if (session != null && session.getAttribute("usuario") != null) {
             response.sendRedirect(request.getContextPath() + "/dashboard");
             return;
         }
         
-        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+        // Mostrar página de login
+        request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
     }
-    
+
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        System.out.println("\n=== Login Debug Info (Central Server Integration) ===");
         
-        // Get form parameters
-        String usernameOrEmail = request.getParameter("username");
-        String password = request.getParameter("password");
+        String email = request.getParameter("email");
+        String nickname = request.getParameter("nickname");
         
-        System.out.println("1. Login attempt:");
-        System.out.println("- Username/Email: '" + usernameOrEmail + "'");
-        System.out.println("- Password: [PROTECTED]");
-        
-        // Basic validation
-        if (usernameOrEmail == null || usernameOrEmail.trim().isEmpty() || 
-            password == null || password.trim().isEmpty()) {
-            System.out.println("2. Validation failed - empty fields");
-            request.setAttribute("error", "Por favor ingrese todos los campos requeridos");
-            request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+        // Validación básica
+        if ((email == null || email.trim().isEmpty()) && 
+            (nickname == null || nickname.trim().isEmpty())) {
+            request.setAttribute("error", "Email o nickname son requeridos");
+            request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
             return;
         }
-
+        
+        EntityManager em = null;
         try {
-            // Clean input
-            usernameOrEmail = usernameOrEmail.trim();
+            em = JpaUtil.getEntityManager();
             
-            System.out.println("2. Attempting authentication with Central Server...");
+            Usuario usuario = null;
             
-            // Try to authenticate using the central server logic
-            DataUsuario usuario = authenticateUser(usernameOrEmail, password);
+            // Buscar por email o nickname
+            if (email != null && !email.trim().isEmpty()) {
+                TypedQuery<Usuario> query = em.createQuery(
+                    "SELECT u FROM Usuario u WHERE u.email = :email", Usuario.class);
+                query.setParameter("email", email.trim());
+                List<Usuario> usuarios = query.getResultList();
+                if (!usuarios.isEmpty()) {
+                    usuario = usuarios.get(0);
+                }
+            } else if (nickname != null && !nickname.trim().isEmpty()) {
+                TypedQuery<Usuario> query = em.createQuery(
+                    "SELECT u FROM Usuario u WHERE u.nickname = :nickname", Usuario.class);
+                query.setParameter("nickname", nickname.trim());
+                List<Usuario> usuarios = query.getResultList();
+                if (!usuarios.isEmpty()) {
+                    usuario = usuarios.get(0);
+                }
+            }
             
             if (usuario != null) {
-                System.out.println("3. Authentication successful:");
-                System.out.println("- User: " + usuario.getNickname());
-                System.out.println("- Email: " + usuario.getEmail());
-                System.out.println("- Type: " + (usuario instanceof DataTurista ? "Turista" : "Proveedor"));
-                
-                // Create session with user data from database
+                // Login exitoso
                 HttpSession session = request.getSession(true);
-                session.setAttribute("username", usuario.getNickname());
-                session.setAttribute("userType", usuario instanceof DataTurista ? "Turista" : "Proveedor");
-                session.setAttribute("email", usuario.getEmail());
-                session.setAttribute("fullName", usuario.getNombre() + " " + usuario.getApellido());
+                session.setAttribute("usuario", usuario);
+                session.setAttribute("usuarioId", usuario.getNickname());
+                session.setAttribute("usuarioNombre", usuario.getNombre());
                 
-                // Add specific data based on user type
-                if (usuario instanceof DataTurista) {
-                    session.setAttribute("nacionalidad", ((DataTurista) usuario).getNacionalidad());
-                    System.out.println("- Nacionalidad: " + ((DataTurista) usuario).getNacionalidad());
-                } else if (usuario instanceof DataProveedor) {
-                    session.setAttribute("descripcion", ((DataProveedor) usuario).getDescripcion());
-                    session.setAttribute("sitioWeb", ((DataProveedor) usuario).getSitioWeb());
-                    System.out.println("- Descripcion: " + ((DataProveedor) usuario).getDescripcion());
+                // Determinar tipo de usuario
+                if (usuario instanceof Turista) {
+                    session.setAttribute("tipoUsuario", "turista");
+                } else if (usuario instanceof Proveedor) {
+                    session.setAttribute("tipoUsuario", "proveedor");
                 }
                 
-                // Set success message and redirect to dashboard
-                session.setAttribute("successMessage", "¡Bienvenido " + usuario.getNombre() + "!");
-                System.out.println("4. Session created successfully - redirecting to dashboard");
+                // Redirigir al dashboard
                 response.sendRedirect(request.getContextPath() + "/dashboard");
+                
             } else {
-                System.out.println("3. Authentication failed - invalid credentials");
-                request.setAttribute("error", "Las credenciales ingresadas no son válidas");
-                request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+                // Login fallido
+                request.setAttribute("error", "Usuario no encontrado");
+                request.setAttribute("email", email);
+                request.setAttribute("nickname", nickname);
+                request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
             }
             
-        } catch (Exception e) {
-            System.err.println("Error during authentication: " + e.getMessage());
-            e.printStackTrace();
-            request.setAttribute("error", "Error al iniciar sesión. Por favor intente nuevamente.");
-            request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+        } catch (PersistenceException e) {
+            request.setAttribute("error", "No se pudo conectar a la base de datos. Intenta nuevamente en unos minutos.");
+            request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+            return;
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
         }
-    }
-    
-    /**
-     * Authenticate user using the Central Server logic
-     * This method implements the authentication logic since it's not directly available in IControladorUsuario
-     */
-    private DataUsuario authenticateUser(String usernameOrEmail, String password) {
-        try {
-            // First, try to find user by nickname
-            DataUsuario usuario = null;
-            
-            try {
-                usuario = controladorUsuario.verInfoUsuario(usernameOrEmail);
-                System.out.println("   - User found by nickname: " + usuario.getNickname());
-            } catch (UsuarioNoExisteException e) {
-                // If not found by nickname, search by email
-                System.out.println("   - Not found by nickname, searching by email...");
-                usuario = findUserByEmail(usernameOrEmail);
-            }
-            
-            // If user found, verify password
-            if (usuario != null) {
-                System.out.println("   - Verifying password for user: " + usuario.getNickname());
-                if (password.equals(usuario.getContra())) {
-                    System.out.println("   - Password verified successfully");
-                    return usuario;
-                } else {
-                    System.out.println("   - Password verification failed");
-                    return null;
-                }
-            } else {
-                System.out.println("   - User not found in database");
-                return null;
-            }
-            
-        } catch (Exception e) {
-            System.err.println("   - Error during authentication: " + e.getMessage());
-            return null;
-        }
-    }
-    
-    /**
-     * Helper method to find user by email since the controller doesn't have direct email lookup
-     */
-    private DataUsuario findUserByEmail(String email) {
-        try {
-            System.out.println("   - Searching all users for email: " + email);
-            DataUsuario[] allUsers = controladorUsuario.getUsuarios();
-            System.out.println("   - Found " + allUsers.length + " users in database");
-            
-            for (DataUsuario user : allUsers) {
-                if (email.equalsIgnoreCase(user.getEmail())) {
-                    System.out.println("   - User found by email: " + user.getNickname());
-                    return user;
-                }
-            }
-            System.out.println("   - No user found with email: " + email);
-        } catch (UsuarioNoExisteException e) {
-            System.out.println("   - No users found in database");
-        } catch (Exception e) {
-            System.err.println("   - Error searching users: " + e.getMessage());
-        }
-        return null;
     }
 }

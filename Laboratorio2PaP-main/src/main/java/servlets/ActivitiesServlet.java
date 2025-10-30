@@ -5,10 +5,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-
-// Importar clases del servidor central
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import logica.Fabrica;
 import logica.IControladorActividad;
 import logica.DataActividad;
@@ -28,15 +29,13 @@ public class ActivitiesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        DataActividad[] actividadesArray;
-
+        List<DataActividad> actividades = new ArrayList<>();
         try {
-            
-            actividadesArray = controladorActividad.getActividades();
-            request.setAttribute("activities", actividadesArray);
-
+            DataActividad[] resultado = controladorActividad.getActividades();
+            actividades = resultado != null ? Arrays.asList(resultado) : Collections.emptyList();
+            request.setAttribute("activities", actividades);
         } catch (Exception e) {
-            request.setAttribute("error", "No se pudieron cargar las actividades: " + e.getMessage());
+            request.setAttribute("error", "No se pudieron cargar las actividades. Verifica la conexión a la base de datos.");
         }
 
         request.getRequestDispatcher("/WEB-INF/activities.jsp").forward(request, response);
