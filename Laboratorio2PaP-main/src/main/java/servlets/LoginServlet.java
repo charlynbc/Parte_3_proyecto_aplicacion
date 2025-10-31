@@ -96,6 +96,8 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("usuario", usuario);
             session.setAttribute("usuarioId", usuario.getNickname());
             session.setAttribute("usuarioNombre", usuario.getNombre());
+            session.setAttribute("username", usuario.getNickname());
+            session.setAttribute("email", usuario.getEmail());
 
             if (usuario instanceof Turista) {
                 session.setAttribute("tipoUsuario", "turista");
