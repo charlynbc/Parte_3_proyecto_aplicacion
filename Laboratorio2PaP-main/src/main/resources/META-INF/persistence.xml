@@ -21,9 +21,9 @@
                <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
                <property name="eclipselink.target-database" value="MySQL"/>
 
-               <!-- Generación de esquema deshabilitada (BD ya provisionada) -->
-               <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
-               <property name="eclipselink.ddl-generation" value="none"/>
+               <!-- Generación automática de esquema en Railway -->
+               <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
+               <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
 
                <!-- Logging moderado en producción -->
                <property name="eclipselink.logging.level" value="WARNING"/>
