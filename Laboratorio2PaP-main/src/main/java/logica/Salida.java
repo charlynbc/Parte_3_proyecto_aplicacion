@@ -18,6 +18,7 @@ public class Salida {
 
     private LocalTime hora;
 
+    @Column(name = "turistas_max")
     private int turistasMax;
 
     private String lugar;
