@@ -1,0 +1,243 @@
+/* ========================================
+   LAYOUT CONTAINERS
+   ======================================== */
+
+/* Main Content Area */
+.main-content {
+    padding: 2rem;
+    min-height: calc(100vh - 60px);
+}
+
+.container {
+    background: transparent;
+    box-shadow: none;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Welcome/Hero Container for Index */
+.welcome-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 80px;
+}
+
+.welcome-hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+.welcome-hero h1 {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.welcome-hero p {
+    font-size: 1.3em;
+    opacity: 0.95;
+}
+
+/* Registration and Login Containers */
+.registration-container,
+.login-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 600px;
+    display: flex;
+    margin: 2rem auto;
+}
+
+/* Hero Section (Left side) */
+.hero-section,
+.registration-hero {
+    flex: 0 0 40%;
+    padding: 3rem;
+    background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-section .hero-icon,
+.registration-hero .hero-icon,
+.hero-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.registration-hero .hero-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.hero-section h1,
+.registration-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero-section p,
+.registration-hero p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+/* Form Sections (Right side) */
+.registration-form,
+.login-section,
+.registration-form-section {
+    flex: 1;
+    padding: 2rem;
+    background: white;
+}
+
+.registration-form-section {
+    background: #f8f9fa;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-header,
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-header h2,
+.login-header h2 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-header p,
+.login-header p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+}
+
+/* Responsive Layout */
+@media (max-width: 1024px) {
+    .registration-hero,
+    .hero-section {
+        flex: 0 0 40%;
+        padding: 2rem;
+    }
+    
+    .registration-hero h1,
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .registration-form-section {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .registration-container,
+    .login-container {
+        flex-direction: column;
+        margin: 1rem;
+    }
+    
+    .hero-section,
+    .registration-hero {
+        padding: 2rem;
+        flex: none;
+        min-height: auto;
+    }
+    
+    .hero-section h1,
+    .registration-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .registration-form,
+    .login-section,
+    .registration-form-section {
+        padding: 1.5rem;
+    }
+
+    .welcome-container {
+        margin-top: 20px;
+    }
+
+    .welcome-hero {
+        padding: 40px 15px;
+    }
+
+    .welcome-hero h1 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .registration-hero,
+    .hero-section {
+        padding: 1.5rem 1rem;
+    }
+    
+    .registration-hero .hero-icon,
+    .hero-section .hero-icon {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .registration-hero h1,
+    .hero-section h1 {
+        font-size: 1.75rem;
+    }
+    
+    .registration-hero p,
+    .hero-section p {
+        font-size: 1rem;
+    }
+    
+    .registration-form-section {
+        padding: 1rem;
+    }
+    
+    .registration-form,
+    .login-section {
+        padding: 1rem;
+    }
+}
