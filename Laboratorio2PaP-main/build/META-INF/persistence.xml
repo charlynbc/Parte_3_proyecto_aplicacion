@@ -17,15 +17,13 @@
         <class>logica.Inscripcion</class>
 
         <properties>
-            <!-- Configuración JDBC CONFIGURAR LA NUEVA BASE DE DATOS IGUAL A ESO PERO DIFERENTE, CREALA Y CAMBIAS ESOS VALORES -->
-            <!--<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://shortline.proxy.rlwy.net:42806/railway?serverTimezone=UTC"/>
-            <property name="jakarta.persistence.jdbc.user" value="root"/>
-            <property name="jakarta.persistence.jdbc.password" value="qKbEKYnriXxQvaVbqxfUIQbgsVRhBaNA"/>-->
+            <!-- Usar JNDI para la conexión configurada en Tomcat -->
+            <property name="jakarta.persistence.nonJtaDataSource" value="java:/comp/env/jdbc/railway"/>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 
             <!-- Acción sobre el esquema -->
             <!-- Opciones: none | create | drop-and-create | create-or-extend | update -->
-            <property name="jakarta.persistence.schema-generation.database.action" value="create-or-extend-tables"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
 
             <!-- Config EclipseLink -->
             <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>

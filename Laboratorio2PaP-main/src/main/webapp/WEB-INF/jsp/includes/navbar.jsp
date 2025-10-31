@@ -23,7 +23,8 @@
                 </form>
             <% } else { %>
                 <a href="${pageContext.request.contextPath}/login" class="login-btn">Iniciar Sesión</a>
-                <a href="${pageContext.request.contextPath}/register" class="register-btn">Registrarse</a>
+                <a href="${pageContext.request.contextPath}/register-tourist" class="register-btn">Registrarse como Turista</a>
+                <a href="${pageContext.request.contextPath}/register-provider" class="register-btn">Registrarse como Proveedor</a>
             <% } %>
         </div>
     </div>
