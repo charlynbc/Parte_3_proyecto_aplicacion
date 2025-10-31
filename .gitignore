@@ -1,0 +1,3 @@
+# Ignorar archivos temporales y logs de Tomcat
+apache-tomcat-10.1.47/work/
+apache-tomcat-10.1.47/logs/
