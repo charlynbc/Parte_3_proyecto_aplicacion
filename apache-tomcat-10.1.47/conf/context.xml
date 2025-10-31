@@ -33,12 +33,15 @@
     auth="Container"
     type="javax.sql.DataSource"
     driverClassName="com.mysql.cj.jdbc.Driver"
-    url="jdbc:mysql://autorack.proxy.rlwy.net:13046/railway?serverTimezone=UTC&amp;autoReconnect=true&amp;allowPublicKeyRetrieval=true&amp;useSSL=true"
-    username="root"
-    password="OqlJKLJHzKixCFCeqgVSKjNJzpAXspeQ"
+  url="jdbc:mysql://mysql.railway.internal:3306/railway?serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&amp;useSSL=true&amp;connectTimeout=30000&amp;socketTimeout=60000"
+  username="root"
+  password="RfpxZHvphzVbjvKwVWOLqBFsucCezmtb"
     maxTotal="20"
     maxIdle="10"
     maxWaitMillis="10000"
     testOnBorrow="true"
     validationQuery="SELECT 1"/>
+
+  <!-- Evitar re-ejecución de DDL tras el primer despliegue: indicar DB_DDL=none al contenedor -->
+  <Environment name="DB_DDL" value="none" type="java.lang.String" override="false"/>
 </Context>

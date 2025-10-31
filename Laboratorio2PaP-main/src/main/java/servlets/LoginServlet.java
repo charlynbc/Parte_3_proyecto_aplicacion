@@ -43,71 +43,76 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
-        String email = request.getParameter("email");
-        String nickname = request.getParameter("nickname");
-        
-        // Validación básica
-        if ((email == null || email.trim().isEmpty()) && 
-            (nickname == null || nickname.trim().isEmpty())) {
-            request.setAttribute("error", "Email o nickname son requeridos");
+        String identifier = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        String trimmedIdentifier = identifier == null ? null : identifier.trim();
+        String trimmedPassword = password == null ? null : password.trim();
+
+        if (trimmedIdentifier == null || trimmedIdentifier.isEmpty() ||
+            trimmedPassword == null || trimmedPassword.isEmpty()) {
+            request.setAttribute("error", "Debes ingresar usuario y contraseña");
+            request.setAttribute("username", trimmedIdentifier);
             request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;
         }
-        
+
         EntityManager em = null;
         try {
             em = JpaUtil.getEntityManager();
-            
+
             Usuario usuario = null;
-            
-            // Buscar por email o nickname
-            if (email != null && !email.trim().isEmpty()) {
-                TypedQuery<Usuario> query = em.createQuery(
-                    "SELECT u FROM Usuario u WHERE u.email = :email", Usuario.class);
-                query.setParameter("email", email.trim());
-                List<Usuario> usuarios = query.getResultList();
-                if (!usuarios.isEmpty()) {
-                    usuario = usuarios.get(0);
-                }
-            } else if (nickname != null && !nickname.trim().isEmpty()) {
-                TypedQuery<Usuario> query = em.createQuery(
-                    "SELECT u FROM Usuario u WHERE u.nickname = :nickname", Usuario.class);
-                query.setParameter("nickname", nickname.trim());
-                List<Usuario> usuarios = query.getResultList();
-                if (!usuarios.isEmpty()) {
-                    usuario = usuarios.get(0);
-                }
-            }
-            
-            if (usuario != null) {
-                // Login exitoso
-                HttpSession session = request.getSession(true);
-                session.setAttribute("usuario", usuario);
-                session.setAttribute("usuarioId", usuario.getNickname());
-                session.setAttribute("usuarioNombre", usuario.getNombre());
-                
-                // Determinar tipo de usuario
-                if (usuario instanceof Turista) {
-                    session.setAttribute("tipoUsuario", "turista");
-                } else if (usuario instanceof Proveedor) {
-                    session.setAttribute("tipoUsuario", "proveedor");
-                }
-                
-                // Redirigir al dashboard
-                response.sendRedirect(request.getContextPath() + "/dashboard");
-                
+            TypedQuery<Usuario> query;
+
+            if (trimmedIdentifier.contains("@")) {
+                query = em.createQuery("SELECT u FROM Usuario u WHERE LOWER(u.email) = :email", Usuario.class);
+                query.setParameter("email", trimmedIdentifier.toLowerCase());
             } else {
-                // Login fallido
-                request.setAttribute("error", "Usuario no encontrado");
-                request.setAttribute("email", email);
-                request.setAttribute("nickname", nickname);
-                request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+                query = em.createQuery("SELECT u FROM Usuario u WHERE u.nickname = :nickname", Usuario.class);
+                query.setParameter("nickname", trimmedIdentifier);
             }
-            
+
+            List<Usuario> usuarios = query.setMaxResults(1).getResultList();
+            if (!usuarios.isEmpty()) {
+                usuario = usuarios.get(0);
+            }
+
+            if (usuario == null) {
+                request.setAttribute("error", "Usuario no encontrado");
+                request.setAttribute("username", trimmedIdentifier);
+                request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+                return;
+            }
+
+            String storedPassword = usuario.getContra();
+            if (storedPassword == null || !storedPassword.equals(trimmedPassword)) {
+                request.setAttribute("error", "Credenciales inválidas");
+                request.setAttribute("username", trimmedIdentifier);
+                request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+                return;
+            }
+
+            HttpSession session = request.getSession(true);
+            session.setAttribute("usuario", usuario);
+            session.setAttribute("usuarioId", usuario.getNickname());
+            session.setAttribute("usuarioNombre", usuario.getNombre());
+
+            if (usuario instanceof Turista) {
+                session.setAttribute("tipoUsuario", "turista");
+                session.setAttribute("userType", "Turista");
+            } else if (usuario instanceof Proveedor) {
+                session.setAttribute("tipoUsuario", "proveedor");
+                session.setAttribute("userType", "Proveedor");
+            } else {
+                session.setAttribute("userType", "Usuario");
+            }
+
+            response.sendRedirect(request.getContextPath() + "/dashboard");
+
         } catch (PersistenceException e) {
             request.setAttribute("error", "No se pudo conectar a la base de datos. Intenta nuevamente en unos minutos.");
+            request.setAttribute("username", trimmedIdentifier);
             request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-            return;
         } finally {
             if (em != null && em.isOpen()) {
                 em.close();
