@@ -30,25 +30,11 @@ public class ActivitiesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List<java.util.Map<String, Object>> actividades = new ArrayList<>();
         try {
             DataActividad[] resultado = controladorActividad.getActividades();
-            if (resultado != null) {
-                for (DataActividad act : resultado) {
-                    java.util.Map<String, Object> map = new java.util.HashMap<>();
-                    map.put("nombre", act.getNombre());
-                    map.put("descripcion", act.getDescripcion());
-                    map.put("duracion", act.getDuracion());
-                    map.put("costo", act.getCosto());
-                    map.put("ciudad", act.getCiudad());
-                    map.put("estado", act.getEstado());
-                    map.put("proveedor", act.getProveedor());
-                    actividades.add(map);
-                }
-            }
-            request.setAttribute("activities", actividades);
+            request.setAttribute("activities", resultado);
         } catch (ActividadNoExisteException ex) {
-            request.setAttribute("activities", Collections.emptyList());
+            request.setAttribute("activities", new DataActividad[0]);
         } catch (Exception e) {
             request.setAttribute("error", "No se pudieron cargar las actividades. Verifica la conexión a la base de datos.");
         }

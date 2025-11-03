@@ -30,14 +30,15 @@
               autocomplete="on">
             <div class="form-group">
                 <label for="username">Nickname o Email <span class="required" aria-hidden="true">*</span></label>
-                <input type="text" 
-                       id="username" 
-                       name="username" 
+          <input type="text" 
+              id="username" 
+              name="username" 
                        required 
                        aria-required="true"
                        aria-describedby="username-hint"
                        placeholder="Ingresa tu nickname o email"
-                       autocomplete="username"
+              autocomplete="username"
+              value="<%= request.getAttribute("username") != null ? request.getAttribute("username") : "" %>"
                        minlength="4"
                        maxlength="50"
                        autofocus>

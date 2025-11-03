@@ -10,10 +10,9 @@ import persistence.JPAUtil;
 
 public class ManejadorSalida{
     private static ManejadorSalida instancia = null;
-    private EntityManagerFactory emf;
-
+    // JPA manejado centralmente a través de `persistence.JPAUtil` (delegando a utils.JpaUtil)
     private ManejadorSalida(){
-        emf = Persistence.createEntityManagerFactory("emf");
+        // constructor vacío
     }
 
     public static ManejadorSalida getinstance(){
@@ -23,18 +22,23 @@ public class ManejadorSalida{
     }
 
     public void addSalida(Salida sal){
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(sal);
-        em.getTransaction().commit();
-        em.close();
+        EntityManager em = persistence.JPAUtil.getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(sal);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
     }
 
     public Salida obtenerSalida(String nombre){
-        EntityManager em = emf.createEntityManager();
-        Salida Salida = em.find(Salida.class, nombre);
-        em.close();
-        return Salida;
+        EntityManager em = persistence.JPAUtil.getEntityManager();
+        try {
+            return em.find(Salida.class, nombre);
+        } finally {
+            em.close();
+        }
     }
 
     public Salida[] getSalida() { // todas las salidas
