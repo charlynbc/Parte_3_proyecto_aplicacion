@@ -7,27 +7,26 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-// Import classes from Laboratorio1.jar
-import logica.Fabrica;
-import logica.IControladorUsuario;
-import logica.DataUsuario;
-import excepciones.UsuarioNoExisteException;
+// Import Web Service clients
+import webserviceclients.WSClientFactory;
+import webserviceclients.WSUsuarioClient;
+import datatypes.DataUsuario;
 
 @WebServlet(name = "UsersServlet", urlPatterns = {"/users"})
 public class UsersServlet extends HttpServlet {
     
-    private IControladorUsuario controladorUsuario;
+    private WSUsuarioClient wsUsuarioClient;
     
     @Override
     public void init() throws ServletException {
         super.init();
         try {
-            controladorUsuario = Fabrica.getInstance().getIControladorUsuario();
-            System.out.println("UsersServlet initialized - connected to Laboratorio1.jar");
+            wsUsuarioClient = WSClientFactory.getInstance().getWSUsuarioClient();
+            System.out.println("UsersServlet initialized - connected to Web Services");
         } catch (Exception e) {
             System.err.println("Error initializing UsersServlet: " + e.getMessage());
             e.printStackTrace();
-            throw new ServletException("Failed to initialize controller", e);
+            throw new ServletException("Failed to initialize WS client", e);
         }
     }
     
@@ -38,8 +37,8 @@ public class UsersServlet extends HttpServlet {
         System.out.println("\n=== Users List Request ===");
         
         try {
-            // Get all users from the central server
-            DataUsuario[] usuarios = controladorUsuario.getUsuarios();
+            // Get all users from the central server via Web Service
+            DataUsuario[] usuarios = wsUsuarioClient.getUsuarios();
             
             System.out.println("Users retrieved: " + usuarios.length);
             
@@ -49,14 +48,16 @@ public class UsersServlet extends HttpServlet {
             // Forward to JSP
             request.getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
             
-        } catch (UsuarioNoExisteException e) {
-            System.out.println("No users found in database");
-            request.setAttribute("users", new DataUsuario[0]);
-            request.getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
         } catch (Exception e) {
-            System.err.println("Error retrieving users: " + e.getMessage());
-            e.printStackTrace();
-            request.setAttribute("error", "Error al cargar la lista de usuarios");
+            String errorMsg = e.getMessage();
+            if (errorMsg != null && errorMsg.contains("NoExiste")) {
+                System.out.println("No users found in database");
+                request.setAttribute("users", new DataUsuario[0]);
+            } else {
+                System.err.println("Error retrieving users: " + errorMsg);
+                e.printStackTrace();
+                request.setAttribute("error", "Error al cargar la lista de usuarios");
+            }
             request.getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
         }
     }

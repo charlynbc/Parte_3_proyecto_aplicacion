@@ -7,18 +7,16 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
-import logica.DataProveedor;
-import logica.DataUsuario;
-import logica.Fabrica;
-import logica.IControladorUsuario;
+import datatypes.DataProveedor;
+import datatypes.DataUsuario;
+import webserviceclients.WSClientFactory;
+import webserviceclients.WSUsuarioClient;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
-import excepciones.UsuarioRepetidoException;
 
 @WebServlet("/register-provider")
 @MultipartConfig(
@@ -28,14 +26,14 @@ import excepciones.UsuarioRepetidoException;
 )
 public class RegisterProviderServlet extends HttpServlet {
     
-    private IControladorUsuario controladorUsuario;
+    private WSUsuarioClient wsUsuarioClient;
     
     @Override
     public void init() throws ServletException {
         super.init();
-        // Initialize the business logic controller from Laboratorio1.jar
-        controladorUsuario = Fabrica.getInstance().getIControladorUsuario();
-        System.out.println("RegisterProviderServlet initialized - connected to Laboratorio1.jar persistence");
+        // Initialize the Web Service client
+        wsUsuarioClient = WSClientFactory.getInstance().getWSUsuarioClient();
+        System.out.println("RegisterProviderServlet initialized - connected to Web Services");
     }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -102,17 +100,22 @@ public class RegisterProviderServlet extends HttpServlet {
             System.out.println("4. DataProveedor object created");
 
             try {
-                controladorUsuario.registrarUsuario(usu);
-                System.out.println("5. Provider registered successfully in database");
+                wsUsuarioClient.registrarUsuario(usu);
+                System.out.println("5. Provider registered successfully via Web Service");
                 
                 // Set success message and redirect to login
                 request.getSession().setAttribute("successMessage", 
                     "¡Registro exitoso! Bienvenido " + datos.get("firstName") + ", por favor inicia sesión");
                 response.sendRedirect(request.getContextPath() + "/login");
                 
-            } catch (UsuarioRepetidoException ex) {
-                System.out.println("5. Registration failed - user already exists: " + ex.getMessage());
-                request.setAttribute("error", "El nickname o email ya está registrado. Por favor elija otro.");
+            } catch (Exception ex) {
+                System.out.println("5. Registration failed: " + ex.getMessage());
+                String errorMsg = ex.getMessage();
+                if (errorMsg != null && errorMsg.contains("repetido")) {
+                    request.setAttribute("error", "El nickname o email ya está registrado. Por favor elija otro.");
+                } else {
+                    request.setAttribute("error", "Error al registrar: " + errorMsg);
+                }
                 request.getRequestDispatcher("/WEB-INF/register-provider.jsp").forward(request, response);
             }
             

@@ -9,11 +9,32 @@
   <packaging>war</packaging>
 
   <dependencies>
-    <!-- Laboratorio1.jar - Business Logic -->
+    <!-- JAX-WS API for Web Services Client -->
     <dependency>
-      <groupId>com</groupId>
-      <artifactId>Laboratorio1</artifactId>
-      <version>1</version>
+      <groupId>javax.xml.ws</groupId>
+      <artifactId>jaxws-api</artifactId>
+      <version>2.3.1</version>
+    </dependency>
+    
+    <!-- JAX-WS Runtime for Client -->
+    <dependency>
+      <groupId>com.sun.xml.ws</groupId>
+      <artifactId>jaxws-rt</artifactId>
+      <version>2.3.3</version>
+    </dependency>
+
+    <!-- JAXB API (required for JAX-WS) -->
+    <dependency>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>2.3.1</version>
+    </dependency>
+
+    <!-- JAXB Runtime -->
+    <dependency>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+      <version>2.3.3</version>
     </dependency>
 
     <!-- Jakarta EE Web API -->
