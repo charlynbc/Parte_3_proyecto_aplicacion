@@ -7,10 +7,9 @@ import persistence.JPAUtil;
 
 public class ManejadorActividad {
     private static ManejadorActividad instancia = null;
-    private EntityManagerFactory emf;
-
+    // JPA manejado centralmente a través de `persistence.JPAUtil` (delegando a utils.JpaUtil)
     private ManejadorActividad() {
-        emf = Persistence.createEntityManagerFactory("emf");
+        // constructor vacío: usamos persistence.JPAUtil.getEntityManager() en cada operación
     }
 
     public static ManejadorActividad getinstance() {
@@ -73,7 +72,7 @@ public class ManejadorActividad {
 
     // Agregar salida a una actividad
     public void addSalidaToActividad(String nombreActividad, Salida salida) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = persistence.JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
         
         try {

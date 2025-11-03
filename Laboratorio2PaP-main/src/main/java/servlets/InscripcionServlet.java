@@ -40,12 +40,9 @@ public class InscripcionServlet extends HttpServlet {
             return;
         }
         
-        EntityManagerFactory emf = null;
         EntityManager em = null;
-        
         try {
-            emf = Persistence.createEntityManagerFactory("emf");
-            em = emf.createEntityManager();
+            em = persistence.JPAUtil.getEntityManager();
             
             TypedQuery<Salida> query = em.createQuery(
                 "SELECT s FROM Salida s WHERE s.nombre = :nombre", Salida.class);
@@ -65,7 +62,6 @@ public class InscripcionServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/actividad");
         } finally {
             if (em != null) em.close();
-            if (emf != null) emf.close();
         }
     }
 
@@ -82,12 +78,9 @@ public class InscripcionServlet extends HttpServlet {
         String nombreSalida = request.getParameter("nombreSalida");
         String fechaInscripcionStr = request.getParameter("fechaInscripcion");
         
-        EntityManagerFactory emf = null;
         EntityManager em = null;
-        
         try {
-            emf = Persistence.createEntityManagerFactory("emf");
-            em = emf.createEntityManager();
+            em = persistence.JPAUtil.getEntityManager();
             
             // Buscar salida
             TypedQuery<Salida> querySalida = em.createQuery(
@@ -150,7 +143,6 @@ public class InscripcionServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/actividad");
         } finally {
             if (em != null) em.close();
-            if (emf != null) emf.close();
         }
     }
 }

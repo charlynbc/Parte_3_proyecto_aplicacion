@@ -1,8 +1,7 @@
 package servlets;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import persistence.JPAUtil;
 import jakarta.persistence.TypedQuery;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -58,13 +57,9 @@ public class ActividadServlet extends HttpServlet {
     private void listActividades(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
-        EntityManagerFactory emf = null;
         EntityManager em = null;
-        
         try {
-            emf = Persistence.createEntityManagerFactory("emf");
-            em = emf.createEntityManager();
-            
+            em = JPAUtil.getEntityManager();
             TypedQuery<Actividad> query = em.createQuery(
                 "SELECT a FROM Actividad a ORDER BY a.fechaAlta DESC", Actividad.class);
             List<Actividad> actividades = query.getResultList();
@@ -78,7 +73,6 @@ public class ActividadServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
         } finally {
             if (em != null) em.close();
-            if (emf != null) emf.close();
         }
     }
     
@@ -91,13 +85,9 @@ public class ActividadServlet extends HttpServlet {
             return;
         }
         
-        EntityManagerFactory emf = null;
         EntityManager em = null;
-        
         try {
-            emf = Persistence.createEntityManagerFactory("emf");
-            em = emf.createEntityManager();
-            
+            em = JPAUtil.getEntityManager();
             TypedQuery<Actividad> query = em.createQuery(
                 "SELECT a FROM Actividad a WHERE a.nombre = :nombre", Actividad.class);
             query.setParameter("nombre", nombreActividad);
@@ -126,7 +116,6 @@ public class ActividadServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
         } finally {
             if (em != null) em.close();
-            if (emf != null) emf.close();
         }
     }
     
@@ -165,16 +154,12 @@ public class ActividadServlet extends HttpServlet {
             return;
         }
         
-        EntityManagerFactory emf = null;
-        EntityManager em = null;
-        
-        try {
+            EntityManager em = null;
+            try {
             int duracion = Integer.parseInt(duracionStr);
             float costo = Float.parseFloat(costoStr);
             Date fechaAlta = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
-            
-            emf = Persistence.createEntityManagerFactory("emf");
-            em = emf.createEntityManager();
+                em = JPAUtil.getEntityManager();
             
             Proveedor proveedor = (Proveedor) session.getAttribute("usuario");
             
@@ -205,7 +190,6 @@ public class ActividadServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/jsp/crear-actividad.jsp").forward(request, response);
         } finally {
             if (em != null) em.close();
-            if (emf != null) emf.close();
         }
     }
 }

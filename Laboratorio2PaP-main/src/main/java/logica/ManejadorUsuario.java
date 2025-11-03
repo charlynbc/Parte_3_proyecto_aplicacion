@@ -10,10 +10,9 @@ import java.util.stream.Collectors;
 
 public class ManejadorUsuario {
     private static ManejadorUsuario instancia = null;
-    private EntityManagerFactory emf;
-
+    // JPA manejado centralmente a través de `persistence.JPAUtil` (delegando a utils.JpaUtil)
     private ManejadorUsuario() {
-        emf = Persistence.createEntityManagerFactory("emf");
+        // constructor vacío: no creamos EntityManagerFactory aquí
     }
 
     public static ManejadorUsuario getinstance() {
