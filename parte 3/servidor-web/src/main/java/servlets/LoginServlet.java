@@ -1,4 +1,5 @@
 package servlets;
+import exceptions.*;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -10,9 +11,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import logica.Usuario;
-import logica.Turista;
-import logica.Proveedor;
+import entities.Usuario;
+import entities.Turista;
+import entities.Proveedor;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,4 +1,5 @@
 package servlets;
+import exceptions.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -6,17 +7,16 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import logica.Fabrica;
-import logica.IControladorActividad;
-import logica.DataActividad;
-import excepciones.ActividadNoExisteException;
+import webserviceclients.WSClientFactory;
+import webserviceclients.WSActividadClient;
+import datatypes.DataActividad;
 
 @WebServlet("/create-departure")
 public class CreateDepartureViewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String proveedor = (String) request.getSession().getAttribute("username");
-        IControladorActividad controlador = Fabrica.getInstance().getIControladorActividad();
+        WSActividadClient controlador = WSClientFactory.getInstance().getWSActividadClient();
         DataActividad[] actividades = new DataActividad[0];
         try {
             actividades = controlador.getActividadesPorProveedor(proveedor);

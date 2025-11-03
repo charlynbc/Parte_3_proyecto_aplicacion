@@ -1,4 +1,5 @@
 package servlets;
+import exceptions.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,12 +12,11 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
-import logica.DataSalida;
-import logica.IControladorSalida;
-import logica.Fabrica;
-import logica.IControladorActividad;
-import logica.DataActividad;
-import excepciones.ActividadNoExisteException;
+import datatypes.DataSalida;
+import webserviceclients.WSSalidaClient;
+import webserviceclients.WSClientFactory;
+import webserviceclients.WSActividadClient;
+import datatypes.DataActividad;
 
 @WebServlet("/CreateDepartureServlet")
 @MultipartConfig
@@ -38,7 +38,7 @@ public class CreateDepartureServlet extends HttpServlet {
                 // Repopular la lista de actividades para el JSP antes de forward
                 try {
                     String proveedor = (String) request.getSession().getAttribute("username");
-                    IControladorActividad ctrlAct = Fabrica.getInstance().getIControladorActividad();
+                    WSActividadClient ctrlAct = WSClientFactory.getInstance().getWSActividadClient();
                     DataActividad[] actividades = new DataActividad[0];
                     try {
                         actividades = ctrlAct.getActividadesPorProveedor(proveedor);
@@ -81,8 +81,8 @@ public class CreateDepartureServlet extends HttpServlet {
                 activityId
             );
 
-            IControladorSalida controlador = Fabrica.getInstance().getIControladorSalida();
-            controlador.AltaSalida(dataSalida);
+            WSSalidaClient controlador = WSClientFactory.getInstance().getWSSalidaClient();
+            controlador.altaSalida(dataSalida);
 
             request.setAttribute("success", "Salida creada exitosamente.");
             response.sendRedirect("ActivityDetailServlet?id=" + activityId);

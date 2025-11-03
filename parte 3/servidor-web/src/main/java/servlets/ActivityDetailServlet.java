@@ -1,4 +1,5 @@
 package servlets;
+import exceptions.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -6,12 +7,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import logica.Fabrica;
-import logica.IControladorActividad;
-import logica.IControladorSalida;
-import logica.DataActividad;
-import logica.DataSalida;
-import excepciones.ActividadNoExisteException;
+import webserviceclients.WSClientFactory;
+import webserviceclients.WSActividadClient;
+import webserviceclients.WSSalidaClient;
+import datatypes.DataActividad;
+import datatypes.DataSalida;
 
 @WebServlet("/activity-detail")
 public class ActivityDetailServlet extends HttpServlet {
@@ -25,8 +25,8 @@ public class ActivityDetailServlet extends HttpServlet {
 			return;
 		}
 
-		IControladorActividad ctrlAct = Fabrica.getInstance().getIControladorActividad();
-		IControladorSalida ctrlSal = Fabrica.getInstance().getIControladorSalida();
+		WSActividadClient ctrlAct = WSClientFactory.getInstance().getWSActividadClient();
+		WSSalidaClient ctrlSal = WSClientFactory.getInstance().getWSSalidaClient();
 
 		try {
 			DataActividad actividad = ctrlAct.verInfoActividad(nombre);

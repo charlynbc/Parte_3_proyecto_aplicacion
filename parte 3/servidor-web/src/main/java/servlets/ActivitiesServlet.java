@@ -1,4 +1,5 @@
 package servlets;
+import exceptions.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,20 +11,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import logica.Fabrica;
-import logica.IControladorActividad;
-import logica.DataActividad;
-import excepciones.ActividadNoExisteException;
+import webserviceclients.WSClientFactory;
+import webserviceclients.WSActividadClient;
+import datatypes.DataActividad;
 
 @WebServlet(name = "ActivitiesServlet", urlPatterns = {"/activities"})
 public class ActivitiesServlet extends HttpServlet {
-    private IControladorActividad controladorActividad;
+    private WSActividadClient wsActividadClient;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        Fabrica fab = Fabrica.getInstance();
-        controladorActividad = fab.getIControladorActividad();
+        // Removed Fabrica;
+        wsActividadClient = WSClientFactory.getInstance().getWSActividadClient();
     }
 
     @Override
@@ -32,7 +32,7 @@ public class ActivitiesServlet extends HttpServlet {
         
         List<java.util.Map<String, Object>> actividades = new ArrayList<>();
         try {
-            DataActividad[] resultado = controladorActividad.getActividades();
+            DataActividad[] resultado = wsActividadClient.getActividades();
             if (resultado != null) {
                 for (DataActividad act : resultado) {
                     java.util.Map<String, Object> map = new java.util.HashMap<>();

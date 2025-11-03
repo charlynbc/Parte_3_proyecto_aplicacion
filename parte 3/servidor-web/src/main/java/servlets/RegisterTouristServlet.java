@@ -1,4 +1,5 @@
 package servlets;
+import exceptions.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,11 +13,10 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-// Import classes from Laboratorio1.jar
-import logica.Fabrica;
-import logica.IControladorUsuario;
-import logica.DataTurista;
-import excepciones.UsuarioRepetidoException;
+// Import Web Service clients
+import webserviceclients.WSClientFactory;
+import webserviceclients.WSUsuarioClient;
+import datatypes.DataTurista;
 
 @WebServlet("/register-tourist")
 @MultipartConfig(
@@ -25,14 +25,14 @@ import excepciones.UsuarioRepetidoException;
 )
 public class RegisterTouristServlet extends HttpServlet {
     
-    private IControladorUsuario controladorUsuario;
+    private WSUsuarioClient wsUsuarioClient;
     
     @Override
     public void init() throws ServletException {
         super.init();
-        // Initialize the business logic controller from Laboratorio1.jar
-        controladorUsuario = Fabrica.getInstance().getIControladorUsuario();
-        System.out.println("RegisterTouristServlet initialized - connected to Laboratorio1.jar persistence");
+        // Initialize the Web Service client
+        wsUsuarioClient = WSClientFactory.getInstance().getWSUsuarioClient();
+        System.out.println("RegisterTouristServlet initialized - connected to Web Services");
     }
     
     @Override
@@ -114,8 +114,8 @@ public class RegisterTouristServlet extends HttpServlet {
 
             // 7. Try to register the tourist using Central Server
             try {
-                System.out.println("5. Calling controladorUsuario.registrarUsuario(...)");
-                controladorUsuario.registrarUsuario(newTurista);
+                System.out.println("5. Calling wsUsuarioClient.registrarUsuario(...)");
+                wsUsuarioClient.registrarUsuario(newTurista);
                 System.out.println("6. Tourist registered successfully in database");
                 
                 // 8. Set success message and redirect to login
@@ -123,7 +123,7 @@ public class RegisterTouristServlet extends HttpServlet {
                     "¡Registro exitoso! Bienvenido " + firstName + ", por favor inicia sesión");
                 response.sendRedirect(request.getContextPath() + "/login");
                 
-            } catch (UsuarioRepetidoException e) {
+            } catch (Exception e) {
                 System.out.println("5. Registration failed - user already exists: " + e.getMessage());
                 request.setAttribute("error", "El nickname o email ya está registrado. Por favor elija otro.");
                 request.getRequestDispatcher("/WEB-INF/register-tourist.jsp").forward(request, response);

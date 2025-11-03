@@ -1,4 +1,5 @@
 package servlets;
+import exceptions.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,10 +10,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 // Import classes from Laboratorio1.jar
-import logica.Fabrica;
-import logica.IControladorUsuario;
-import logica.DataUsuario;
-import excepciones.UsuarioNoExisteException;
+import webserviceclients.WSClientFactory;
+import webserviceclients.WSUsuarioClient;
+import datatypes.DataUsuario;
+// removed excepciones importUsuarioNoExisteException;
 
 @WebServlet("/test-db")
 public class TestDatabaseServlet extends HttpServlet {
@@ -30,8 +31,8 @@ public class TestDatabaseServlet extends HttpServlet {
         
         try {
             // Test connection to Laboratorio1.jar
-            IControladorUsuario controlador = Fabrica.getInstance().getIControladorUsuario();
-            out.println("<p><strong>✅ Fabrica initialized successfully</strong></p>");
+            WSUsuarioClient controlador = WSClientFactory.getInstance().getWSUsuarioClient();
+            out.println("<p><strong>✅ WS Client Factory initialized successfully</strong></p>");
             
             // Try to get all users
             try {

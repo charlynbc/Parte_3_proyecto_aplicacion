@@ -1,4 +1,5 @@
 package servlets;
+import exceptions.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,35 +9,35 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
-import logica.Fabrica;
-import logica.IControladorUsuario;
-import logica.Inscripcion;
-import logica.ManejadorInscripcion;
-import logica.IControladorActividad;
-import logica.IControladorSalida;
-import logica.DataUsuario;
-import logica.DataTurista;
-import logica.DataProveedor;
-import logica.DataActividad;
-import logica.DataSalida;
-import logica.DataInscripcion;
-import excepciones.UsuarioNoExisteException;
-import excepciones.ActividadNoExisteException;
+import webserviceclients.WSClientFactory;
+import webserviceclients.WSUsuarioClient;
+import entities.Inscripcion;
+import entities.ManejadorInscripcion;
+import webserviceclients.WSActividadClient;
+import webserviceclients.WSSalidaClient;
+import datatypes.DataUsuario;
+import datatypes.DataTurista;
+import datatypes.DataProveedor;
+import datatypes.DataActividad;
+import datatypes.DataSalida;
+import datatypes.DataInscripcion;
+// removed excepciones importUsuarioNoExisteException;
+// removed excepciones importActividadNoExisteException;
 
 @WebServlet(name = "UserProfileServlet", urlPatterns = {"/user-profile"})
 public class UserProfileServlet extends HttpServlet {
     
-    private IControladorUsuario controladorUsuario;
-    private IControladorActividad controladorActividad;
-    private IControladorSalida controladorSalida;
+    private WSUsuarioClient controladorUsuario;
+    private WSActividadClient controladorActividad;
+    private WSSalidaClient controladorSalida;
     
     @Override
     public void init() throws ServletException {
         super.init();
         try {
-            controladorUsuario = Fabrica.getInstance().getIControladorUsuario();
-            controladorActividad = Fabrica.getInstance().getIControladorActividad();
-            controladorSalida = Fabrica.getInstance().getIControladorSalida();
+            wsUsuarioClient = WSClientFactory.getInstance().getWSUsuarioClient();
+            wsActividadClient = WSClientFactory.getInstance().getWSActividadClient();
+            wsSalidaClient = WSClientFactory.getInstance().getWSSalidaClient();
             System.out.println("UserProfileServlet initialized");
         } catch (Exception e) {
             System.err.println("Error initializing UserProfileServlet: " + e.getMessage());
@@ -73,7 +74,7 @@ public class UserProfileServlet extends HttpServlet {
         System.out.println("Loading profile for: " + nickname);
         
         try {
-            DataUsuario usuario = controladorUsuario.verInfoUsuario(nickname);
+            DataUsuario usuario = wsUsuarioClient.verInfoUsuario(nickname);
             System.out.println("User found: " + usuario.getNickname());
             
             request.setAttribute("user", usuario);

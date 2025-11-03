@@ -1,4 +1,5 @@
 package servlets;
+import exceptions.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,22 +12,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 // Import classes from Laboratorio1.jar
-import logica.Fabrica;
-import logica.IControladorActividad;
-import logica.DataActividad;
-import excepciones.ActividadRepetidaException;
-import excepciones.UsuarioNoExisteException;
+import webserviceclients.WSClientFactory;
+import webserviceclients.WSActividadClient;
+import datatypes.DataActividad;
 
 @WebServlet("/create-activity")
 public class CreateActivityServlet extends HttpServlet {
     
-    private IControladorActividad controladorActividad;
+    private WSActividadClient wsActividadClient;
     
     @Override
     public void init() throws ServletException {
         super.init();
         try {
-            controladorActividad = Fabrica.getInstance().getIControladorActividad();
+            wsActividadClient = WSClientFactory.getInstance().getWSActividadClient();
             System.out.println("CreateActivityServlet initialized - connected to Central Server");
         } catch (Exception e) {
             throw new ServletException("Failed to initialize central server connection", e);
@@ -140,7 +139,7 @@ public class CreateActivityServlet extends HttpServlet {
             
             // Try to create the activity using Central Server
             try {
-                controladorActividad.altaActividad(nuevaActividad);
+                wsActividadClient.altaActividad(nuevaActividad);
                 System.out.println("4. Activity created successfully in database");
                 
                 // Set success message and redirect to dashboard
@@ -148,11 +147,11 @@ public class CreateActivityServlet extends HttpServlet {
                     "¡Actividad '" + nombre + "' creada exitosamente! Estado: " + estado);
                 response.sendRedirect(request.getContextPath() + "/dashboard");
                 
-            } catch (ActividadRepetidaException e) {
+            } catch (exceptions.ActividadRepetidaException e) {
                 System.out.println("4. Activity creation failed - duplicate name: " + e.getMessage());
                 request.setAttribute("error", "Ya existe una actividad con ese nombre. Por favor elija otro nombre.");
                 request.getRequestDispatcher("/WEB-INF/create-activity.jsp").forward(request, response);
-            } catch (UsuarioNoExisteException e) {
+            } catch (exceptions.UsuarioNoExisteException e) {
                 System.out.println("4. Activity creation failed - provider not found: " + e.getMessage());
                 request.setAttribute("error", "Error: Proveedor no encontrado en el sistema.");
                 request.getRequestDispatcher("/WEB-INF/create-activity.jsp").forward(request, response);

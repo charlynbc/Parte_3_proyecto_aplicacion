@@ -1,4 +1,5 @@
 package servlets;
+import exceptions.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -14,12 +15,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 // Import classes from Laboratorio1.jar
-import logica.Fabrica;
-import logica.IControladorUsuario;
-import logica.DataUsuario;
-import logica.DataTurista;
-import logica.DataProveedor;
-import excepciones.UsuarioNoExisteException;
+import webserviceclients.WSClientFactory;
+import webserviceclients.WSUsuarioClient;
+import datatypes.DataUsuario;
+import datatypes.DataTurista;
+import datatypes.DataProveedor;
 
 
 
@@ -32,13 +32,13 @@ import excepciones.UsuarioNoExisteException;
 )
 public class UpdateProfileServlet extends HttpServlet {
 
-    private IControladorUsuario controladorUsuario;
+    private WSUsuarioClient wsUsuarioClient;
     
     @Override
     public void init() throws ServletException {
         super.init();
         try {
-            controladorUsuario = Fabrica.getInstance().getIControladorUsuario();
+            wsUsuarioClient = WSClientFactory.getInstance().getWSUsuarioClient();
             System.out.println("UpdateProfileServlet initialized");
         } catch (Exception e) {
             System.err.println("Error initializing UpdateProfileServlet: " + e.getMessage());
@@ -66,7 +66,7 @@ public class UpdateProfileServlet extends HttpServlet {
         
         try {
             // Obtener datos actuales del usuario desde el sistema
-            DataUsuario usuario = controladorUsuario.verInfoUsuario(username);
+            DataUsuario usuario = wsUsuarioClient.verInfoUsuario(username);
             
             // Pasar datos actuales al formulario
             request.setAttribute("currentUser", usuario);
@@ -142,7 +142,7 @@ public class UpdateProfileServlet extends HttpServlet {
             }
             
             // Obtener usuario actual
-            DataUsuario usuarioActual = controladorUsuario.verInfoUsuario(username);
+            DataUsuario usuarioActual = wsUsuarioClient.verInfoUsuario(username);
             
             // Procesar según tipo de usuario
             if ("Turista".equals(userType)) {
@@ -156,13 +156,13 @@ public class UpdateProfileServlet extends HttpServlet {
                 }
                 
                 // Actualizar campos
-                controladorUsuario.modificarUsuario(usuarioActual, 1, nombre);
-                controladorUsuario.modificarUsuario(usuarioActual, 2, apellido);
+                wsUsuarioClient.modificarUsuario(usuarioActual, 1, nombre);
+                wsUsuarioClient.modificarUsuario(usuarioActual, 2, apellido);
                 
                 String fechaFormateada = convertDateFormat(fechaNacimiento);
-                controladorUsuario.modificarUsuario(usuarioActual, 3, fechaFormateada);
+                wsUsuarioClient.modificarUsuario(usuarioActual, 3, fechaFormateada);
                 
-                controladorUsuario.modificarUsuario(usuarioActual, 4, nacionalidad);
+                wsUsuarioClient.modificarUsuario(usuarioActual, 4, nacionalidad);
                 
                 // Actualizar sesión
                 session.setAttribute("fullName", nombre + " " + apellido);
@@ -182,14 +182,14 @@ public class UpdateProfileServlet extends HttpServlet {
                 }
                 
                 // Actualizar campos
-                controladorUsuario.modificarUsuario(usuarioActual, 1, nombre);
-                controladorUsuario.modificarUsuario(usuarioActual, 2, apellido);
+                wsUsuarioClient.modificarUsuario(usuarioActual, 1, nombre);
+                wsUsuarioClient.modificarUsuario(usuarioActual, 2, apellido);
                 
                 String fechaFormateada = convertDateFormat(fechaNacimiento);
-                controladorUsuario.modificarUsuario(usuarioActual, 3, fechaFormateada);
+                wsUsuarioClient.modificarUsuario(usuarioActual, 3, fechaFormateada);
                 
-                controladorUsuario.modificarUsuario(usuarioActual, 4, sitioWeb != null ? sitioWeb : "");
-                controladorUsuario.modificarUsuario(usuarioActual, 5, descripcion);
+                wsUsuarioClient.modificarUsuario(usuarioActual, 4, sitioWeb != null ? sitioWeb : "");
+                wsUsuarioClient.modificarUsuario(usuarioActual, 5, descripcion);
                 
                 // Actualizar sesión
                 session.setAttribute("fullName", nombre + " " + apellido);

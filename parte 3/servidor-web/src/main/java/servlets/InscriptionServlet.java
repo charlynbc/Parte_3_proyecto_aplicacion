@@ -1,4 +1,5 @@
 package servlets;
+import exceptions.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,13 +10,12 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 
-import logica.Fabrica;
-import logica.IControladorActividad;
-import logica.IControladorInscripcion;
-import logica.IControladorSalida;
-import logica.DataActividad;
-import logica.DataSalida;
-import excepciones.ActividadNoExisteException;
+import webserviceclients.WSClientFactory;
+import webserviceclients.WSActividadClient;
+import webserviceclients.WSInscripcionClient;
+import webserviceclients.WSSalidaClient;
+import datatypes.DataActividad;
+import datatypes.DataSalida;
 
 @WebServlet("/inscripcion")
 public class InscriptionServlet extends HttpServlet {
@@ -45,7 +45,7 @@ public class InscriptionServlet extends HttpServlet {
         String salidaSeleccionada = request.getParameter("salida");
         
         // Cargar todas las actividades
-        IControladorActividad ctrlAct = Fabrica.getInstance().getIControladorActividad();
+        WSActividadClient ctrlAct = WSClientFactory.getInstance().getWSActividadClient();
         DataActividad[] actividades = new DataActividad[0];
         try {
             actividades = ctrlAct.getActividades();
@@ -80,7 +80,7 @@ public class InscriptionServlet extends HttpServlet {
         salidasHtml.append("<option value=\"\">-- Seleccione una salida --</option>");
         if (actividadSeleccionada != null && !actividadSeleccionada.trim().isEmpty()) {
             try {
-                IControladorSalida ctrlSal = Fabrica.getInstance().getIControladorSalida();
+                WSSalidaClient ctrlSal = WSClientFactory.getInstance().getWSSalidaClient();
                 DataSalida[] salidas = ctrlSal.listarSalidasDeActividad(actividadSeleccionada);
                 if (salidas != null) {
                     for (DataSalida s : salidas) {
@@ -143,7 +143,7 @@ public class InscriptionServlet extends HttpServlet {
         // Obtener costo aproximado desde la actividad
         float costo = 0.0f;
         try {
-            IControladorActividad ctrlAct = Fabrica.getInstance().getIControladorActividad();
+            WSActividadClient ctrlAct = WSClientFactory.getInstance().getWSActividadClient();
             DataActividad da = ctrlAct.verInfoActividad(actividad);
             if (da != null) {
                 costo = da.getCosto();
@@ -155,7 +155,7 @@ public class InscriptionServlet extends HttpServlet {
         }
 
         // Llamar al controlador de inscripciones
-        IControladorInscripcion ctrlIns = Fabrica.getInstance().getIControladorInscripcion();
+        WSInscripcionClient ctrlIns = WSClientFactory.getInstance().getWSInscripcionClient();
         boolean exito = false;
         try {
             exito = ctrlIns.inscribirTurista(actividad, salida, turista, cantidad, fecha, costo);
