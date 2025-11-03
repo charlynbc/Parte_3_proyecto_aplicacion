@@ -46,10 +46,7 @@ public class ActivityDetailServlet extends HttpServlet {
 			boolean isOwner = sessionUser != null && sessionUser.equals(actividad.getProveedor());
 			request.getSession().setAttribute("isActivityOwner", isOwner);
 
-			request.getRequestDispatcher("/WEB-INF/activity-detail.jsp").forward(request, response);
-		} catch (ActividadNoExisteException ex) {
-			// Si la actividad no existe, redirigimos a la lista con un mensaje de error
-			request.getSession().removeAttribute("isActivityOwner");
+        } catch (Exception ex) {
 			request.setAttribute("error", "La actividad especificada no existe: " + nombre);
 			response.sendRedirect(request.getContextPath() + "/activities");
 		}

@@ -27,9 +27,9 @@ import datatypes.DataInscripcion;
 @WebServlet(name = "UserProfileServlet", urlPatterns = {"/user-profile"})
 public class UserProfileServlet extends HttpServlet {
     
-    private WSUsuarioClient controladorUsuario;
-    private WSActividadClient controladorActividad;
-    private WSSalidaClient controladorSalida;
+    private WSUsuarioClient wsUsuarioClient;
+    private WSActividadClient wsActividadClient;
+    private WSSalidaClient wsSalidaClient;
     
     @Override
     public void init() throws ServletException {
@@ -107,7 +107,7 @@ public class UserProfileServlet extends HttpServlet {
     
     private void loadProveedorData(String nickname, boolean isOwnProfile, HttpServletRequest request) {
         try {
-            DataActividad[] todasActividades = controladorActividad.getActividades();
+            DataActividad[] todasActividades = wsActividadClient.getActividades();
             java.util.List<DataActividad> actividadesProveedor = new java.util.ArrayList<>();
             
             for (DataActividad actividad : todasActividades) {
@@ -131,7 +131,7 @@ public class UserProfileServlet extends HttpServlet {
             java.util.List<DataSalida> todasSalidas = new java.util.ArrayList<>();
             for (DataActividad actividad : actividadesProveedor) {
                 try {
-                    DataSalida[] salidas = controladorSalida.listarSalidasDeActividad(actividad.getNombre());
+                    DataSalida[] salidas = wsSalidaClient.listarSalidasDeActividad(actividad.getNombre());
                     if (salidas != null) {
                         for (DataSalida salida : salidas) {
                             todasSalidas.add(salida);
@@ -183,9 +183,9 @@ public class UserProfileServlet extends HttpServlet {
                     try {
                         String nombreSalida = insc.getSalida().getNombre();
                         // Buscar la salida en todas las actividades
-                        DataActividad[] actividades = controladorActividad.getActividades();
+                        DataActividad[] actividades = wsActividadClient.getActividades();
                         for (DataActividad act : actividades) {
-                            DataSalida[] salidas = controladorSalida.listarSalidasDeActividad(act.getNombre());
+                            DataSalida[] salidas = wsSalidaClient.listarSalidasDeActividad(act.getNombre());
                             if (salidas != null) {
                                 for (DataSalida sal : salidas) {
                                     if (sal.getNombre().equals(nombreSalida)) {

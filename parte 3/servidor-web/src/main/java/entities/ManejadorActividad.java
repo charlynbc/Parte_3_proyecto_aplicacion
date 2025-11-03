@@ -3,6 +3,8 @@ package entities;
 import java.util.List;
 import jakarta.persistence.*;
 import persistence.JPAUtil;
+import datatypes.DataActividad;
+import datatypes.DataActividadRanking;
 
 
 public class ManejadorActividad {

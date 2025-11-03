@@ -42,7 +42,7 @@ public class TestDatabaseServlet extends HttpServlet {
                 out.println("<ul>");
                 for (DataUsuario usuario : usuarios) {
                     out.println("<li>" + usuario.getNickname() + " (" + usuario.getEmail() + ") - " + 
-                               (usuario instanceof logica.DataTurista ? "Turista" : "Proveedor") + "</li>");
+                               (usuario instanceof datatypes.DataTurista ? "Turista" : "Proveedor") + "</li>");
                 }
                 out.println("</ul>");
             } catch (UsuarioNoExisteException e) {
