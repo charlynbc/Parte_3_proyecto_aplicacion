@@ -12,25 +12,24 @@ Próximos (a crear):
 - `client-ws/` (lib): Stubs del cliente generados desde WSDL para consumir desde el Servidor Web.
 - `docs/` (notas, WSDLs, contratos definitivos).
 
-## Cómo compilar y desplegar `central-ws`
+## Cómo compilar y desplegar `central-ws` (puerto 8081)
 
 Requisitos:
 - Java 11
 - Maven 3.6+
-- Tomcat 10.1 (contexto recomendado: `/central-ws`)
 
-Pasos:
+Pasos (usa una instancia Tomcat separada en 8081):
 ```bash
-# Compilar y empaquetar
-mvn -q -DskipTests package -f central-ws/pom.xml
+# Arrancar Tomcat central y desplegar
+./deploy-central.sh
 
-# Copiar el WAR al Tomcat del repo
-cp central-ws/target/central-ws.war ../apache-tomcat-10.1.47/webapps/
+# Ver logs del central
+./scripts/tomcat-central.sh logs
 ```
 
-Endpoints (una vez desplegado):
-- WSDL Auth: `http://localhost:8080/central-ws/services/AuthService?wsdl`
-- WSDL Actividades: `http://localhost:8080/central-ws/services/ActividadesService?wsdl`
+Endpoints (una vez desplegado en 8081):
+- WSDL Auth: `http://localhost:8081/central-ws/services/AuthService?wsdl`
+- WSDL Actividades: `http://localhost:8081/central-ws/services/ActividadesService?wsdl`
 
 Pruebas rápidas:
 - `AuthService.ping()` → "pong".
