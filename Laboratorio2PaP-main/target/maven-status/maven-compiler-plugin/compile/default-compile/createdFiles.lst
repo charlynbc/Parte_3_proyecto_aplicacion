@@ -1,4 +1,5 @@
 logica/ControladorSalida.class
+utils/JpaUtil$MysqlConn.class
 logica/MainPersistencia.class
 servlets/CreateDepartureServlet.class
 excepciones/SalidaRepetidaException.class
@@ -9,6 +10,7 @@ servlets/LogoutServlet.class
 servlets/UpdateProfileServlet.class
 logica/DataSalida.class
 logica/ManejadorSalida.class
+servlets/MyRegistrationsServlet.class
 servlets/DepartureDetailServlet.class
 servlets/CreateActivityServlet.class
 servlets/LoginServlet.class
@@ -16,6 +18,7 @@ logica/Salida.class
 servlets/RegisterTouristServlet.class
 logica/ControladorUsuario.class
 servlets/ActivityDetailServlet.class
+filters/TuristaOnlyFilter.class
 excepciones/ActividadRepetidaException.class
 logica/DataActividad.class
 logica/DataUsuario.class

@@ -73,12 +73,7 @@ tail -f apache-tomcat-10.1.47/logs/catalina.out
 🌐 **URL Principal:** http://localhost:8080/Laboratorio2PaP
 
 ### Rutas Disponibles
-- `/` - Página principal
-- `/login` - Autenticación de usuarios
-- `/dashboard` - Panel de usuario
-- `/actividades` - Lista de actividades
-- `/inscripcion` - Proceso de inscripción
-- `/admin` - Panel de administración
+- `/mis-salidas` - Salidas registradas del turista logueado
 
 ## Base de Datos
 El sistema usa MySQL (Railway). Entidades principales y tablas relacionadas:
@@ -125,6 +120,20 @@ Para desarrollo local usa el script de despliegue (incluye build y redeploy en T
 ```bash
 ./deploy-tomcat10.sh
 ```
+
+## Scripts de Tomcat (rápido) 🧰
+
+Se incluye un script para administrar el Tomcat embebido y chequear la salud de la app:
+
+```bash
+scripts/tomcat.sh start    # Arranca Tomcat y espera a que responda
+scripts/tomcat.sh status   # Verifica que Tomcat responda (HTTP 200)
+scripts/tomcat.sh health   # Chequea /, /Laboratorio2PaP/init-data y /Laboratorio2PaP/users
+scripts/tomcat.sh logs     # Muestra el tail de catalina.out
+scripts/tomcat.sh stop     # Detiene Tomcat
+```
+
+El script apunta al Tomcat local `apache-tomcat-10.1.47` y asume la app en el contexto `/Laboratorio2PaP`.
 
 ## Logs y Monitoreo
 ```bash

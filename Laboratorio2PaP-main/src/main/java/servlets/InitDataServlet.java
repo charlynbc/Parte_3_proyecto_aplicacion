@@ -24,15 +24,8 @@ public class InitDataServlet extends HttpServlet {
     public void init() throws ServletException {
         super.init();
         System.out.println("🚀 Iniciando conexión a Railway Database...");
-        // Retrasar la inicialización para evitar problemas de conexión
-        new Thread(() -> {
-            try {
-                Thread.sleep(10000); // Esperar 10 segundos
-                initializeTestData();
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }).start();
+        // Inicialización sin retraso: ejecuta migraciones y seeding de forma síncrona
+        initializeTestData();
     }
     
     @Override
@@ -100,6 +93,37 @@ public class InitDataServlet extends HttpServlet {
             em = JpaUtil.getEntityManager();
 
             em.getTransaction().begin();
+
+            // Fix de migración: si existen usuarios sin 'tipo' (discriminador),
+            // completar a partir de pertenencia en proveedores/turista para evitar errores de mapeo.
+            try {
+                // Normalizar columna discriminadora real (DTYPE) usada por @DiscriminatorColumn
+                int d1 = em.createNativeQuery("UPDATE usuarios SET DTYPE='Proveedor' WHERE TRIM(COALESCE(DTYPE,'')) IN ('PROVEEDOR','proveedor','Proveedor')").executeUpdate();
+                int d2 = em.createNativeQuery("UPDATE usuarios SET DTYPE='Turista'   WHERE TRIM(COALESCE(DTYPE,'')) IN ('TURISTA','turista','Turista')").executeUpdate();
+                int d3 = em.createNativeQuery(
+                        "UPDATE usuarios u " +
+                        "JOIN proveedores p ON p.nickname = u.nickname " +
+                        "SET u.DTYPE = 'Proveedor' " +
+                        "WHERE (u.DTYPE IS NULL OR u.DTYPE='')")
+                    .executeUpdate();
+                int d4 = em.createNativeQuery(
+                        "UPDATE usuarios u " +
+                        "JOIN turista t ON t.nickname = u.nickname " +
+                        "SET u.DTYPE = 'Turista' " +
+                        "WHERE (u.DTYPE IS NULL OR u.DTYPE='')")
+                    .executeUpdate();
+
+                // (Opcional) Mantener columna auxiliar 'tipo' consistente si existe
+                int fx1 = em.createNativeQuery("UPDATE usuarios SET tipo='Proveedor' WHERE TRIM(COALESCE(tipo,'')) IN ('PROVEEDOR')").executeUpdate();
+                int fx2 = em.createNativeQuery("UPDATE usuarios SET tipo='Turista'   WHERE TRIM(COALESCE(tipo,'')) IN ('TURISTA')").executeUpdate();
+
+                int total = d1 + d2 + d3 + d4 + fx1 + fx2;
+                if (total > 0) {
+                    System.out.println("🛠️  Migración: normalizados valores de DTYPE/tipo => " + total);
+                }
+            } catch (Exception migEx) {
+                System.err.println("⚠️  No se pudo ejecutar fix de 'tipo' nulo: " + migEx.getMessage());
+            }
 
             // Utilidades para fechas
             Calendar cal = Calendar.getInstance();

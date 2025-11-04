@@ -26,12 +26,14 @@
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/servlets/CreateDepartureViewServlet.java
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/servlets/ActivityDetailServlet.java
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/servlets/LoginServlet.java
+/workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/filters/TuristaOnlyFilter.java
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/servlets/ActividadServlet.java
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/logica/Usuario.java
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/servlets/InscripcionServlet.java
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/servlets/RegisterTouristServlet.java
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/servlets/CreateDepartureServlet.java
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/servlets/DepartureDetailServlet.java
+/workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/servlets/MyRegistrationsServlet.java
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/logica/DataActividadRanking.java
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/logica/Salida.java
 /workspaces/Parte_3_proyecto_aplicacion/Laboratorio2PaP-main/src/main/java/servlets/RegisterServlet.java
