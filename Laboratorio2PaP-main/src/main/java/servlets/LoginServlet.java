@@ -1,9 +1,8 @@
 package servlets;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
+import uy.edu.pa.central.client.AuthService;
+import uy.edu.pa.central.client.AuthService_Service;
+import uy.edu.pa.central.client.UserDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -57,35 +56,13 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
-        EntityManager em = null;
         try {
-            em = JpaUtil.getEntityManager();
+            // Consumir SOAP del Central
+            AuthService_Service svc = new AuthService_Service();
+            AuthService port = svc.getAuthServicePort();
+            UserDTO user = port.login(trimmedIdentifier, trimmedPassword);
 
-            Usuario usuario = null;
-            TypedQuery<Usuario> query;
-
-            if (trimmedIdentifier.contains("@")) {
-                query = em.createQuery("SELECT u FROM Usuario u WHERE LOWER(u.email) = :email", Usuario.class);
-                query.setParameter("email", trimmedIdentifier.toLowerCase());
-            } else {
-                query = em.createQuery("SELECT u FROM Usuario u WHERE u.nickname = :nickname", Usuario.class);
-                query.setParameter("nickname", trimmedIdentifier);
-            }
-
-            List<Usuario> usuarios = query.setMaxResults(1).getResultList();
-            if (!usuarios.isEmpty()) {
-                usuario = usuarios.get(0);
-            }
-
-            if (usuario == null) {
-                request.setAttribute("error", "Usuario no encontrado");
-                request.setAttribute("username", trimmedIdentifier);
-                request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-                return;
-            }
-
-            String storedPassword = usuario.getContra();
-            if (storedPassword == null || !storedPassword.equals(trimmedPassword)) {
+            if (user == null || user.getNickname() == null) {
                 request.setAttribute("error", "Credenciales inválidas");
                 request.setAttribute("username", trimmedIdentifier);
                 request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
@@ -93,32 +70,20 @@ public class LoginServlet extends HttpServlet {
             }
 
             HttpSession session = request.getSession(true);
-            session.setAttribute("usuario", usuario);
-            session.setAttribute("usuarioId", usuario.getNickname());
-            session.setAttribute("usuarioNombre", usuario.getNombre());
-            session.setAttribute("username", usuario.getNickname());
-            session.setAttribute("email", usuario.getEmail());
-
-            if (usuario instanceof Turista) {
-                session.setAttribute("tipoUsuario", "turista");
-                session.setAttribute("userType", "Turista");
-            } else if (usuario instanceof Proveedor) {
-                session.setAttribute("tipoUsuario", "proveedor");
-                session.setAttribute("userType", "Proveedor");
-            } else {
-                session.setAttribute("userType", "Usuario");
-            }
+            session.setAttribute("username", user.getNickname());
+            session.setAttribute("usuarioNombre", user.getNombre());
+            session.setAttribute("email", user.getEmail());
+            session.setAttribute("tipoUsuario", user.getTipoUsuario());
+            session.setAttribute("userType",
+                    "turista".equalsIgnoreCase(user.getTipoUsuario()) ? "Turista" :
+                    ("proveedor".equalsIgnoreCase(user.getTipoUsuario()) ? "Proveedor" : "Usuario"));
 
             response.sendRedirect(request.getContextPath() + "/dashboard");
 
-        } catch (PersistenceException e) {
-            request.setAttribute("error", "No se pudo conectar a la base de datos. Intenta nuevamente en unos minutos.");
+        } catch (Exception e) {
+            request.setAttribute("error", "No se pudo autenticar contra el Servidor Central (SOAP).");
             request.setAttribute("username", trimmedIdentifier);
             request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
-            }
         }
     }
 }

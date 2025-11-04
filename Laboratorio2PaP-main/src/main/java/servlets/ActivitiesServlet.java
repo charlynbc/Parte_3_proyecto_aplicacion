@@ -10,20 +10,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import logica.Fabrica;
-import logica.IControladorActividad;
-import logica.DataActividad;
-import excepciones.ActividadNoExisteException;
+import uy.edu.pa.central.client.ActividadesService;
+import uy.edu.pa.central.client.ActividadesService_Service;
+import uy.edu.pa.central.client.ActividadDTO;
 
 @WebServlet(name = "ActivitiesServlet", urlPatterns = {"/activities"})
 public class ActivitiesServlet extends HttpServlet {
-    private IControladorActividad controladorActividad;
+    private ActividadesService service;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        Fabrica fab = Fabrica.getInstance();
-        controladorActividad = fab.getIControladorActividad();
+        // Inicializar stub SOAP apuntando al endpoint del central en el mismo Tomcat
+        ActividadesService_Service svc = new ActividadesService_Service();
+        service = svc.getActividadesServicePort();
     }
 
     @Override
@@ -31,12 +31,11 @@ public class ActivitiesServlet extends HttpServlet {
             throws ServletException, IOException {
         
         try {
-            DataActividad[] resultado = controladorActividad.getActividades();
+            java.util.List<ActividadDTO> resultado = service.listarActividades();
             request.setAttribute("activities", resultado);
-        } catch (ActividadNoExisteException ex) {
-            request.setAttribute("activities", new DataActividad[0]);
         } catch (Exception e) {
-            request.setAttribute("error", "No se pudieron cargar las actividades. Verifica la conexión a la base de datos.");
+            request.setAttribute("activities", java.util.Collections.emptyList());
+            request.setAttribute("error", "No se pudieron cargar las actividades desde el Servidor Central (SOAP).");
         }
 
         request.getRequestDispatcher("/WEB-INF/activities.jsp").forward(request, response);

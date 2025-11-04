@@ -40,4 +40,15 @@ public class ActividadesServiceImpl implements ActividadesService {
         if (id == null || id.isBlank()) return null;
         return new SalidaDTO(id, LocalDate.now().plusDays(1).toString(), "08:30", "Lugar de salida");
     }
+
+    @Override
+    public boolean inscribirTurista(String actividad, String salida, String turista, int cantidad, String fecha, float costo) {
+        // Mock de inscripción: valida mínimos y simula éxito
+        if (actividad == null || actividad.isBlank()) return false;
+        if (salida == null || salida.isBlank()) return false;
+        if (turista == null || turista.isBlank()) return false;
+        if (cantidad <= 0) return false;
+        // En una versión real, aquí se verificaría cupos, duplicados, se persistiría y se retornaría según resultado.
+        return true;
+    }
 }

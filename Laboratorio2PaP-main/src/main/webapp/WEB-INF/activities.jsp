@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="logica.DataActividad" %>
+<%@ page import="java.util.List" %>
+<%@ page import="uy.edu.pa.central.client.ActividadDTO" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -31,7 +32,7 @@
 
         <div class="card-grid">
             <%
-                DataActividad[] activities = (DataActividad[]) request.getAttribute("activities");
+                List<ActividadDTO> activities = (List<ActividadDTO>) request.getAttribute("activities");
                 String errorMessage = (String) request.getAttribute("error");
                 
                 if (errorMessage != null) {
@@ -40,8 +41,8 @@
                     Error: <%= errorMessage %>
                 </div>
             <%
-                } else if (activities != null && activities.length > 0) {
-                    for (DataActividad act : activities) {
+                } else if (activities != null && !activities.isEmpty()) {
+                    for (ActividadDTO act : activities) {
             %>
                         <div class="card">
                             <div class="card-image">
@@ -50,17 +51,14 @@
                                 </div>
                             </div>
                             <div class="card-content">
-                                <div class="card-title"><%= act.getNombre() %></div>
+                                <div class="card-title"><%= act.getId() != null ? act.getId() : "Actividad" %></div>
                                 <div class="card-description">
-                                    <%= act.getDescripcion() %><br><br>
-                                    <strong>Duración:</strong> <%= act.getDuracion() %> horas<br>
+                                    <%= act.getDescripcion() != null ? act.getDescripcion() : "" %><br><br>
                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
-                                    <strong>Ciudad:</strong> <%= act.getCiudad() %><br>
-                                    <strong>Estado:</strong> <%= act.getEstado() %><br>
-                                    <strong>Proveedor:</strong> <%= act.getProveedor() %>
+                                    <strong>Lugar:</strong> <%= act.getLugar() != null ? act.getLugar() : "-" %>
                                 </div>
                                 <div class="card-actions">
-                                    <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getNombre(), "UTF-8") %>" class="btn-small">Ver Detalles</a>
+                                    <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getId() != null ? act.getId() : "", "UTF-8") %>" class="btn-small">Ver Detalles</a>
                                 </div>
                             </div>
                         </div>

@@ -9,13 +9,10 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 
-import logica.Fabrica;
-import logica.IControladorActividad;
-import logica.IControladorInscripcion;
-import logica.IControladorSalida;
-import logica.DataActividad;
-import logica.DataSalida;
-import excepciones.ActividadNoExisteException;
+import uy.edu.pa.central.client.ActividadesService;
+import uy.edu.pa.central.client.ActividadesService_Service;
+import uy.edu.pa.central.client.ActividadDTO;
+import uy.edu.pa.central.client.SalidaDTO;
 
 @WebServlet("/inscripcion")
 public class InscriptionServlet extends HttpServlet {
@@ -44,24 +41,22 @@ public class InscriptionServlet extends HttpServlet {
         String actividadSeleccionada = request.getParameter("actividad");
         String salidaSeleccionada = request.getParameter("salida");
         
-        // Cargar todas las actividades
-        IControladorActividad ctrlAct = Fabrica.getInstance().getIControladorActividad();
-        DataActividad[] actividades = new DataActividad[0];
+        // Cargar todas las actividades vía SOAP
+        ActividadesService svc = new ActividadesService_Service().getActividadesServicePort();
+        java.util.List<ActividadDTO> actividades = java.util.Collections.emptyList();
         try {
-            actividades = ctrlAct.getActividades();
-        } catch (ActividadNoExisteException e) {
-            // Si no hay actividades, dejamos el array vacío
+            actividades = svc.listarActividades();
         } catch (Exception e) {
-            System.err.println("[InscripcionServlet] Error obteniendo actividades: " + e.getMessage());
+            System.err.println("[InscriptionServlet] Error SOAP listarActividades: " + e.getMessage());
         }
 
         StringBuilder actividadesHtml = new StringBuilder();
         if (actividades != null) {
-            for (DataActividad a : actividades) {
+            for (ActividadDTO a : actividades) {
                 actividadesHtml.append("<option value=\"")
-                        .append(a.getNombre())
+                        .append(a.getId())
                         .append("\">")
-                        .append(a.getNombre())
+                        .append(a.getId())
                         .append("</option>");
             }
         }
@@ -80,23 +75,25 @@ public class InscriptionServlet extends HttpServlet {
         salidasHtml.append("<option value=\"\">-- Seleccione una salida --</option>");
         if (actividadSeleccionada != null && !actividadSeleccionada.trim().isEmpty()) {
             try {
-                IControladorSalida ctrlSal = Fabrica.getInstance().getIControladorSalida();
-                DataSalida[] salidas = ctrlSal.listarSalidasDeActividad(actividadSeleccionada);
-                if (salidas != null) {
-                    for (DataSalida s : salidas) {
+                // Buscar la actividad seleccionada en el listado y usar sus salidas
+                ActividadDTO actSel = null;
+                for (ActividadDTO a : actividades) {
+                    if (actividadSeleccionada.equals(a.getId())) { actSel = a; break; }
+                }
+                if (actSel == null) { actSel = svc.obtenerActividad(actividadSeleccionada); }
+                if (actSel != null && actSel.getSalidas() != null) {
+                    for (SalidaDTO s : actSel.getSalidas()) {
                         salidasHtml.append("<option value=\"")
-                                .append(s.getNombre())
+                                .append(s.getId())
                                 .append("\">")
-                                .append(s.getNombre())
+                                .append(s.getId())
                                 .append(" - ")
                                 .append(s.getFecha())
                                 .append("</option>");
                     }
                 }
-            } catch (ActividadNoExisteException e) {
-                // dejar la lista con la opción por defecto
             } catch (Exception e) {
-                System.err.println("[InscripcionServlet] Error obteniendo salidas: " + e.getMessage());
+                System.err.println("[InscriptionServlet] Error SOAP obteniendo salidas: " + e.getMessage());
             }
         }
         request.setAttribute("salidasHtml", salidasHtml.toString());
@@ -140,27 +137,21 @@ public class InscriptionServlet extends HttpServlet {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String fecha = hoy.format(formatter);
         
-        // Obtener costo aproximado desde la actividad
+        // Obtener costo aproximado desde la actividad vía SOAP
         float costo = 0.0f;
         try {
-            IControladorActividad ctrlAct = Fabrica.getInstance().getIControladorActividad();
-            DataActividad da = ctrlAct.verInfoActividad(actividad);
-            if (da != null) {
-                costo = da.getCosto();
-            }
-        } catch (ActividadNoExisteException e) {
-            // Actividad no encontrada: costo queda en 0
+            ActividadDTO da = svc.obtenerActividad(actividad);
+            if (da != null) costo = da.getCosto();
         } catch (Exception e) {
-            System.err.println("[InscripcionServlet] Error obteniendo costo de actividad: " + e.getMessage());
+            System.err.println("[InscriptionServlet] Error SOAP obteniendo costo de actividad: " + e.getMessage());
         }
 
-        // Llamar al controlador de inscripciones
-        IControladorInscripcion ctrlIns = Fabrica.getInstance().getIControladorInscripcion();
+        // Llamar al servicio SOAP de inscripciones (inscribirTurista)
         boolean exito = false;
         try {
-            exito = ctrlIns.inscribirTurista(actividad, salida, turista, cantidad, fecha, costo);
+            exito = svc.inscribirTurista(actividad, salida, turista, cantidad, fecha, costo);
         } catch (Exception e) {
-            System.err.println("[InscripcionServlet] Error al inscribir: " + e.getMessage());
+            System.err.println("[InscriptionServlet] Error SOAP al inscribir: " + e.getMessage());
             exito = false;
         }
 

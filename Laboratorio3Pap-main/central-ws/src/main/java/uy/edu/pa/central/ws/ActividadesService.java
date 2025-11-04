@@ -22,4 +22,15 @@ public interface ActividadesService {
     @WebMethod(operationName = "ObtenerSalida")
     @WebResult(name = "salida")
     SalidaDTO obtenerSalida(@WebParam(name = "id") String id);
+
+    @WebMethod(operationName = "InscribirTurista")
+    @WebResult(name = "exito")
+    boolean inscribirTurista(
+        @WebParam(name = "actividad") String actividad,
+        @WebParam(name = "salida") String salida,
+        @WebParam(name = "turista") String turista,
+        @WebParam(name = "cantidad") int cantidad,
+        @WebParam(name = "fecha") String fecha,
+        @WebParam(name = "costo") float costo
+    );
 }

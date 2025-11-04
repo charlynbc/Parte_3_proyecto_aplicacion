@@ -9,6 +9,18 @@
   <packaging>war</packaging>
 
   <dependencies>
+    <!-- Cliente SOAP generado (stubs) -->
+    <dependency>
+      <groupId>uy.edu.pa</groupId>
+      <artifactId>client-ws</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+    <!-- Cliente SOAP (stubs) para consumir el Servidor Central -->
+    <dependency>
+      <groupId>uy.edu.pa</groupId>
+      <artifactId>client-ws</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
     <!-- Laboratorio1.jar - Business Logic -->
     <dependency>
       <groupId>com</groupId>
@@ -54,21 +66,21 @@
         <scope>provided</scope>
     </dependency>
 
-    <!-- PostgreSQL Driver -->
+    <!-- PostgreSQL Driver (no usado en esta iteración: SOAP) -->
+    <!--
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>42.7.3</version>
     </dependency>
+    -->
 
-    <!-- EclipseLink JPA Implementation -->
+    <!-- EclipseLink / JPA (se dejarán para compatibilidad del proyecto pero no se usarán en login/actividades SOAP) -->
     <dependency>
       <groupId>org.eclipse.persistence</groupId>
       <artifactId>eclipselink</artifactId>
       <version>4.0.2</version>
     </dependency>
-
-    <!-- Jakarta Persistence API -->
     <dependency>
       <groupId>jakarta.persistence</groupId>
       <artifactId>jakarta.persistence-api</artifactId>

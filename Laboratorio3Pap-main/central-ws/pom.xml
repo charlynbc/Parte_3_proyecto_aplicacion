@@ -14,7 +14,8 @@
     <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <failOnMissingWebXml>false</failOnMissingWebXml>
-    <jakarta.ws.rs.version>4.0.0</jakarta.ws.rs.version>
+    <jakarta.xml.ws.version>4.0.0</jakarta.xml.ws.version>
+    <jakarta.jws.version>3.0.0</jakarta.jws.version>
     <jakarta.servlet.version>5.0.0</jakarta.servlet.version>
     <metro.version>4.0.2</metro.version>
     <jakarta.xml.bind.version>4.0.0</jakarta.xml.bind.version>
@@ -25,8 +26,14 @@
     <dependency>
       <groupId>jakarta.xml.ws</groupId>
       <artifactId>jakarta.xml.ws-api</artifactId>
-      <version>${jakarta.ws.rs.version}</version>
-      <scope>provided</scope>
+      <version>${jakarta.xml.ws.version}</version>
+    </dependency>
+
+    <!-- Jakarta JWS (annotations como @WebService) -->
+    <dependency>
+      <groupId>jakarta.jws</groupId>
+      <artifactId>jakarta.jws-api</artifactId>
+      <version>${jakarta.jws.version}</version>
     </dependency>
 
     <!-- Metro JAX-WS Runtime (includes servlet integration) -->
