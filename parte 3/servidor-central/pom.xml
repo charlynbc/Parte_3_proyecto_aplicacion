@@ -85,6 +85,16 @@
                     <target>11</target>
                 </configuration>
             </plugin>
+            
+            <!-- Plugin para ejecutar clases Java -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>publicadores.WebServices</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>

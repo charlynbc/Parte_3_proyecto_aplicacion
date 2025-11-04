@@ -45,4 +45,16 @@ public class WSUsuarioClient {
     public datatypes.DataUsuario[] getProveedores() throws Exception {
         return port.getProveedores();
     }
+    
+    public datatypes.DataUsuario obtenerUsuario(String nickname) throws Exception {
+        return port.obtenerUsuario(nickname);
+    }
+    
+    public datatypes.DataUsuario obtenerUsuarioPorEmail(String email) throws Exception {
+        return port.obtenerUsuarioPorEmail(email);
+    }
+    
+    public String obtenerTipoUsuario(String nickname) throws Exception {
+        return port.obtenerTipoUsuario(nickname);
+    }
 }

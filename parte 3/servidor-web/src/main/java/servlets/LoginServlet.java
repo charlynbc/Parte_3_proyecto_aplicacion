@@ -1,25 +1,16 @@
 package servlets;
 import exceptions.*;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import entities.Usuario;
-import entities.Turista;
-import entities.Proveedor;
+import datatypes.DataUsuario;
+import webserviceclients.WSUsuarioClient;
 
 import java.io.IOException;
-import java.util.List;
-
-import jakarta.persistence.PersistenceException;
-import utils.JpaUtil;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -58,24 +49,15 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
-        EntityManager em = null;
         try {
-            em = JpaUtil.getEntityManager();
+            WSUsuarioClient usuarioClient = new WSUsuarioClient();
+            DataUsuario usuario = null;
 
-            Usuario usuario = null;
-            TypedQuery<Usuario> query;
-
+            // Intentar obtener usuario por email o nickname
             if (trimmedIdentifier.contains("@")) {
-                query = em.createQuery("SELECT u FROM Usuario u WHERE LOWER(u.email) = :email", Usuario.class);
-                query.setParameter("email", trimmedIdentifier.toLowerCase());
+                usuario = usuarioClient.obtenerUsuarioPorEmail(trimmedIdentifier.toLowerCase());
             } else {
-                query = em.createQuery("SELECT u FROM Usuario u WHERE u.nickname = :nickname", Usuario.class);
-                query.setParameter("nickname", trimmedIdentifier);
-            }
-
-            List<Usuario> usuarios = query.setMaxResults(1).getResultList();
-            if (!usuarios.isEmpty()) {
-                usuario = usuarios.get(0);
+                usuario = usuarioClient.obtenerUsuario(trimmedIdentifier);
             }
 
             if (usuario == null) {
@@ -85,14 +67,15 @@ public class LoginServlet extends HttpServlet {
                 return;
             }
 
-            String storedPassword = usuario.getContra();
-            if (storedPassword == null || !storedPassword.equals(trimmedPassword)) {
+            // Verificar contraseña
+            if (usuario.getContra() == null || !usuario.getContra().equals(trimmedPassword)) {
                 request.setAttribute("error", "Credenciales inválidas");
                 request.setAttribute("username", trimmedIdentifier);
                 request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
                 return;
             }
 
+            // Crear sesión
             HttpSession session = request.getSession(true);
             session.setAttribute("usuario", usuario);
             session.setAttribute("usuarioId", usuario.getNickname());
@@ -100,26 +83,25 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("username", usuario.getNickname());
             session.setAttribute("email", usuario.getEmail());
 
-            if (usuario instanceof Turista) {
-                session.setAttribute("tipoUsuario", "turista");
-                session.setAttribute("userType", "Turista");
-            } else if (usuario instanceof Proveedor) {
+            // Determinar tipo de usuario usando Web Service
+            String tipoUsuario = usuarioClient.obtenerTipoUsuario(usuario.getNickname());
+            if ("proveedor".equals(tipoUsuario)) {
                 session.setAttribute("tipoUsuario", "proveedor");
                 session.setAttribute("userType", "Proveedor");
+            } else if ("turista".equals(tipoUsuario)) {
+                session.setAttribute("tipoUsuario", "turista");
+                session.setAttribute("userType", "Turista");
             } else {
+                session.setAttribute("tipoUsuario", "usuario");
                 session.setAttribute("userType", "Usuario");
             }
 
             response.sendRedirect(request.getContextPath() + "/dashboard");
 
-        } catch (PersistenceException e) {
-            request.setAttribute("error", "No se pudo conectar a la base de datos. Intenta nuevamente en unos minutos.");
+        } catch (Exception e) {
+            request.setAttribute("error", "No se pudo conectar al servidor. Intenta nuevamente en unos minutos.");
             request.setAttribute("username", trimmedIdentifier);
             request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
-            }
         }
     }
 }

@@ -22,4 +22,13 @@ public interface WSUsuarioInterface {
     
     @WebMethod
     datatypes.DataUsuario[] getProveedores() throws Exception;
+    
+    @WebMethod
+    datatypes.DataUsuario obtenerUsuario(String nickname) throws Exception;
+    
+    @WebMethod
+    datatypes.DataUsuario obtenerUsuarioPorEmail(String email) throws Exception;
+    
+    @WebMethod
+    String obtenerTipoUsuario(String nickname) throws Exception;
 }

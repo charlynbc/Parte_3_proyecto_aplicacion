@@ -1,8 +1,8 @@
 logica/ControladorSalida.class
 logica/MainPersistencia.class
 logica/IControladorActividad.class
-publicadores/WSInscripcion.class
 excepciones/SalidaRepetidaException.class
+publicadores/WSInscripcion.class
 logica/DataInscripcion.class
 logica/ControladorInscripcion.class
 logica/Fabrica.class
@@ -26,14 +26,14 @@ logica/ManejadorInscripcion.class
 logica/Usuario.class
 logica/DataActividad.class
 logica/DataUsuario.class
-logica/Proveedor.class
 persistence/JPAUtil.class
+logica/Proveedor.class
 logica/DataTurista.class
 logica/Actividad.class
-logica/DataProveedor.class
 excepciones/ActividadNoExisteException.class
+logica/DataProveedor.class
 logica/DataActividadRanking.class
 excepciones/SalidaNoExisteException.class
 publicadores/WebServices.class
-logica/IControladorSalida.class
 excepciones/UsuarioRepetidoException.class
+logica/IControladorSalida.class

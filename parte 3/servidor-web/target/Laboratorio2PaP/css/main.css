@@ -1,0 +1,46 @@
+/* ========================================
+   TURISMO.UY - MAIN STYLESHEET
+   Main entry point that imports all component styles
+   ======================================== */
+
+/* Base Styles */
+@import url('base.css');
+
+/* Layout Components */
+@import url('layout.css');
+@import url('navbar.css');
+@import url('footer.css');
+
+/* Form Components */
+@import url('forms.css');
+@import url('buttons.css');
+
+/* UI Components */
+@import url('cards.css');
+@import url('messages.css');
+
+/* Accessibility improvements */
+input:focus,
+button:focus,
+a:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.4);
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .nav-menu,
+    .logout-btn,
+    .btn,
+    footer {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        padding-top: 0;
+    }
+}

@@ -62,4 +62,50 @@ public class WSUsuario {
             throw new Exception(e.getMessage());
         }
     }
+    
+    @WebMethod
+    public DataUsuario obtenerUsuario(String nickname) throws Exception {
+        try {
+            return controlador.verInfoUsuario(nickname);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+    
+    @WebMethod
+    public DataUsuario obtenerUsuarioPorEmail(String email) throws Exception {
+        try {
+            // Buscar usuario por email - necesitamos implementar este método en el controlador
+            DataUsuario[] usuarios = controlador.getUsuarios();
+            for (DataUsuario usuario : usuarios) {
+                if (usuario.getEmail() != null && usuario.getEmail().toLowerCase().equals(email.toLowerCase())) {
+                    return usuario;
+                }
+            }
+            return null;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+    
+    @WebMethod
+    public String obtenerTipoUsuario(String nickname) throws Exception {
+        try {
+            DataUsuario usuario = controlador.verInfoUsuario(nickname);
+            if (usuario == null) {
+                return null;
+            }
+            
+            // Verificar si es turista o proveedor basado en campos específicos
+            DataUsuario[] proveedores = controlador.getProveedores();
+            for (DataUsuario proveedor : proveedores) {
+                if (proveedor.getNickname().equals(nickname)) {
+                    return "proveedor";
+                }
+            }
+            return "turista";
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 }
