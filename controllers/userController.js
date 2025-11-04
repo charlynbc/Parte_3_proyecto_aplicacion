@@ -1,8 +1,10 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
+const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-key';
+
 const generateToken = (userId) => {
-    return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '7d' });
+    return jwt.sign({ userId }, JWT_SECRET, { expiresIn: '7d' });
 };
 
 exports.register = async (req, res) => {
@@ -75,7 +77,7 @@ exports.login = async (req, res) => {
 
 exports.getProfile = async (req, res) => {
     try {
-        const user = await User.findById(req.user.userId).select('-password');
+        const user = await User.findById(req.user._id).select('-password');
         res.json(user);
     } catch (error) {
         res.status(500).json({ message: 'Error del servidor', error: error.message });
@@ -88,7 +90,7 @@ exports.updateProfile = async (req, res) => {
         delete updates.password; // Prevent password update through this route
         
         const user = await User.findByIdAndUpdate(
-            req.user.userId, 
+            req.user._id,
             updates, 
             { new: true, runValidators: true }
         ).select('-password');
