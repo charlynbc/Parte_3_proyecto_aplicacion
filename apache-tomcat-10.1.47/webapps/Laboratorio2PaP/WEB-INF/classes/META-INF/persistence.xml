@@ -21,13 +21,7 @@
                <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
                <property name="eclipselink.target-database" value="MySQL"/>
 
-               <!-- Generación automática de esquema en Railway -->
-               <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
-               <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
-
-               <!-- Logging moderado en producción -->
-               <property name="eclipselink.logging.level" value="WARNING"/>
-               <property name="eclipselink.logging.level.sql" value="OFF"/>
+               <!-- El resto de la configuración (URL, usuario, password, DDL, logging) se inyecta en runtime por utils.JpaUtil mediante variables de entorno -->
           </properties>
      </persistence-unit>
 

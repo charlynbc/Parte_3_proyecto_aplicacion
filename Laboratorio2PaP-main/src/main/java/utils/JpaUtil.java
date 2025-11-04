@@ -27,6 +27,22 @@ public final class JpaUtil {
     String directUrl = System.getenv("DB_URL");
     String directUser = System.getenv("DB_USER");
     String directPass = System.getenv("DB_PASSWORD");
+    // Soporte Railway: convertir MYSQL_PUBLIC_URL -> JDBC si DB_URL no está definido
+    if ((directUrl == null || directUrl.isBlank())) {
+        String publicUrl = System.getenv("MYSQL_PUBLIC_URL");
+        if (publicUrl != null && !publicUrl.isBlank()) {
+            try {
+                MysqlConn c = parseMysqlUrl(publicUrl.trim());
+                directUrl = c.toJdbcUrl();
+                if (directUser == null || directUser.isBlank()) directUser = c.user;
+                if (directPass == null || directPass.isBlank()) directPass = c.pass;
+                System.out.println("[JpaUtil] Derivado DB_URL desde MYSQL_PUBLIC_URL");
+            } catch (Exception ignore) {
+                // continúa con otras rutas
+            }
+        }
+    }
+    String prefer = env("DB_PREFER_SOURCE", "jndi"); // jndi | env | auto
 
     // 2) Intentar usar el DataSource JNDI de Tomcat si está disponible
     DataSource jndiDs = lookupDataSource("java:comp/env/jdbc/railway");
@@ -50,7 +66,13 @@ public final class JpaUtil {
         int attempt = 0;
         while (true) {
             try {
-                if (directUrl != null && !directUrl.isBlank()) {
+                // Preferencia: usar JNDI si está disponible (por defecto), salvo que DB_PREFER_SOURCE=env
+                if (jndiDs != null && !"env".equalsIgnoreCase(prefer)) {
+                    System.out.println("[JpaUtil] Usando DataSource JNDI 'jdbc/railway'. Probando conexión...");
+                    testConnection(jndiDs);
+                    overrides.put("jakarta.persistence.nonJtaDataSource", "java:comp/env/jdbc/railway");
+                    overrides.put("eclipselink.jdbc.datasource", "java:comp/env/jdbc/railway");
+                } else if (directUrl != null && !directUrl.isBlank()) {
                     System.out.println("[JpaUtil] Usando DB_URL de variables de entorno");
                     String url = directUrl.trim();
                     String user = (directUser == null) ? "" : directUser.trim();
@@ -62,13 +84,6 @@ public final class JpaUtil {
                     overrides.put("eclipselink.connection-pool.default.url", url);
 
                     testConnection(url, user, pass);
-                } else if (jndiDs != null) {
-                    // Probar conexión vía JNDI
-                    System.out.println("[JpaUtil] Usando DataSource JNDI 'jdbc/railway'. Probando conexión...");
-                    testConnection(jndiDs);
-                    // Indicar a EclipseLink que use el DataSource del contenedor
-                    overrides.put("jakarta.persistence.nonJtaDataSource", "java:comp/env/jdbc/railway");
-                    overrides.put("eclipselink.jdbc.datasource", "java:comp/env/jdbc/railway");
                 } else {
                     // 2) Fallback: construir URL con variables de entorno
                     String host = env("RAILWAY_TCP_PROXY_DOMAIN",
@@ -113,6 +128,36 @@ public final class JpaUtil {
                     throw new IllegalStateException("Inicialización de JPA interrumpida", ie);
                 }
             }
+        }
+    }
+
+    // Estructura simple para parsear mysql://user:pass@host:port/db
+    private static class MysqlConn {
+        final String user, pass, host, port, db;
+        MysqlConn(String u, String p, String h, String po, String d){ user=u; pass=p; host=h; port=po; db=d; }
+        String toJdbcUrl() {
+            String p = (port==null||port.isBlank())?"3306":port;
+            return "jdbc:mysql://"+host+":"+p+"/"+db
+                    +"?serverTimezone=UTC&allowPublicKeyRetrieval=true&sslMode=PREFERRED&useSSL=true&characterEncoding=UTF-8&useUnicode=true";
+        }
+    }
+
+    private static MysqlConn parseMysqlUrl(String url) {
+        // Formato esperado: mysql://user:pass@host:port/db
+        // Usamos java.net.URI para extraer componentes
+        try {
+            java.net.URI u = new java.net.URI(url.replaceFirst("^mysql://","http://"));
+            String userInfo = u.getUserInfo();
+            String user = userInfo != null && userInfo.contains(":") ? userInfo.substring(0, userInfo.indexOf(':')) : userInfo;
+            String pass = userInfo != null && userInfo.contains(":") ? userInfo.substring(userInfo.indexOf(':')+1) : "";
+            String host = u.getHost();
+            int p = u.getPort();
+            String port = p > 0 ? Integer.toString(p) : "3306";
+            String path = u.getPath();
+            String db = (path != null && path.length() > 1) ? path.substring(1) : "railway";
+            return new MysqlConn(user, pass, host, port, db);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("URL MySQL inválida: " + url, e);
         }
     }
 

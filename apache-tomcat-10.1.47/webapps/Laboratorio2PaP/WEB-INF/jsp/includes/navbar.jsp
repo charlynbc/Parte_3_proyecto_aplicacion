@@ -13,6 +13,9 @@
         <ul class="nav-menu">
             <li><a href="${pageContext.request.contextPath}/activities">Actividades</a></li>
             <li><a href="${pageContext.request.contextPath}/users">Usuarios</a></li>
+            <% if(isLoggedIn && "turista".equalsIgnoreCase((String)session.getAttribute("tipoUsuario"))) { %>
+                <li><a href="${pageContext.request.contextPath}/mis-salidas">Mis Salidas</a></li>
+            <% } %>
         </ul>
         
         <div class="nav-user">

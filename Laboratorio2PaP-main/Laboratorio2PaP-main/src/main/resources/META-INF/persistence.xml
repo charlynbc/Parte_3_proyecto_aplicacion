@@ -17,20 +17,11 @@
         <class>logica.Inscripcion</class>
 
         <properties>
-            <!-- Configuración JDBC -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://shortline.proxy.rlwy.net:42806/railway?serverTimezone=UTC"/>
-            <property name="jakarta.persistence.jdbc.user" value="root"/>
-            <property name="jakarta.persistence.jdbc.password" value="qKbEKYnriXxQvaVbqxfUIQbgsVRhBaNA"/>
+            <!-- Configuración JDBC (driver) -->
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-
-            <!-- Acción sobre el esquema -->
-            <property name="jakarta.persistence.schema-generation.database.action" value="create-or-extend-tables"/>
-
-            <!-- Config EclipseLink -->
-            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
-            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
             <property name="eclipselink.target-database" value="MySQL"/>
-            <property name="eclipselink.logging.level" value="INFO"/>
+
+            <!-- El resto de la configuración se inyecta en runtime por utils.JpaUtil mediante variables de entorno -->
         </properties>
     </persistence-unit>
 </persistence>
