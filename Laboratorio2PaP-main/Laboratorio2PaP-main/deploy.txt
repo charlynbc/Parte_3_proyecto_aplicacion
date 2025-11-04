@@ -1,0 +1,18 @@
+# PASOS PARA DESPLEGAR EL LABORATORIO 2
+
+# 1. SI HICISTE CAMBIOS EN EL LABORATORIO 1, RECOMPILA PRIMERO:
+# Recompilar Laboratorio1.jar cuando hay cambios en Lab1:
+bash build-lab1-jar.sh
+mvn install:install-file -Dfile="src\main\webapp\WEB-INF\lib\Laboratorio1.jar" -DgroupId=com -DartifactId=Laboratorio1 -Dversion=1 -Dpackaging=jar
+
+# 2. COMPILAR Y EMPAQUETAR EL LABORATORIO 2:
+mvn clean package
+
+# 3. DESPLEGAR EN TOMCAT:
+cp target/Laboratorio2PaP.war apache-tomcat-10.1.47/webapps/ROOT.war
+
+# 4. REINICIAR TOMCAT:
+./apache-tomcat-10.1.47/bin/shutdown.sh &&
+./apache-tomcat-10.1.47/bin/startup.sh
+
+# La aplicación correra en: http://localhost:8080

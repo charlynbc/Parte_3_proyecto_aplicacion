@@ -1,0 +1,137 @@
+{
+  "marco_teorico": {
+    "client_side": {
+      "html": "Lenguaje de marcado para estructurar documentos web. Uso de formularios (<form>, <input>, etc.) con soporte de atributos modernos (email, date, color, number).",
+      "css": "Hojas de estilo en cascada que separan presentación de contenido. Selectores por etiqueta, clase, id y reglas de especificidad. Permite diseño responsive con media queries, flexbox y grid system (Bootstrap).",
+      "dom": "Modelo en árbol que representa la estructura del documento. Provee interfaz estándar para recorrer y modificar elementos, atributos y texto.",
+      "javascript": "Lenguaje interpretado que se ejecuta en el navegador. Permite manipular el DOM, manejar eventos y alterar contenido dinámicamente.",
+      "jquery": "Librería que simplifica manipulación del DOM, eventos, animaciones y AJAX.",
+      "ajax": "Comunicación con el servidor en segundo plano sin recargar la página. Uso de XMLHttpRequest.",
+      "bootstrap": "Framework front-end CSS/JS para diseño mobile-first y responsive."
+    },
+    "server_side": {
+      "jakarta_ee": "Plataforma empresarial multicapa basada en contenedores.",
+      "tomcat": "Servidor de aplicaciones que soporta Servlet API y JSP.",
+      "servlets": "Objetos Java que procesan peticiones HTTP. Manejan HttpServletRequest/Response, sesiones y contexto.",
+      "jsp": "Tecnología basada en servlets para separar presentación de lógica. Incluye directivas, expresiones, scriptlets, acciones y objetos implícitos.",
+      "mvc": "Patrón Modelo-Vista-Controlador. Servlet como controlador, lógica en modelo, JSP como vista."
+    }
+  },
+  "restricciones_dominio": {
+    "componentes": {
+      "servidor_central": "Contiene lógica de negocio reutilizada por estación de trabajo y servidor web (como librería JAR).",
+      "estacion_trabajo": "Aplicación Swing. Se agrega atributo 'estado' a Actividad Turística.",
+      "servidor_web": "Aplicación JSP/Servlets desplegada en Tomcat. Consume lógica del Servidor Central, no la implementa."
+    },
+    "actores": {
+      "administrador": "Usa solo estación de trabajo. No accede a aplicación web.",
+      "visitante": "Accede a la aplicación web sin iniciar sesión. Funcionalidad limitada.",
+      "turista_proveedor": "Usuario registrado autenticado. Acceso ampliado según rol."
+    },
+    "casos_de_uso": {
+      "inicio_sesion": {
+        "actor": "Visitante",
+        "campos": ["nickname o mail", "contraseña"],
+        "restricciones": [
+          "Validar credenciales contra el Servidor Central.",
+          "Si inválido → mostrar advertencia, permitir reintento o cancelar.",
+          "Al autenticar, cambiar estado de Visitante → Turista/Proveedor."
+        ]
+      },
+      "cierre_sesion": {
+        "actor": "Usuario autenticado",
+        "campos": [],
+        "restricciones": [
+          "Cerrar sesión actual y devolver estado a Visitante."
+        ]
+      },
+      "alta_usuario": {
+        "actor": "Visitante",
+        "campos_obligatorios": ["nickname (único)", "nombre", "apellido", "contraseña", "confirmación de contraseña", "correo electrónico (único)", "fecha de nacimiento"],
+        "campos_opcionales": ["imagen"],
+        "rol_turista": ["nacionalidad"],
+        "rol_proveedor": ["descripción", "link a sitio web (opcional)"],
+        "restricciones": [
+          "Validar unicidad de nickname y correo.",
+          "Si están en uso, informar y permitir corrección o cancelación."
+        ]
+      },
+      "consulta_usuario": {
+        "actor": "Visitante, Turista, Proveedor",
+        "campos": [],
+        "restricciones": [
+          "Mostrar datos básicos (sin contraseña) + imagen si existe.",
+          "Proveedor: mostrar actividades Confirmadas + salidas.",
+          "Turista: mostrar salidas a las que está inscripto.",
+          "Proveedor viendo su propio perfil: también actividades Agregadas y Rechazadas.",
+          "Turista viendo su propio perfil: también detalles de inscripciones (costo, fecha, cantidad de turistas)."
+        ]
+      },
+      "modificar_usuario": {
+        "actor": "Turista, Proveedor",
+        "campos_editables": ["nombre", "apellido", "contraseña", "fecha de nacimiento", "imagen (opcional)", "otros datos según rol"],
+        "restricciones": [
+          "No se puede modificar nickname ni correo electrónico."
+        ]
+      },
+      "alta_actividad_turistica": {
+        "actor": "Proveedor",
+        "campos_obligatorios": ["nombre (único)", "descripción", "duración (horas)", "costo (UYU)", "ciudad", "fecha de alta"],
+        "campos_opcionales": ["imagen"],
+        "restricciones": [
+          "Nombre debe ser único.",
+          "Estado inicial siempre = 'Agregada'."
+        ]
+      },
+      "consulta_actividad_turistica": {
+        "actor": "Visitante, Proveedor, Turista",
+        "restricciones": [
+          "Mostrar datos básicos + salidas + imagen.",
+          "Si elige salida → mostrar detalle según CU Consulta de Salida."
+        ]
+      },
+      "alta_salida_turistica": {
+        "actor": "Proveedor",
+        "campos_obligatorios": ["nombre", "fecha", "hora", "turistas_max", "lugar"],
+        "campos_opcionales": ["imagen"],
+        "restricciones": [
+          "Debe estar asociada a una Actividad.",
+          "Nombre de salida debe ser único."
+        ]
+      },
+      "consulta_salida_turistica": {
+        "actor": "Visitante, Proveedor, Turista",
+        "restricciones": [
+          "Mostrar solo salidas de actividades Confirmadas.",
+          "Datos básicos + imagen si existe."
+        ]
+      },
+      "inscripcion_salida_turistica": {
+        "actor": "Turista",
+        "campos_obligatorios": ["actividad", "salida", "cantidad_turistas"],
+        "restricciones": [
+          "Validar que no exista inscripción duplicada.",
+          "Validar que no se supere turistas_max.",
+          "Registrar inscripción con fecha actual y costo correspondiente."
+        ]
+      },
+      "aceptar_rechazar_actividad": {
+        "actor": "Administrador",
+        "restricciones": [
+          "Listar actividades en estado Agregada.",
+          "Permitir cambiar estado a Confirmada o Rechazada."
+        ]
+      }
+    },
+    "requerimientos_especiales": {
+      "ui": "Página principal = login. El resto navegable desde ahí. No obligatorio usar JS o frameworks, pero permitido.",
+      "imagenes": "Usuarios, actividades y salidas pueden tener imágenes asociadas.",
+      "persistencia": "Todos los datos deben persistirse como en la primera entrega."
+    },
+    "tecnologias_obligatorias": {
+      "frontend": ["HTML5", "CSS", "JavaScript (opcional)", "Bootstrap (opcional)"],
+      "backend": ["JSP", "Servlets"],
+      "servidor": "Apache Tomcat"
+    }
+  }
+}

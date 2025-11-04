@@ -1,0 +1,4 @@
+- [ ] Update Tomcat datasource with new Railway credentials
+- [ ] Redeploy app and verify DB access
+- [ ] Run smoke tests (activities, users, registrations)
+- [ ] Report testing results
