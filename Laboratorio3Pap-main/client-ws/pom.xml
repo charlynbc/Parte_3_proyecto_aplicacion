@@ -10,8 +10,8 @@
   <name>Cliente SOAP (stubs)</name>
 
   <properties>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <metro.version>4.0.2</metro.version>
   <wsdl.baseUrl>http://localhost:8081/central-ws/services</wsdl.baseUrl>
@@ -27,6 +27,15 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>com.sun.xml.ws</groupId>
         <artifactId>jaxws-maven-plugin</artifactId>
