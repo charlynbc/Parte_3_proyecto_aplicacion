@@ -1,3 +1,31 @@
+# Build artifacts
+/target/
+**/target/
+
+# IDE
+/.idea/
+*.iml
+
+# Tomcat deploys and wars
+/apache-tomcat-10.1.47/webapps/
+/apache-tomcat-10.1.47-central/webapps/
+*.war
+
+# Logs
+*.log
+logs/
+
 # Ignorar archivos temporales y logs de Tomcat
 apache-tomcat-10.1.47/work/
 apache-tomcat-10.1.47/logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Maven
+/.mvn/
+/logs/
+
+# Generated sources
+**/generated-sources/
