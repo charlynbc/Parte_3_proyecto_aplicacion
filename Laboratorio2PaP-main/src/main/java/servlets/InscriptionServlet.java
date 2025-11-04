@@ -108,6 +108,9 @@ public class InscriptionServlet extends HttpServlet {
             turista = (String) session.getAttribute("username");
         }
 
+        // Cliente SOAP
+        ActividadesService svc = new ActividadesService_Service().getActividadesServicePort();
+
         String actividad = request.getParameter("actividad");
         String salida = request.getParameter("salida");
         String cantidadStr = request.getParameter("cantidad");
