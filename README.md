@@ -1,5 +1,9 @@
 # Laboratorio 2 PaP - Sistema de Inscripciones
 
+> Nueva iteración 2025: Tarea 3 (Web Services + Responsive)
+
+Consulta el plan y seguimiento paso a paso aquí: [README_TAREA3.md](./README_TAREA3.md)
+
 ## Descripción
 Sistema web de inscripciones desarrollado con Java EE/Jakarta EE, desplegado en Apache Tomcat 10.1 con integración a base de datos actualizada.
 
