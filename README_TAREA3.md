@@ -29,7 +29,7 @@ Casos de uso a cubrir en esta iteración (mínimos):
   - Es un front-end server-side (Servlets/JSP) que invoca al Servidor Central vía HTTP (REST o SOAP), sin enlazar jars de lógica.
   - Renderiza las vistas responsive para móvil y desktop.
 
-Nota sobre la elección técnica: por simplicidad de despliegue en Tomcat, propondremos REST JSON (JAX‑RS). Si se requiere estrictamente SOAP, dejaremos el plan de alternativa con Metro/CXF.
+Elección técnica: usaremos SOAP (JAX‑WS) como pediste. Implementaremos el Servidor Central con Metro JAX‑WS (Jakarta) en Tomcat 10. Si más adelante se requiere REST, lo dejaremos como alternativa documentada.
 
 ## 3) Plan por fases (qué haremos, qué se borra y dónde queda lo nuevo)
 
@@ -38,31 +38,23 @@ Fase 0 – Rama y documentación
 - Este documento: `README_TAREA3.md`. (Hecho)
 - Enlazar desde `README.md`. (Hecho)
 
-Fase 1 – Definición de contratos (API del Servidor Central)
-- Diseñar endpoints/operaciones para:
-  - Autenticación: POST `/api/auth/login` → {nickname/email, password} → {perfil + tipoUsuario}
-  - Logout: POST `/api/auth/logout`
-  - Listado/consulta de actividades: GET `/api/actividades`, GET `/api/actividades/{id}` (incluye salidas + imagen)
-  - Detalle de salida: GET `/api/salidas/{id}`
-- Especificar formatos JSON (request/response) y códigos de error.
-- Entregable: documento de contratos en `docs/api-contratos.md` (por crear).
+Fase 1 – Definición de contratos (WSDL/operaciones SOAP)
+- Diseñar puertos/operaciones para:
+  - AuthService: `ping()`, `login(identifier, password)`
+  - ActividadesService: `listarActividades()`, `obtenerActividad(id)`, `obtenerSalida(id)`
+- Definir DTOs (UserDTO, ActividadDTO, SalidaDTO) con JAXB.
+- Entregable: servicios publicados y WSDL accesibles bajo `/central-ws/services/*`.
 
-Fase 2 – Servidor Central (API REST)
-- Nuevo módulo o carpeta `central/` (o reutilizar proyecto actual separando responsabilidades) con:
-  - Recurso JAX‑RS `AuthResource` (login/logout).
-  - Recurso `ActividadesResource` y `SalidasResource`.
-  - DTOs serializables para requests/responses (evitar exponer entidades JPA en crudo).
-- Seguridad básica (sesión/token ligero) para identificar al usuario entre llamadas si hace falta.
-- Entregable: WAR del central (o contexto separado) corriendo en Tomcat.
+Fase 2 – Servidor Central (SOAP JAX‑WS)
+- Nuevo módulo `Laboratorio3Pap-main/central-ws` (WAR) con Metro JAX‑WS (Jakarta) en Tomcat 10.
+- Endpoints: `AuthService` y `ActividadesService` (con mocks iniciales, luego conectan a la DB Central).
+- Entregable: WAR `central-ws.war` desplegado; WSDL disponibles.
 
-Fase 3 – Servidor Web (cliente de la API)
-- Reemplazar usos del jar de lógica por invocaciones HTTP al Central.
-- Actualizar Servlets:
-  - `LoginServlet` → invoca `/api/auth/login` y setea sesión local con el resultado.
-  - `ActivitiesServlet`, `ActivityDetailServlet` → invocan `/api/actividades` y `/api/actividades/{id}`.
-  - `InscripcionServlet`/`MyRegistrationsServlet` → adaptar si el caso de uso está incluido en la iteración.
-- Añadir un cliente HTTP reutilizable (por ejemplo, `utils/ApiClient.java`) con manejo de baseURL, timeouts, JSON (Jackson), y errores.
-- Entregable: sitio web funcionando contra la API, sin acoplar jar de lógica.
+Fase 3 – Servidor Web (cliente SOAP)
+- Sustituir el uso del jar de lógica por consumo de servicios SOAP del Central.
+- Generar stubs (wsimport) en módulo `client-ws/` y usarlos desde el Web.
+- Actualizar Servlets para invocar a los stubs: `LoginServlet`, `ActivitiesServlet`, etc.
+- Entregable: sitio web funcionando contra el Central vía SOAP, sin acoplar jar de lógica.
 
 Fase 4 – Responsive Web Design (RWD)
 - Incluir Bootstrap 5 (o mantener CSS modular existente) y asegurar:
@@ -83,24 +75,19 @@ Fase 6 – Limpieza y notas de migración
   - Cliente HTTP del Web: `src/main/java/utils/ApiClient.java` y DTOs.
   - Vistas y CSS responsive: `src/main/webapp/` (Bootstrap/estilos).
 
-## 4) Diseño de contratos (borrador rápido)
+## 4) Contratos SOAP (borrador rápido)
 
-- POST `/api/auth/login`
-  - Request: `{ "identifier": "<nick|mail>", "password": "<pwd>" }`
-  - Response 200: `{ "nickname": "turi1", "nombre":"Ana", "tipoUsuario":"turista" }`
-  - 401: `{ "error": "Credenciales inválidas" }`
+- AuthService
+  - `string ping()` → "pong"
+  - `User login(string identifier, string password)` → Devuelve `UserDTO` o Fault
 
-- GET `/api/actividades`
-  - Response 200: `[{ "id":"Kayak Colonia", "lugar":"Colonia", "costo":1500, "imagen": "https://..." }, ...]`
+- ActividadesService
+  - `Actividad[] listarActividades()`
+  - `Actividad obtenerActividad(string id)`
+  - `Salida obtenerSalida(string id)`
 
-- GET `/api/actividades/{id}`
-  - Response 200: `{ "id":"Kayak Colonia", "descripcion":"...", "salidas":[{"id":"Salida-Kayak-1", "fecha":"2025-11-21", "hora":"10:00"}, ...] }`
-  - 404: `{ "error": "Actividad no encontrada" }`
-
-- GET `/api/salidas/{id}`
-  - Response 200: `{ "id":"Salida-Kayak-1", "lugar":"Puerto de Yates", "fecha":"2025-11-21", "hora":"10:00" }`
-
-(Estos contratos se precisarán en `docs/api-contratos.md`.)
+DTOs (JAXB): `UserDTO`, `ActividadDTO` (incluye `List<SalidaDTO>`), `SalidaDTO`.
+Los WSDL se publicarán bajo `http://localhost:8080/central-ws/services/*.wsdl`.
 
 ## 5) Qué ya hicimos en esta rama (Parte_3)
 
@@ -111,11 +98,11 @@ Fase 6 – Limpieza y notas de migración
 
 ## 6) Próximos pasos inmediatos
 
-1. Acordar REST (JAX‑RS) vs SOAP (JAX‑WS). Por simplicidad, propondremos REST.
-2. Crear esqueleto de Servidor Central con endpoints de login y actividades.
-3. Implementar `ApiClient` en el Servidor Web y adaptar `LoginServlet` y `ActivitiesServlet` a la API.
-4. Incorporar Bootstrap 5 (si aplicamos framework RWD) o validar que el CSS actual cumple RWD.
-5. Pruebas de extremo a extremo (login → actividades → detalle) exclusivamente vía servicios web.
+1. SOAP confirmado: usar JAX‑WS (Metro) en Tomcat 10.
+2. Esqueleto del Servidor Central creado en `Laboratorio3Pap-main/central-ws` (Hecho, con mocks).
+3. Generar stubs del cliente (`client-ws`) y adaptar servlets del Web para consumir SOAP.
+4. Incorporar/validar RWD (Bootstrap 5 o CSS existente) en vistas clave.
+5. Pruebas E2E vía SOAP.
 
 ## 7) Cómo ejecutar (estado actual)
 

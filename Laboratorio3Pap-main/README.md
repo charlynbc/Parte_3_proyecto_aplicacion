@@ -1,0 +1,46 @@
+# Laboratorio 3 PaP – SOAP (Servidor Central + Contratos)
+
+Aquí se guardará TODO lo nuevo de la iteración con Web Services (SOAP).
+
+## Módulos
+
+- `central-ws/` (WAR): Servidor Central SOAP con Metro JAX‑WS (Jakarta) en Tomcat 10.
+  - Endpoints iniciales: `AuthService` y `ActividadesService`.
+  - Mock de datos por ahora (luego se conecta a DB del Central).
+
+Próximos (a crear):
+- `client-ws/` (lib): Stubs del cliente generados desde WSDL para consumir desde el Servidor Web.
+- `docs/` (notas, WSDLs, contratos definitivos).
+
+## Cómo compilar y desplegar `central-ws`
+
+Requisitos:
+- Java 11
+- Maven 3.6+
+- Tomcat 10.1 (contexto recomendado: `/central-ws`)
+
+Pasos:
+```bash
+# Compilar y empaquetar
+mvn -q -DskipTests package -f central-ws/pom.xml
+
+# Copiar el WAR al Tomcat del repo
+cp central-ws/target/central-ws.war ../apache-tomcat-10.1.47/webapps/
+```
+
+Endpoints (una vez desplegado):
+- WSDL Auth: `http://localhost:8080/central-ws/services/AuthService?wsdl`
+- WSDL Actividades: `http://localhost:8080/central-ws/services/ActividadesService?wsdl`
+
+Pruebas rápidas:
+- `AuthService.ping()` → "pong".
+- `AuthService.login(identifier, password)` → UserDTO simulado.
+- `ActividadesService.listarActividades()` → lista simulada con una actividad y salida.
+
+## Notas
+- Todo el código nuevo de SOAP vive aquí para mantener separada la iteración 3.
+- La integración del Servidor Web existente consumirá estos servicios (sin jar de lógica).
+- Si el curso exige SOAP (JAX‑WS), nos quedamos en SOAP. Si nos permiten REST, dejamos constancia pero continuamos con SOAP como pediste.
+
+---
+Actualizado: 2025‑11‑04
