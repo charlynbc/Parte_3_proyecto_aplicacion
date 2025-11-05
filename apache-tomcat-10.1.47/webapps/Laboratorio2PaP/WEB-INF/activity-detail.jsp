@@ -97,7 +97,7 @@
 <body>
     <jsp:include page="/WEB-INF/jsp/includes/navbar.jsp"/>
 
-    <div class="main-content">
+    <div class="main-content container">
         <div class="page-header">
             <h1>${activity.nombre}</h1>
             <p>${activity.descripcion}</p>
@@ -150,9 +150,10 @@
                                 Lugar: ${dep.lugar} |
                                 Cupos: ${dep.turistasmax}
                             </div>
-                            <div>
+                            <div style="display:flex; gap: 0.5rem;">
+                                <a href="${pageContext.request.contextPath}/departure-detail?id=${dep.nombre}" class="btn-small">Ver Detalle</a>
                                 <c:if test="${sessionScope.userType eq 'Turista'}">
-                                    <a href="${pageContext.request.contextPath}/inscripcion?id=${dep.nombre}" class="btn-small" style="background:#27ae60;">Inscribirse</a>
+                                    <a href="${pageContext.request.contextPath}/inscripcion?actividad=${activity.id}&salida=${dep.nombre}" class="btn-small">Inscribirse</a>
                                 </c:if>
                             </div>
                         </div>

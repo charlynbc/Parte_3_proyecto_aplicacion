@@ -15,6 +15,25 @@ mvn -q -DskipTests package -f "$CENTRAL_DIR/pom.xml"
 WAR="$CENTRAL_DIR/target/central-ws.war"
 if [[ ! -f "$WAR" ]]; then err "No se generó el WAR: $WAR"; exit 1; fi
 
+# Parchear Laboratorio1.jar dentro del WAR para usar JNDI (jdbc/railway)
+OVERRIDE_XML="$ROOT_DIR/config/persistence.override.xml"
+if [[ -f "$OVERRIDE_XML" ]]; then
+  info "Aplicando override de persistence.xml en Laboratorio1.jar (JNDI jdbc/railway) para central-ws"
+  TMP_DIR="$(mktemp -d)"
+  unzip -q "$WAR" -d "$TMP_DIR"
+  LAB1_PATH=$(ls "$TMP_DIR/WEB-INF/lib"/Laboratorio1*.jar 2>/dev/null | head -n1 || true)
+  if [[ -n "${LAB1_PATH}" && -f "${LAB1_PATH}" ]]; then
+    mkdir -p "$TMP_DIR/META-INF"
+    cp "$OVERRIDE_XML" "$TMP_DIR/META-INF/persistence.xml"
+    (cd "$TMP_DIR" && zip -q -u "${LAB1_PATH#${TMP_DIR}/}" META-INF/persistence.xml)
+    # Reempaquetar WAR
+    (cd "$TMP_DIR" && zip -q -r "$WAR" .)
+  else
+    info "No se encontró Laboratorio1*.jar en el WAR; se omite override"
+  fi
+  rm -rf "$TMP_DIR"
+fi
+
 info "Arrancando instancia Tomcat Central (8081)"
 "$ROOT_DIR/scripts/tomcat-central.sh" start || true
 sleep 2 || true

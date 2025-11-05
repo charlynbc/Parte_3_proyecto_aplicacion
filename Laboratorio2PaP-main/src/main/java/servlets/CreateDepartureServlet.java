@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -23,6 +24,20 @@ import excepciones.ActividadNoExisteException;
 public class CreateDepartureServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("username") == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+
+        String tipoUsuario = (String) session.getAttribute("tipoUsuario");
+        if (tipoUsuario == null || !"proveedor".equalsIgnoreCase(tipoUsuario)) {
+            request.setAttribute("error", "Solo los proveedores pueden crear salidas turisticas.");
+            request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
+            return;
+        }
+
+        String proveedor = (String) session.getAttribute("username");
         try {
             String activityId = request.getParameter("activityId");
             String fechaStr = request.getParameter("departureDate");
@@ -37,7 +52,6 @@ public class CreateDepartureServlet extends HttpServlet {
                 request.setAttribute("error", "Todos los campos obligatorios deben estar completos.");
                 // Repopular la lista de actividades para el JSP antes de forward
                 try {
-                    String proveedor = (String) request.getSession().getAttribute("username");
                     IControladorActividad ctrlAct = Fabrica.getInstance().getIControladorActividad();
                     DataActividad[] actividades = new DataActividad[0];
                     try {

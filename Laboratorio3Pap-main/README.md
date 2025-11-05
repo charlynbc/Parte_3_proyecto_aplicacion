@@ -1,45 +1,63 @@
-# Laboratorio 3 PaP – SOAP (Servidor Central + Contratos)
+# Laboratorio 3 PaP – SOAP (Servidor Central + Cliente)
 
-Aquí se guardará TODO lo nuevo de la iteración con Web Services (SOAP).
+Aquí va TODO lo requerido por la letra para la iteración con Web Services (SOAP): servidor central y stubs de cliente.
 
 ## Módulos
 
-- `central-ws/` (WAR): Servidor Central SOAP con Metro JAX‑WS (Jakarta) en Tomcat 10.
-  - Endpoints iniciales: `AuthService` y `ActividadesService`.
-  - Mock de datos por ahora (luego se conecta a DB del Central).
+- `central-ws/` (WAR): Servidor Central SOAP (Metro JAX‑WS / Jakarta) para Tomcat 10.1 (puerto 8081).
+  - Servicios expuestos:
+    - `AuthService`: `login`, `ping`.
+    - `ActividadesService`: `InscribirTurista(actividad, salida, turista, cantidad, fecha, costo)` y `ListarInscripcionesPorTurista(turista)`.
+  - Persistencia real (JPA/EclipseLink + MySQL vía JNDI `jdbc/railway`).
 
-Próximos (a crear):
-- `client-ws/` (lib): Stubs del cliente generados desde WSDL para consumir desde el Servidor Web.
-- `docs/` (notas, WSDLs, contratos definitivos).
+- `client-ws/` (JAR): Stubs generados por wsimport para consumo desde el Servidor Web (en 8080). Paquete: `uy.edu.pa.central.client`.
 
-## Cómo compilar y desplegar `central-ws` (puerto 8081)
+No se agrega nada extra fuera de estos módulos.
 
-Requisitos:
-- Java 11
-- Maven 3.6+
+## Requisitos
 
-Pasos (usa una instancia Tomcat separada en 8081):
+- Java 17 (mandatorio por la letra)
+- Maven 3.9+
+- Tomcat 10.1 (central en 8081)
+
+## Build y deploy del Central (8081)
+
+1) Compilar y empaquetar el WAR del central:
 ```bash
-# Arrancar Tomcat central y desplegar
-./deploy-central.sh
-
-# Ver logs del central
-./scripts/tomcat-central.sh logs
+cd Laboratorio3Pap-main/central-ws
+mvn -q -DskipTests package
 ```
 
-Endpoints (una vez desplegado en 8081):
-- WSDL Auth: `http://localhost:8081/central-ws/services/AuthService?wsdl`
-- WSDL Actividades: `http://localhost:8081/central-ws/services/ActividadesService?wsdl`
+2) Desplegar en Tomcat 10.1 (instancia central en 8081). Opciones:
+- Usar el script del repo (recomendado):
+```bash
+./deploy-central.sh
+```
+- O copiar manualmente el WAR `target/central-ws.war` al webapps del Tomcat central y reiniciar.
 
-Pruebas rápidas:
-- `AuthService.ping()` → "pong".
-- `AuthService.login(identifier, password)` → UserDTO simulado.
-- `ActividadesService.listarActividades()` → lista simulada con una actividad y salida.
+3) Verificar WSDLs:
+- `http://localhost:8081/central-ws/services/AuthService?wsdl`
+- `http://localhost:8081/central-ws/services/ActividadesService?wsdl`
 
-## Notas
-- Todo el código nuevo de SOAP vive aquí para mantener separada la iteración 3.
-- La integración del Servidor Web existente consumirá estos servicios (sin jar de lógica).
-- Si el curso exige SOAP (JAX‑WS), nos quedamos en SOAP. Si nos permiten REST, dejamos constancia pero continuamos con SOAP como pediste.
+## Build de los Stubs de Cliente
+
+Genera e instala el JAR de stubs en el repositorio local para que el Servidor Web lo use como dependencia:
+```bash
+cd Laboratorio3Pap-main/client-ws
+mvn -q -DskipTests clean install
+```
+Los WSDLs se toman de `${wsdl.baseUrl}` (por defecto `http://localhost:8081/central-ws/services`).
+
+## Contrato (DTOs principales)
+
+- `UserDTO` (AuthService)
+- `InscripcionDTO` (ActividadesService): salidaNombre, actividadNombre, fechaSalida, horaSalida, lugar, cantidad, costo, fechaInscripcion, imagen.
+
+## Notas de configuración
+
+- El WAR del central incluye Metro (`jaxws-rt`) y configuración en `WEB-INF/sun-jaxws.xml` y `WEB-INF/web.xml`.
+- La persistencia JPA usa JNDI `jdbc/railway`. Durante el deploy, el script ajusta `persistence.xml` para el entorno.
+- El módulo `client-ws` genera stubs en el paquete `uy.edu.pa.central.client` y se usa desde el Servidor Web (8080) para cumplir que las servlets consumen SOLO SOAP.
 
 ---
-Actualizado: 2025‑11‑04
+Actualizado: 2025‑11‑05

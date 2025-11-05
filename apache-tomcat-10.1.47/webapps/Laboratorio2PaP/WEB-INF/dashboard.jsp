@@ -10,54 +10,29 @@
     
     <jsp:include page="/WEB-INF/jsp/includes/navbar.jsp"/>
     
-    <div class="container mt-4" style="min-height: auto;">
-        <div class="hero-section">
-            <div class="hero-icon">👋</div>
+    <div class="main-content container">
+        <div class="page-header" style="text-align:center;">
+            <div style="font-size:2.5rem;">👋</div>
             <h1>Bienvenido, ${sessionScope.username}</h1>
+            <p>¿Qué deseas hacer hoy?</p>
         </div>
-
-        <div class="login-section" style="background: #fff;">
-            <div class="login-header">
-                <h2>Panel de Control</h2>
-                <p>¿Qué deseas hacer hoy?</p>
-            </div>
-
-            <div class="register-links" style="border-top: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                
-                <%
-                    String userType = (String) session.getAttribute("userType");
-                    if ("Turista".equals(userType)) {
-                %>
-                    <a href="${pageContext.request.contextPath}/activities" class="register-btn" style="width: 100%; text-align: center;">
-                        🎯 Actividades Turísticas
-                    </a>
-                    
-                <%
-                    }
-                %>
-                
-                <%
-                    if ("Proveedor".equals(userType)) {
-                %>
-                    <a href="${pageContext.request.contextPath}/create-departure" class="register-btn" style="width: 100%; text-align: center;">
-                        🚌 Nueva Salida Turística
-                    </a>
-
-                    <a href="${pageContext.request.contextPath}/create-activity" class="register-btn" style="width: 100%; text-align: center;">
-                        📊 Nueva Actividad
-                    </a>
-                <%
-                    }
-                %>
-                
-                <a href="${pageContext.request.contextPath}/user-profile" class="register-btn" style="width: 100%; text-align: center;">
-                    👤 Mi Perfil
-                </a>
-                
-                <a href="${pageContext.request.contextPath}/logout" class="register-btn" style="width: 100%; text-align: center; border-color: #dc3545; color: #dc3545;">
-                    🚪 Cerrar Sesión
-                </a>
-            </div>
+        <div class="navigation-grid">
+            <%
+                String userType = (String) session.getAttribute("userType");
+                if ("Turista".equals(userType)) {
+            %>
+            <a href="${pageContext.request.contextPath}/activities" class="nav-card">🎯 Actividades Turísticas</a>
+            <%
+                }
+                if ("Proveedor".equals(userType)) {
+            %>
+            <a href="${pageContext.request.contextPath}/create-departure" class="nav-card">🚌 Nueva Salida Turística</a>
+            <a href="${pageContext.request.contextPath}/create-activity" class="nav-card">📊 Nueva Actividad</a>
+            <%
+                }
+            %>
+            <a href="${pageContext.request.contextPath}/user-profile" class="nav-card">👤 Mi Perfil</a>
+            <a href="${pageContext.request.contextPath}/logout" class="nav-card">🚪 Cerrar Sesión</a>
         </div>
     </div>
     

@@ -41,6 +41,10 @@ fi
 
 info "Compilando WAR (skip tests)"
 pushd "$PROJECT_DIR" >/dev/null
+# Forzar Java 17 para la compilación con Maven
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+export PATH="$JAVA_HOME/bin:$PATH"
+java -version || true
 mvn -q -DskipTests clean package
 popd >/dev/null
 

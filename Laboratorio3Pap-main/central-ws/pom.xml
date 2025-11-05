@@ -62,6 +62,32 @@
       <artifactId>jaxb-impl</artifactId>
       <version>4.0.4</version>
     </dependency>
+
+    <!-- Laboratorio1.jar: entidades y lógica de dominio -->
+    <dependency>
+      <groupId>com</groupId>
+      <artifactId>Laboratorio1</artifactId>
+      <version>1</version>
+    </dependency>
+
+    <!-- JPA / EclipseLink para persistencia real en el central -->
+    <dependency>
+      <groupId>org.eclipse.persistence</groupId>
+      <artifactId>eclipselink</artifactId>
+      <version>4.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.persistence</groupId>
+      <artifactId>jakarta.persistence-api</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+    <!-- Driver MySQL (runtime) -->
+    <dependency>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
+      <version>8.4.0</version>
+      <scope>runtime</scope>
+    </dependency>
   </dependencies>
 
   <build>

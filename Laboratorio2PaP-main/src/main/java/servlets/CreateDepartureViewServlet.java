@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import logica.Fabrica;
 import logica.IControladorActividad;
@@ -15,7 +16,20 @@ import excepciones.ActividadNoExisteException;
 public class CreateDepartureViewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String proveedor = (String) request.getSession().getAttribute("username");
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("username") == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+
+        String tipoUsuario = (String) session.getAttribute("tipoUsuario");
+        if (tipoUsuario == null || !"proveedor".equalsIgnoreCase(tipoUsuario)) {
+            request.setAttribute("error", "Solo los proveedores pueden gestionar salidas turisticas.");
+            request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
+            return;
+        }
+
+        String proveedor = (String) session.getAttribute("username");
         IControladorActividad controlador = Fabrica.getInstance().getIControladorActividad();
         DataActividad[] actividades = new DataActividad[0];
         try {

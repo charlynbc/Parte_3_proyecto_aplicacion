@@ -9,32 +9,23 @@
   <packaging>war</packaging>
 
   <dependencies>
-    <!-- JAX-WS API for Web Services Client -->
+    <!-- Cliente SOAP generado (stubs) -->
     <dependency>
-      <groupId>javax.xml.ws</groupId>
-      <artifactId>jaxws-api</artifactId>
-      <version>2.3.1</version>
+      <groupId>uy.edu.pa</groupId>
+      <artifactId>client-ws</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
     </dependency>
-    
-    <!-- JAX-WS Runtime for Client -->
+    <!-- Cliente SOAP (stubs) para consumir el Servidor Central -->
     <dependency>
-      <groupId>com.sun.xml.ws</groupId>
-      <artifactId>jaxws-rt</artifactId>
-      <version>2.3.3</version>
+      <groupId>uy.edu.pa</groupId>
+      <artifactId>client-ws</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
     </dependency>
-
-    <!-- JAXB API (required for JAX-WS) -->
+    <!-- Laboratorio1.jar - Business Logic -->
     <dependency>
-      <groupId>javax.xml.bind</groupId>
-      <artifactId>jaxb-api</artifactId>
-      <version>2.3.1</version>
-    </dependency>
-
-    <!-- JAXB Runtime -->
-    <dependency>
-      <groupId>org.glassfish.jaxb</groupId>
-      <artifactId>jaxb-runtime</artifactId>
-      <version>2.3.3</version>
+      <groupId>com</groupId>
+      <artifactId>Laboratorio1</artifactId>
+      <version>1</version>
     </dependency>
 
     <!-- Jakarta EE Web API -->
@@ -75,21 +66,21 @@
         <scope>provided</scope>
     </dependency>
 
-    <!-- PostgreSQL Driver -->
+    <!-- PostgreSQL Driver (no usado en esta iteración: SOAP) -->
+    <!--
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>42.7.3</version>
     </dependency>
+    -->
 
-    <!-- EclipseLink JPA Implementation -->
+    <!-- EclipseLink / JPA (se dejarán para compatibilidad del proyecto pero no se usarán en login/actividades SOAP) -->
     <dependency>
       <groupId>org.eclipse.persistence</groupId>
       <artifactId>eclipselink</artifactId>
       <version>4.0.2</version>
     </dependency>
-
-    <!-- Jakarta Persistence API -->
     <dependency>
       <groupId>jakarta.persistence</groupId>
       <artifactId>jakarta.persistence-api</artifactId>
@@ -106,8 +97,8 @@
   </dependencies>
 
   <properties>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
@@ -119,7 +110,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
+        <version>3.11.0</version>
         <configuration>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.target}</target>

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,53 +14,49 @@
 <body>
     <jsp:include page="/WEB-INF/jsp/includes/navbar.jsp" />
     
-    <div class="inscription-container">
-        <div class="inscription-card">
-            <div class="inscription-header">
-                <h2>🎟️ Inscripción a Salida Turística</h2>
-                <p>Complete el formulario para registrarse en una salida</p>
+    <div class="main-content container">
+        <div class="card">
+            <div class="card-content">
+                <h1 style="margin-bottom: 0.5rem;">🎟️ Inscripción a Salida Turística</h1>
+                <p style="color:#666; margin-bottom: 1rem;">Complete el formulario para registrarse en una salida</p>
+
+                <c:if test="${not empty error}">
+                    <div class="alert alert-error" role="alert">${error}</div>
+                </c:if>
+                <c:if test="${not empty success}">
+                    <div class="alert" role="alert">${success}</div>
+                </c:if>
+
+                <form method="post" action="inscripcion" id="inscripcionForm" novalidate>
+                    <div class="form-group">
+                        <label for="actividad">Actividad Turística</label>
+                        <select id="actividad" name="actividad" onchange="onActividadChange(this.value)" required>
+                            <option value="">-- Seleccione una actividad --</option>
+                            <%= request.getAttribute("actividadesHtml") != null ? request.getAttribute("actividadesHtml") : "" %>
+                        </select>
+                        <div class="form-hint">Elija la actividad turística de su interés</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="salida">Salida Disponible</label>
+                        <select id="salida" name="salida" required>
+                            <%= request.getAttribute("salidasHtml") != null ? request.getAttribute("salidasHtml") : "<option value=\"\">-- Seleccione una salida --</option>" %>
+                        </select>
+                        <div class="form-hint">Seleccione la fecha y horario de la salida</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cantidad">Cantidad de Turistas</label>
+                        <input type="number" id="cantidad" name="cantidad" value="1" min="1" max="50" required>
+                        <div class="form-hint">Indique el número de personas que se inscribirán</div>
+                    </div>
+
+                    <div class="form-actions" style="display:flex; gap:0.75rem;">
+                        <button type="submit" class="btn">✓ Confirmar Inscripción</button>
+                        <a href="${pageContext.request.contextPath}/" class="register-btn">← Cancelar</a>
+                    </div>
+                </form>
             </div>
-
-            <c:if test="${not empty error}">
-                <div class="error-message">${error}</div>
-            </c:if>
-            <c:if test="${not empty success}">
-                <div class="success-message">${success}</div>
-            </c:if>
-
-            <form method="post" action="inscripcion" id="inscripcionForm">
-                <div class="form-group">
-                    <label for="actividad">Actividad Turística</label>
-                    <select id="actividad" name="actividad" onchange="onActividadChange(this.value)" required>
-                        <option value="">-- Seleccione una actividad --</option>
-                        <%= request.getAttribute("actividadesHtml") != null ? request.getAttribute("actividadesHtml") : "" %>
-                    </select>
-                    <div class="help-text">Elija la actividad turística de su interés</div>
-                </div>
-
-                <div class="form-group">
-                    <label for="salida">Salida Disponible</label>
-                    <select id="salida" name="salida" required>
-                        <%= request.getAttribute("salidasHtml") != null ? request.getAttribute("salidasHtml") : "<option value=\"\">-- Seleccione una salida --</option>" %>
-                    </select>
-                    <div class="help-text">Seleccione la fecha y horario de la salida</div>
-                </div>
-
-                <div class="form-group">
-                    <label for="cantidad">Cantidad de Turistas</label>
-                    <input type="number" id="cantidad" name="cantidad" value="1" min="1" max="50" required>
-                    <div class="help-text">Indique el número de personas que se inscribirán</div>
-                </div>
-
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">
-                        ✓ Confirmar Inscripción
-                    </button>
-                    <a href="${pageContext.request.contextPath}/" class="btn btn-secondary">
-                        ← Cancelar
-                    </a>
-                </div>
-            </form>
         </div>
     </div>
 
@@ -105,16 +102,16 @@
             }
         })();
 
-        // Form validation feedback
-        document.getElementById('inscripcionForm').addEventListener('submit', function(e) {
-            const actividad = document.getElementById('actividad').value;
-            const salida = document.getElementById('salida').value;
-            
-            if (!actividad || !salida) {
-                e.preventDefault();
-                alert('Por favor, complete todos los campos obligatorios.');
-            }
-        });
+        // Form validation feedback simple (sin Bootstrap)
+        (function() {
+            var form = document.getElementById('inscripcionForm');
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+            }, false);
+        })();
     </script>
 </body>
 </html>

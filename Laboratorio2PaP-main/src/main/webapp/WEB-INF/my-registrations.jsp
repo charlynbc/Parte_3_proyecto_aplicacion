@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
-<%@ page import="logica.*" %>
+<%@ page import="uy.edu.pa.central.client.*" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,30 +28,28 @@
         <%
             }
 
-            List<Inscripcion> inscripciones = (List<Inscripcion>) request.getAttribute("inscripciones");
-            if (inscripciones != null && !inscripciones.isEmpty()) {
+            List<InscripcionDTO> inscripcionesDto = (List<InscripcionDTO>) request.getAttribute("inscripcionesDto");
+            if (inscripcionesDto != null && !inscripcionesDto.isEmpty()) {
         %>
             <div class="card-grid">
                 <%
-                    for (Inscripcion ins : inscripciones) {
-                        Salida s = ins.getSalida();
-                        Actividad a = (s != null) ? s.getActividad() : null;
-                        String img = (s != null && s.getImagen() != null && !s.getImagen().trim().isEmpty())
-                                ? s.getImagen() : "https://images.unsplash.com/photo-1482192505345-5655af888cc4?q=80&w=1200&auto=format&fit=crop";
+                    for (InscripcionDTO ins : inscripcionesDto) {
+                        String img = (ins.getImagen() != null && !ins.getImagen().trim().isEmpty())
+                                ? ins.getImagen() : "https://images.unsplash.com/photo-1482192505345-5655af888cc4?q=80&w=1200&auto=format&fit=crop";
                 %>
                     <div class="card">
                         <div class="card-image">
                             <img src="<%= img %>" alt="Imagen de salida"/>
                         </div>
                         <div class="card-content">
-                            <div class="card-title"><%= (s != null) ? s.getNombre() : "Salida" %></div>
+                            <div class="card-title"><%= ins.getSalidaNombre() %></div>
                             <div class="card-description">
-                                <div><strong>Actividad:</strong> <%= (a != null) ? a.getNombre() : "" %></div>
-                                <div><strong>Fecha:</strong> <%= (s != null && s.getFecha() != null) ? new java.text.SimpleDateFormat("dd/MM/yyyy").format(s.getFecha()) : "" %> 
-                                    <strong style="margin-left:12px;">Hora:</strong> <%= (s != null && s.getHora() != null) ? s.getHora() : "" %></div>
-                                <div><strong>Lugar:</strong> <%= (s != null) ? s.getLugar() : "" %></div>
-                                <div><strong>Cantidad Inscripta:</strong> <%= ins.getCantTuristas() %></div>
-                                <div><strong>Inscripto el:</strong> <%= (ins.getFechaInscripcion() != null) ? new java.text.SimpleDateFormat("dd/MM/yyyy").format(ins.getFechaInscripcion()) : "" %></div>
+                                <div><strong>Actividad:</strong> <%= ins.getActividadNombre() %></div>
+                                <div><strong>Fecha:</strong> <%= ins.getFechaSalida() %>
+                                    <strong style="margin-left:12px;">Hora:</strong> <%= ins.getHoraSalida() != null ? ins.getHoraSalida() : "" %></div>
+                                <div><strong>Lugar:</strong> <%= ins.getLugar() %></div>
+                                <div><strong>Cantidad Inscripta:</strong> <%= ins.getCantidad() %></div>
+                                <div><strong>Inscripto el:</strong> <%= ins.getFechaInscripcion() != null ? ins.getFechaInscripcion() : "" %></div>
                             </div>
                         </div>
                     </div>

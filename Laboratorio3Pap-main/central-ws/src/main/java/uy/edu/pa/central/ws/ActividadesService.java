@@ -6,6 +6,7 @@ import jakarta.jws.WebResult;
 import jakarta.jws.WebService;
 import uy.edu.pa.central.ws.dtos.ActividadDTO;
 import uy.edu.pa.central.ws.dtos.SalidaDTO;
+import uy.edu.pa.central.ws.dtos.InscripcionDTO;
 import java.util.List;
 
 @WebService(name = "ActividadesService", targetNamespace = "http://ws.central.pa.edu.uy/")
@@ -32,5 +33,11 @@ public interface ActividadesService {
         @WebParam(name = "cantidad") int cantidad,
         @WebParam(name = "fecha") String fecha,
         @WebParam(name = "costo") float costo
+    );
+
+    @WebMethod(operationName = "ListarInscripcionesPorTurista")
+    @WebResult(name = "inscripciones")
+    List<InscripcionDTO> listarInscripcionesPorTurista(
+        @WebParam(name = "turista") String turista
     );
 }

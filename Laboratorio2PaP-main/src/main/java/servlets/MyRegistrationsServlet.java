@@ -1,6 +1,5 @@
 package servlets;
 
-import jakarta.persistence.EntityManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,8 +9,9 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-import logica.Inscripcion;
-import utils.JpaUtil;
+import uy.edu.pa.central.client.ActividadesService;
+import uy.edu.pa.central.client.ActividadesService_Service;
+import uy.edu.pa.central.client.InscripcionDTO;
 
 @WebServlet(name = "MyRegistrationsServlet", urlPatterns = {"/mis-salidas"})
 public class MyRegistrationsServlet extends HttpServlet {
@@ -28,34 +28,19 @@ public class MyRegistrationsServlet extends HttpServlet {
         }
 
         if (tipoUsuario == null || !"turista".equalsIgnoreCase(tipoUsuario)) {
-            request.setAttribute("error", "Solo los usuarios Turista pueden ver sus salidas registradas.");
-            request.getRequestDispatcher("/WEB-INF/my-registrations.jsp").forward(request, response);
+            request.setAttribute("error", "Solo los turistas pueden ver salidas registradas.");
+            request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
             return;
         }
 
-        EntityManager em = null;
         try {
-            em = JpaUtil.getEntityManager();
-            List<Inscripcion> inscripciones = em.createQuery(
-                    "SELECT i FROM Inscripcion i " +
-                    "JOIN FETCH i.salida s " +
-                    "JOIN FETCH s.actividad a " +
-                    "WHERE i.turista.nickname = :nick " +
-                    "ORDER BY s.fecha ASC",
-                    Inscripcion.class)
-                .setParameter("nick", username)
-                .getResultList();
-
-            request.setAttribute("inscripciones", inscripciones);
-            request.getRequestDispatcher("/WEB-INF/my-registrations.jsp").forward(request, response);
+            ActividadesService svc = new ActividadesService_Service().getActividadesServicePort();
+            List<InscripcionDTO> inscripciones = svc.listarInscripcionesPorTurista(username);
+            request.setAttribute("inscripcionesDto", inscripciones);
         } catch (Exception e) {
-            System.err.println("[MyRegistrationsServlet] Error obteniendo inscripciones: " + e.getMessage());
+            System.err.println("[MyRegistrationsServlet] Error SOAP obteniendo inscripciones: " + e.getMessage());
             request.setAttribute("error", "No se pudieron cargar tus salidas registradas.");
-            request.getRequestDispatcher("/WEB-INF/my-registrations.jsp").forward(request, response);
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
-            }
         }
+        request.getRequestDispatcher("/WEB-INF/my-registrations.jsp").forward(request, response);
     }
 }

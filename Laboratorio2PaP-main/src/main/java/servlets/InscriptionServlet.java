@@ -37,6 +37,19 @@ public class InscriptionServlet extends HttpServlet {
     }
     
     private void mostrarFormulario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("username") == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+
+        String tipoUsuario = (String) session.getAttribute("tipoUsuario");
+        if (tipoUsuario == null || !"turista".equalsIgnoreCase(tipoUsuario)) {
+            request.setAttribute("error", "Solo los turistas pueden inscribirse a salidas turisticas.");
+            request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
+            return;
+        }
+
         // Obtener parámetros de actividad y salida (pueden venir del link o del formulario)
         String actividadSeleccionada = request.getParameter("actividad");
         String salidaSeleccionada = request.getParameter("salida");
@@ -103,10 +116,19 @@ public class InscriptionServlet extends HttpServlet {
     
     private void procesarInscripcion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        String turista = null;
-        if (session != null) {
-            turista = (String) session.getAttribute("username");
+        if (session == null || session.getAttribute("username") == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
         }
+
+        String tipoUsuario = (String) session.getAttribute("tipoUsuario");
+        if (tipoUsuario == null || !"turista".equalsIgnoreCase(tipoUsuario)) {
+            request.setAttribute("error", "Solo los turistas pueden inscribirse a salidas turisticas.");
+            request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
+            return;
+        }
+
+        String turista = (String) session.getAttribute("username");
 
         // Cliente SOAP
         ActividadesService svc = new ActividadesService_Service().getActividadesServicePort();
@@ -114,12 +136,6 @@ public class InscriptionServlet extends HttpServlet {
         String actividad = request.getParameter("actividad");
         String salida = request.getParameter("salida");
         String cantidadStr = request.getParameter("cantidad");
-
-        if (turista == null) {
-            request.setAttribute("error", "Debe iniciar sesión como turista para inscribirse.");
-            request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-            return;
-        }
 
         if (actividad == null || actividad.trim().isEmpty() || salida == null || salida.trim().isEmpty()) {
             request.setAttribute("error", "Complete todos los campos requeridos.");
