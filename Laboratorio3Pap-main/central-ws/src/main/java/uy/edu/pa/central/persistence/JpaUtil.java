@@ -39,6 +39,7 @@ public final class JpaUtil {
         String directPass = System.getenv("DB_PASSWORD");
 
         DataSource jndiDs = lookupDataSource("java:comp/env/jdbc/railway");
+        DataSource effectiveDs = (jndiDs == null) ? null : new SafeDataSource(jndiDs);
 
         Map<String, Object> overrides = new HashMap<>();
         overrides.put("eclipselink.logging.level", env("DB_LOG_LEVEL", "INFO"));
@@ -46,10 +47,10 @@ public final class JpaUtil {
         int attempt = 0;
         while (true) {
             try {
-                if (jndiDs != null) {
-                    testConnection(jndiDs);
-                    overrides.put("jakarta.persistence.nonJtaDataSource", "java:comp/env/jdbc/railway");
-                    overrides.put("eclipselink.jdbc.datasource", "java:comp/env/jdbc/railway");
+                if (effectiveDs != null) {
+                    testConnection(effectiveDs);
+                    overrides.put("jakarta.persistence.nonJtaDataSource", effectiveDs);
+                    overrides.put("eclipselink.jdbc.datasource", effectiveDs);
                 } else if (directUrl != null && !directUrl.isBlank()) {
                     String url = directUrl.trim();
                     String user = (directUser == null) ? "" : directUser.trim();

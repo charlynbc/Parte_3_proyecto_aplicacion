@@ -8,6 +8,10 @@ LOG_FILE="$TOMCAT_DIR/logs/catalina.out"
 BASE_URL="http://localhost:8080"
 APP_CTXT="/Laboratorio2PaP"
 
+# Forzar Java 17 para esta instancia de Tomcat
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+export PATH="$JAVA_HOME/bin:$PATH"
+
 color() { local c="$1"; shift; echo -e "\033[${c}m$*\033[0m"; }
 info() { color "1;34" "[INFO] $*"; }
 ok()   { color "1;32" "[ OK ] $*"; }

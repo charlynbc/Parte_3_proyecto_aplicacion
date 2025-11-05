@@ -36,16 +36,18 @@
         %>
         <div class="navigation-grid">
             <%
-                String userType = (String) session.getAttribute("userType");
-                if ("Turista".equals(userType)) {
+                String tipoUsuario = (String) session.getAttribute("tipoUsuario");
+                if (tipoUsuario != null && tipoUsuario.equalsIgnoreCase("turista")) {
             %>
             <a href="${pageContext.request.contextPath}/activities" class="nav-card">🎯 Actividades Turísticas</a>
+            <a href="${pageContext.request.contextPath}/mis-salidas" class="nav-card">🧳 Mis Salidas</a>
             <%
                 }
-                if ("Proveedor".equals(userType)) {
+                if (tipoUsuario != null && tipoUsuario.equalsIgnoreCase("proveedor")) {
             %>
             <a href="${pageContext.request.contextPath}/create-departure" class="nav-card">🚌 Nueva Salida Turística</a>
             <a href="${pageContext.request.contextPath}/create-activity" class="nav-card">📊 Nueva Actividad</a>
+            <a href="${pageContext.request.contextPath}/activities" class="nav-card">🎯 Ver Todas las Actividades</a>
             <%
                 }
             %>

@@ -5,6 +5,10 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BASE_TOMCAT="$ROOT_DIR/apache-tomcat-10.1.47"
 CENTRAL_TOMCAT="$ROOT_DIR/apache-tomcat-10.1.47-central"
 
+# Forzar uso de Java 17 en esta instancia de Tomcat
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+export PATH="$JAVA_HOME/bin:$PATH"
+
 info(){ echo -e "\033[1;34m[CENTRAL]\033[0m $*"; }
 warn(){ echo -e "\033[1;33m[WARN]\033[0m $*"; }
 err(){ echo -e "\033[1;31m[ERR ]\033[0m $*"; }

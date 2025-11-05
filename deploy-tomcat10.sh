@@ -7,6 +7,10 @@ TOMCAT_DIR="$ROOT_DIR/apache-tomcat-10.1.47"
 WAR_NAME="Laboratorio2PaP.war"
 APP_NAME="Laboratorio2PaP"
 
+# Asegurar Java 17 para Maven y Tomcat
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+export PATH="$JAVA_HOME/bin:$PATH"
+
 info() { echo -e "\033[1;34m[DEPLOY]\033[0m $*"; }
 warn() { echo -e "\033[1;33m[WARN]\033[0m $*"; }
 err()  { echo -e "\033[1;31m[ERR ]\033[0m $*"; }
@@ -41,9 +45,6 @@ fi
 
 info "Compilando WAR (skip tests)"
 pushd "$PROJECT_DIR" >/dev/null
-# Forzar Java 17 para la compilación con Maven
-export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
-export PATH="$JAVA_HOME/bin:$PATH"
 java -version || true
 mvn -q -DskipTests clean package
 popd >/dev/null

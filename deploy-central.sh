@@ -5,6 +5,10 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CENTRAL_DIR="$ROOT_DIR/Laboratorio3Pap-main/central-ws"
 CENTRAL_TOMCAT="$ROOT_DIR/apache-tomcat-10.1.47-central"
 
+# Asegurar Java 17 para compilaciones y arranques de Tomcat
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+export PATH="$JAVA_HOME/bin:$PATH"
+
 info(){ echo -e "\033[1;34m[DEPLOY-CENTRAL]\033[0m $*"; }
 err(){ echo -e "\033[1;31m[ERR ]\033[0m $*"; }
 
