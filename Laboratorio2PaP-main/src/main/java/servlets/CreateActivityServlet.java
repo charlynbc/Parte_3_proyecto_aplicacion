@@ -7,30 +7,18 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-// Import classes from Laboratorio1.jar
-import logica.Fabrica;
-import logica.IControladorActividad;
-import logica.DataActividad;
-import excepciones.ActividadRepetidaException;
-import excepciones.UsuarioNoExisteException;
+// SOAP stubs
+import uy.edu.pa.central.client.ActividadesService_Service;
+import uy.edu.pa.central.client.ActividadesService;
 
 @WebServlet("/create-activity")
 public class CreateActivityServlet extends HttpServlet {
     
-    private IControladorActividad controladorActividad;
-    
     @Override
     public void init() throws ServletException {
         super.init();
-        try {
-            controladorActividad = Fabrica.getInstance().getIControladorActividad();
-            System.out.println("CreateActivityServlet initialized - connected to Central Server");
-        } catch (Exception e) {
-            throw new ServletException("Failed to initialize central server connection", e);
-        }
+        System.out.println("CreateActivityServlet initialized (SOAP mode)");
     }
     
     @Override
@@ -58,7 +46,7 @@ public class CreateActivityServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        System.out.println("\n=== Create Activity Debug Info ===");
+        System.out.println("\n=== Create Activity (SOAP) ===");
         
         // Check authentication
         HttpSession session = request.getSession(false);
@@ -121,40 +109,43 @@ public class CreateActivityServlet extends HttpServlet {
             System.out.println("- Duracion: " + duracion + " horas");
             System.out.println("- Costo: $" + costo);
             
-            // Create DataActividad object
-            Date fechaAlta = new Date(); // Current date
-            String estado = "Agregada"; // Initial state as per requirements
+            // Fecha de alta (hoy)
+            String fechaAlta = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
             
-            DataActividad nuevaActividad = new DataActividad(
-                nombre.trim(),
-                descripcion.trim(),
-                duracion,
-                costo,
-                ciudad.trim(),
-                fechaAlta,
-                estado,
-                proveedorNickname
-            );
+            System.out.println("3. Calling SOAP crearActividad");
             
-            System.out.println("3. DataActividad object created with estado: " + estado);
-            
-            // Try to create the activity using Central Server
+            // Try to create the activity using SOAP
             try {
-                controladorActividad.altaActividad(nuevaActividad);
-                System.out.println("4. Activity created successfully in database");
+                ActividadesService_Service service = new ActividadesService_Service();
+                ActividadesService port = service.getActividadesServicePort();
                 
-                // Set success message and redirect to dashboard
-                session.setAttribute("successMessage", 
-                    "¡Actividad '" + nombre + "' creada exitosamente! Estado: " + estado);
-                response.sendRedirect(request.getContextPath() + "/dashboard");
+                boolean exito = port.crearActividad(
+                    nombre.trim(),
+                    descripcion.trim(),
+                    duracion,
+                    costo,
+                    ciudad.trim(),
+                    proveedorNickname,
+                    fechaAlta
+                );
                 
-            } catch (ActividadRepetidaException e) {
-                System.out.println("4. Activity creation failed - duplicate name: " + e.getMessage());
-                request.setAttribute("error", "Ya existe una actividad con ese nombre. Por favor elija otro nombre.");
-                request.getRequestDispatcher("/WEB-INF/create-activity.jsp").forward(request, response);
-            } catch (UsuarioNoExisteException e) {
-                System.out.println("4. Activity creation failed - provider not found: " + e.getMessage());
-                request.setAttribute("error", "Error: Proveedor no encontrado en el sistema.");
+                if (exito) {
+                    System.out.println("4. Activity created successfully via SOAP");
+                    
+                    // Set success message and redirect to dashboard
+                    session.setAttribute("successMessage", 
+                        "¡Actividad '" + nombre + "' creada exitosamente!");
+                    response.sendRedirect(request.getContextPath() + "/dashboard");
+                } else {
+                    System.out.println("4. Activity creation failed via SOAP");
+                    request.setAttribute("error", "Ya existe una actividad con ese nombre o el proveedor no existe.");
+                    request.getRequestDispatcher("/WEB-INF/create-activity.jsp").forward(request, response);
+                }
+                
+            } catch (Exception e) {
+                System.out.println("4. Activity creation failed - SOAP error: " + e.getMessage());
+                e.printStackTrace();
+                request.setAttribute("error", "Error al crear la actividad: " + e.getMessage());
                 request.getRequestDispatcher("/WEB-INF/create-activity.jsp").forward(request, response);
             }
             

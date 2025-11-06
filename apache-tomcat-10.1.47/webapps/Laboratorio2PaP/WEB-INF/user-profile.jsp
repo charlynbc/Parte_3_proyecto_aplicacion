@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="logica.DataUsuario" %>
+<%@ page import="uy.edu.pa.central.client.UserDTO" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,7 +20,7 @@
 
         <div class="registration-form-section">
             <%
-                DataUsuario user = (DataUsuario) request.getAttribute("user");
+                UserDTO user = (UserDTO) request.getAttribute("user");
                 if (user == null) {
             %>
                 <p>Usuario no encontrado</p>

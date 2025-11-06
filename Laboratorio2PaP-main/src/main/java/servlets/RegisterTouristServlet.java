@@ -8,15 +8,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-// Import classes from Laboratorio1.jar
-import logica.Fabrica;
-import logica.IControladorUsuario;
-import logica.DataTurista;
-import excepciones.UsuarioRepetidoException;
+// Import Web Service client stubs
+import uy.edu.pa.central.client.AuthService;
+import uy.edu.pa.central.client.AuthService_Service;
 
 @WebServlet("/register-tourist")
 @MultipartConfig(
@@ -24,16 +19,6 @@ import excepciones.UsuarioRepetidoException;
     maxRequestSize = 1024 * 1024 * 10 // 10MB
 )
 public class RegisterTouristServlet extends HttpServlet {
-    
-    private IControladorUsuario controladorUsuario;
-    
-    @Override
-    public void init() throws ServletException {
-        super.init();
-        // Initialize the business logic controller from Laboratorio1.jar
-        controladorUsuario = Fabrica.getInstance().getIControladorUsuario();
-        System.out.println("RegisterTouristServlet initialized - connected to Laboratorio1.jar persistence");
-    }
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -45,7 +30,7 @@ public class RegisterTouristServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        System.out.println("\n=== Register Tourist Debug Info ===");
+        System.out.println("\n=== Register Tourist via SOAP ===");
         
         try {
             // 1. Get form parameters
@@ -57,12 +42,8 @@ public class RegisterTouristServlet extends HttpServlet {
             String confirmPassword = request.getParameter("confirmPassword");
             String birthDateStr = request.getParameter("birthDate");
             String nationality = request.getParameter("nationality");
-            Part imagePart = request.getPart("profileImage");
 
-            System.out.println("1. Form data received:");
-            System.out.println("- Nickname: " + nickname);
-            System.out.println("- Email: " + email);
-            System.out.println("- Nationality: " + nationality);
+            System.out.println("Form data - Nickname: " + nickname + ", Email: " + email);
             
             // 2. Basic validation
             if (!validateRequiredFields(nickname, firstName, lastName, email, password, birthDateStr, nationality)) {
@@ -78,69 +59,51 @@ public class RegisterTouristServlet extends HttpServlet {
                 return;
             }
 
-            // 4. Validate date format and convert
-            Date birthDate;
+            // 4. Register via SOAP
             try {
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                birthDate = sdf.parse(birthDateStr);
-                System.out.println("2. Birth date parsed: " + birthDate);
-            } catch (Exception e) {
-                request.setAttribute("error", "Formato de fecha inválido");
-                request.getRequestDispatcher("/WEB-INF/register-tourist.jsp").forward(request, response);
-                return;
-            }
-
-            // 5. Process image if provided (for future enhancement)
-            byte[] imageData = null;
-            if (imagePart != null && imagePart.getSize() > 0) {
-                try (InputStream is = imagePart.getInputStream()) {
-                    imageData = is.readAllBytes();
-                    System.out.println("3. Image uploaded: " + imageData.length + " bytes");
+                System.out.println("Calling AuthService.registrarTurista via SOAP");
+                
+                AuthService_Service service = new AuthService_Service();
+                AuthService port = service.getAuthServicePort();
+                
+                boolean exito = port.registrarTurista(
+                    nickname,
+                    firstName,
+                    lastName,
+                    email,
+                    password,
+                    birthDateStr,
+                    nationality
+                );
+                
+                if (exito) {
+                    System.out.println("Tourist registered successfully via SOAP");
+                    request.getSession().setAttribute("successMessage", 
+                        "¡Registro exitoso! Bienvenido " + firstName + ", por favor inicia sesión");
+                    response.sendRedirect(request.getContextPath() + "/login");
+                } else {
+                    request.setAttribute("error", "No se pudo completar el registro");
+                    request.getRequestDispatcher("/WEB-INF/register-tourist.jsp").forward(request, response);
                 }
-            }
-
-            // 6. Create DataTurista object
-            DataTurista newTurista = new DataTurista(
-                password,      // contra
-                nickname,      // nickname
-                firstName,     // nombre
-                lastName,      // apellido
-                email,         // email
-                birthDate,     // fechaNac
-                nationality    // nacionalidad
-            );
-            
-            System.out.println("4. DataTurista object created");
-
-            // 7. Try to register the tourist using Central Server
-            try {
-                System.out.println("5. Calling controladorUsuario.registrarUsuario(...)");
-                controladorUsuario.registrarUsuario(newTurista);
-                System.out.println("6. Tourist registered successfully in database");
                 
-                // 8. Set success message and redirect to login
-                request.getSession().setAttribute("successMessage", 
-                    "¡Registro exitoso! Bienvenido " + firstName + ", por favor inicia sesión");
-                response.sendRedirect(request.getContextPath() + "/login");
+            } catch (Exception e) {
+                System.err.println("[RegisterTouristServlet] SOAP error: " + e.getMessage());
+                e.printStackTrace();
                 
-            } catch (UsuarioRepetidoException e) {
-                System.out.println("5. Registration failed - user already exists: " + e.getMessage());
-                request.setAttribute("error", "El nickname o email ya está registrado. Por favor elija otro.");
+                String errorMsg = e.getMessage();
+                if (errorMsg != null && errorMsg.contains("ya existe")) {
+                    request.setAttribute("error", "El nickname o email ya está registrado");
+                } else {
+                    request.setAttribute("error", "Error al registrar: " + errorMsg);
+                }
                 request.getRequestDispatcher("/WEB-INF/register-tourist.jsp").forward(request, response);
-            } catch (Throwable t) {
-                System.err.println("[RegisterTouristServlet] Fatal error during registration: " + t.getClass().getName() + ": " + t.getMessage());
-                t.printStackTrace();
-                request.setAttribute("error", "Error inesperado al registrar: " + t.getMessage());
-                request.getRequestDispatcher("/WEB-INF/register-tourist.jsp").forward(request, response);
-                return;
             }
 
         } catch (Exception e) {
-            System.err.println("[RegisterTouristServlet] Error during tourist registration: " + e.getClass().getName() + ": " + e.getMessage());
+            System.err.println("[RegisterTouristServlet] Error: " + e.getMessage());
             e.printStackTrace();
-            request.setAttribute("error", "Error al registrar: " + e.getMessage());
+            request.setAttribute("error", "Error al procesar el registro");
             request.getRequestDispatcher("/WEB-INF/register-tourist.jsp").forward(request, response);
-            return;
         }
     }
 

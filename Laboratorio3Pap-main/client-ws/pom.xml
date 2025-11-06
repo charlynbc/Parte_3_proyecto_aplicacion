@@ -14,7 +14,7 @@
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <metro.version>4.0.2</metro.version>
-  <wsdl.baseUrl>http://localhost:8081/central-ws/services</wsdl.baseUrl>
+  <wsdl.baseUrl>http://localhost:9128/central-ws/services</wsdl.baseUrl>
   </properties>
 
   <dependencies>

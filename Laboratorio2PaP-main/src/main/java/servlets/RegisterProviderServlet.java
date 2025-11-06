@@ -7,18 +7,15 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
-import logica.DataProveedor;
-import logica.DataUsuario;
-import logica.Fabrica;
-import logica.IControladorUsuario;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import excepciones.UsuarioRepetidoException;
+// SOAP stubs
+import uy.edu.pa.central.client.AuthService_Service;
+import uy.edu.pa.central.client.AuthService;
 
 @WebServlet("/register-provider")
 @MultipartConfig(
@@ -28,14 +25,10 @@ import excepciones.UsuarioRepetidoException;
 )
 public class RegisterProviderServlet extends HttpServlet {
     
-    private IControladorUsuario controladorUsuario;
-    
     @Override
     public void init() throws ServletException {
         super.init();
-        // Initialize the business logic controller from Laboratorio1.jar
-        controladorUsuario = Fabrica.getInstance().getIControladorUsuario();
-        System.out.println("RegisterProviderServlet initialized - connected to Laboratorio1.jar persistence");
+        System.out.println("RegisterProviderServlet initialized (SOAP mode)");
     }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -69,12 +62,10 @@ public class RegisterProviderServlet extends HttpServlet {
             Map<String, String> datos = obtenerValoresFormulario(request);
             
             String birthDateStr = getParameterSafe(request, "birthDate");
-            Date birthDate;
             
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            birthDate = sdf.parse(birthDateStr);
             
-            // Process image if provided
+            // Process image if provided (opcional - no lo enviamos por ahora al SOAP)
             byte[] imageData = null;
             Part imagePart = request.getPart("profileImage");
             if (imagePart != null && imagePart.getSize() > 0) {
@@ -85,34 +76,44 @@ public class RegisterProviderServlet extends HttpServlet {
             }
             
             // Handle optional website field
-            String sitioWeb = (datos.get("website") != null && !datos.get("website").trim().isEmpty()) ? datos.get("website").trim() : null;
+            String sitioWeb = (datos.get("website") != null && !datos.get("website").trim().isEmpty()) 
+                ? datos.get("website").trim() : "";
             
-            DataUsuario usu;
-            usu = new DataProveedor(
-                getParameterSafe(request, "password"),
-                datos.get("nickname"),
-                datos.get("firstName"),
-                datos.get("lastName"),
-                datos.get("email"),
-                birthDate,
-                sitioWeb,
-                datos.get("description")
-            );
-            
-            System.out.println("4. DataProveedor object created");
+            System.out.println("4. Calling SOAP registrarProveedor");
 
             try {
-                controladorUsuario.registrarUsuario(usu);
-                System.out.println("5. Provider registered successfully in database");
+                // Llamar al Web Service SOAP
+                AuthService_Service service = new AuthService_Service();
+                AuthService port = service.getAuthServicePort();
                 
-                // Set success message and redirect to login
-                request.getSession().setAttribute("successMessage", 
-                    "¡Registro exitoso! Bienvenido " + datos.get("firstName") + ", por favor inicia sesión");
-                response.sendRedirect(request.getContextPath() + "/login");
+                boolean exito = port.registrarProveedor(
+                    datos.get("nickname"),
+                    datos.get("firstName"),
+                    datos.get("lastName"),
+                    datos.get("email"),
+                    getParameterSafe(request, "password"),
+                    birthDateStr,
+                    datos.get("description"),
+                    sitioWeb
+                );
                 
-            } catch (UsuarioRepetidoException ex) {
-                System.out.println("5. Registration failed - user already exists: " + ex.getMessage());
-                request.setAttribute("error", "El nickname o email ya está registrado. Por favor elija otro.");
+                if (exito) {
+                    System.out.println("5. Provider registered successfully via SOAP");
+                    
+                    // Set success message and redirect to login
+                    request.getSession().setAttribute("successMessage", 
+                        "¡Registro exitoso! Bienvenido " + datos.get("firstName") + ", por favor inicia sesión");
+                    response.sendRedirect(request.getContextPath() + "/login");
+                } else {
+                    System.out.println("5. Registration failed via SOAP");
+                    request.setAttribute("error", "El nickname o email ya está registrado. Por favor elija otro.");
+                    request.getRequestDispatcher("/WEB-INF/register-provider.jsp").forward(request, response);
+                }
+                
+            } catch (Exception ex) {
+                System.out.println("5. Registration failed - SOAP error: " + ex.getMessage());
+                ex.printStackTrace();
+                request.setAttribute("error", "Error al registrar: " + ex.getMessage());
                 request.getRequestDispatcher("/WEB-INF/register-provider.jsp").forward(request, response);
             }
             

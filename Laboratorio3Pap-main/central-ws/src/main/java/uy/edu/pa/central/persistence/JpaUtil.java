@@ -34,40 +34,16 @@ public final class JpaUtil {
     }
 
     private static EntityManagerFactory buildEmf() {
-        String directUrl = System.getenv("DB_URL");
-        String directUser = System.getenv("DB_USER");
-        String directPass = System.getenv("DB_PASSWORD");
-
-        DataSource jndiDs = lookupDataSource("java:comp/env/jdbc/railway");
-
+        // Usar directamente el persistence.xml sin overrides
         Map<String, Object> overrides = new HashMap<>();
-        overrides.put("eclipselink.logging.level", env("DB_LOG_LEVEL", "INFO"));
-
-        int attempt = 0;
-        while (true) {
-            try {
-                if (jndiDs != null) {
-                    testConnection(jndiDs);
-                    overrides.put("jakarta.persistence.nonJtaDataSource", "java:comp/env/jdbc/railway");
-                    overrides.put("eclipselink.jdbc.datasource", "java:comp/env/jdbc/railway");
-                } else if (directUrl != null && !directUrl.isBlank()) {
-                    String url = directUrl.trim();
-                    String user = (directUser == null) ? "" : directUser.trim();
-                    String pass = (directPass == null) ? "" : directPass.trim();
-                    overrides.put("jakarta.persistence.jdbc.url", url);
-                    if (!user.isEmpty()) overrides.put("jakarta.persistence.jdbc.user", user);
-                    if (!pass.isEmpty()) overrides.put("jakarta.persistence.jdbc.password", pass);
-                    testConnection(url, user, pass);
-                }
-                return Persistence.createEntityManagerFactory(UNIT_NAME, overrides);
-            } catch (Exception ex) {
-                attempt++;
-                if (attempt >= MAX_RETRIES) throw ex;
-                try { Thread.sleep(RETRY_DELAY_MS * attempt); } catch (InterruptedException ie) {
-                    Thread.currentThread().interrupt();
-                    throw new IllegalStateException("Inicialización de JPA interrumpida", ie);
-                }
-            }
+        overrides.put("eclipselink.logging.level", "INFO");
+        
+        try {
+            return Persistence.createEntityManagerFactory(UNIT_NAME, overrides);
+        } catch (Exception ex) {
+            System.err.println("[JpaUtil] Error creando EntityManagerFactory: " + ex.getMessage());
+            ex.printStackTrace();
+            throw new RuntimeException("No se pudo crear el EntityManagerFactory", ex);
         }
     }
 

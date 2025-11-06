@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+    <persistence-unit name="emf" transaction-type="RESOURCE_LOCAL">
+        <!-- Proveedor JPA -->
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+        <!-- Entidades -->
+        <class>logica.Actividad</class>
+        <class>logica.Usuario</class>
+        <class>logica.Proveedor</class>
+        <class>logica.Turista</class>
+        <class>logica.Salida</class>
+        <class>logica.Inscripcion</class>
+
+        <properties>
+            <!-- Configuración MySQL Railway -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://switchback.proxy.rlwy.net:40439/railway"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="RfpxZHvphzVbjvKwVWOLqBFsucCezmtb"/>
+            
+            <!-- Target Database -->
+            <property name="eclipselink.target-database" value="MySQL"/>
+            
+            <!-- DDL Generation -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+            
+            <!-- Logging -->
+            <property name="eclipselink.logging.level" value="INFO"/>
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>
