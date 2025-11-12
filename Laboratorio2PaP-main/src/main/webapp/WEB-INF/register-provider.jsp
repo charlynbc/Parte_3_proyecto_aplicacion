@@ -12,7 +12,7 @@
 <div class="container my-4 my-md-5">
     <div class="row justify-content-center">
         <div class="col-12 col-lg-10 col-xl-8">
-            
+
             <!-- Hero Section -->
             <div class="text-center mb-4">
                 <div class="display-1 mb-3">🏢</div>
@@ -29,7 +29,7 @@
                     <jsp:include page="/WEB-INF/jsp/includes/messages.jsp"/>
 
                     <form method="post" action="${pageContext.request.contextPath}/register-provider" enctype="multipart/form-data">
-                        
+
                         <!-- Información de Cuenta -->
                         <div class="card mb-3">
                             <div class="card-header bg-primary text-white">
@@ -98,7 +98,7 @@
                                         <label for="birthDate" class="form-label">
                                             Fecha de Nacimiento <span class="text-danger">*</span>
                                         </label>
-                                        <input type="date" class="form-control" id="birthDate" name="birthDate" required 
+                                        <input type="date" class="form-control" id="birthDate" name="birthDate" required
                                                max="${java.time.LocalDate.now()}" autocomplete="bday">
                                         <div class="form-text">Debes ser mayor de edad para registrarte</div>
                                     </div>
@@ -161,7 +161,7 @@
 function togglePassword(inputId) {
     const input = document.getElementById(inputId);
     const icon = document.getElementById(inputId + '-icon');
-    
+
     if (input.type === 'password') {
         input.type = 'text';
         icon.className = 'bi bi-eye-slash';
