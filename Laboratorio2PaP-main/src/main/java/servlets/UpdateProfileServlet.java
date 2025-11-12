@@ -10,8 +10,8 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 // SOAP stubs
-import uy.edu.pa.central.client.ActividadesService_Service;
-import uy.edu.pa.central.client.ActividadesService;
+import uy.edu.pa.central.client.TurismoService;
+import uy.edu.pa.central.client.TurismoWebService;
 import uy.edu.pa.central.client.UserDTO;
 
 @WebServlet(name = "UpdateProfileServlet", urlPatterns = {"/edit-profile"})
@@ -36,8 +36,8 @@ public class UpdateProfileServlet extends HttpServlet {
         
         try {
             // Obtener usuario via SOAP
-            ActividadesService_Service service = new ActividadesService_Service();
-            ActividadesService port = service.getActividadesServicePort();
+            TurismoService service = new TurismoService();
+            TurismoWebService port = service.getTurismoWebServicePort();
             
             UserDTO usuario = port.obtenerUsuario(username);
             
@@ -84,10 +84,10 @@ public class UpdateProfileServlet extends HttpServlet {
             System.out.println("Updating user: " + username);
             
             // Actualizar via SOAP
-            ActividadesService_Service service = new ActividadesService_Service();
-            ActividadesService port = service.getActividadesServicePort();
+            TurismoService service = new TurismoService();
+            TurismoWebService port = service.getTurismoWebServicePort();
             
-            boolean exito = port.actualizarUsuario(
+            boolean exito = port.editarUsuario(
                 username,
                 nombre,
                 apellido,

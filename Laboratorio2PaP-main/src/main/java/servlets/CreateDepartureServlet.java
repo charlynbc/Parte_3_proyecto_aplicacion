@@ -13,8 +13,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 // SOAP stubs
-import uy.edu.pa.central.client.ActividadesService_Service;
-import uy.edu.pa.central.client.ActividadesService;
+import uy.edu.pa.central.client.TurismoService;
+import uy.edu.pa.central.client.TurismoWebService;
 
 @WebServlet("/CreateDepartureServlet")
 @MultipartConfig
@@ -85,8 +85,8 @@ public class CreateDepartureServlet extends HttpServlet {
             System.out.println("3. Calling SOAP crearSalida");
 
             // Crear salida via SOAP
-            ActividadesService_Service service = new ActividadesService_Service();
-            ActividadesService port = service.getActividadesServicePort();
+            TurismoService service = new TurismoService();
+            TurismoWebService port = service.getTurismoWebServicePort();
             
             boolean exito = port.crearSalida(
                 nombreSalida,

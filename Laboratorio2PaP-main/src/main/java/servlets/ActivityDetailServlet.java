@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import uy.edu.pa.central.client.ActividadesService;
-import uy.edu.pa.central.client.ActividadesService_Service;
+import uy.edu.pa.central.client.TurismoService;
+import uy.edu.pa.central.client.TurismoWebService;
 import uy.edu.pa.central.client.ActividadDTO;
 import uy.edu.pa.central.client.SalidaDTO;
 import view.ActivityView;
@@ -28,10 +28,10 @@ public class ActivityDetailServlet extends HttpServlet {
 		}
 
 		// Consumir el servicio SOAP del Central
-		ActividadesService service = new ActividadesService_Service().getActividadesServicePort();
+		TurismoWebService service = new TurismoService().getTurismoWebServicePort();
 
 		try {
-			ActividadDTO act = service.obtenerActividad(nombre);
+			ActividadDTO act = service.obtenerDetalleActividad(nombre);
 			if (act == null || act.getId() == null) {
 				request.getSession().removeAttribute("isActivityOwner");
 				response.sendRedirect(request.getContextPath() + "/activities");

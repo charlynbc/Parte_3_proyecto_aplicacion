@@ -1,7 +1,7 @@
 /* ========================================
-   TURISMO.UY - LEGACY STYLES
-   This file maintains compatibility with existing pages
-   New pages should use main.css instead
+   TURISMO.UY - MAIN STYLES
+   Sistema CSS Modular Responsive - Sin Bootstrap
+   Optimizado para Mac M1 y dispositivos móviles
    ======================================== */
 
 /* Import all modular CSS files */
@@ -13,3 +13,4 @@
 @import url('buttons.css');
 @import url('cards.css');
 @import url('messages.css');
+@import url('responsive.css');

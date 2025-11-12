@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 // Import Web Service client stubs
-import uy.edu.pa.central.client.ActividadesService;
-import uy.edu.pa.central.client.ActividadesService_Service;
+import uy.edu.pa.central.client.TurismoService;
+import uy.edu.pa.central.client.TurismoWebService;
 import uy.edu.pa.central.client.UserDTO;
 
 @WebServlet(name = "UsersServlet", urlPatterns = {"/users"})
@@ -25,8 +25,8 @@ public class UsersServlet extends HttpServlet {
         
         try {
             // Get Web Service client
-            ActividadesService_Service service = new ActividadesService_Service();
-            ActividadesService port = service.getActividadesServicePort();
+            TurismoService service = new TurismoService();
+            TurismoWebService port = service.getTurismoWebServicePort();
             
             // Get all users from SOAP service
             List<UserDTO> usuarios = port.listarUsuarios();

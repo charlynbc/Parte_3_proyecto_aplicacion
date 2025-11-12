@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime"
            version="2.0">
-  <endpoint name="AuthService"
-            implementation="uy.edu.pa.central.ws.AuthServiceImpl"
-            url-pattern="/services/AuthService"/>
-  <endpoint name="ActividadesService"
-            implementation="uy.edu.pa.central.ws.ActividadesServiceImpl"
-            url-pattern="/services/ActividadesService"/>
+  <endpoint name="TurismoService"
+            implementation="webservices.TurismoWebServiceImpl"
+            url-pattern="/services/TurismoService"/>
 </endpoints>

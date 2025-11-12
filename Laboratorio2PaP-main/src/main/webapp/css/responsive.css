@@ -1,0 +1,410 @@
+/* ========================================
+   RESPONSIVE DESIGN SYSTEM
+   Sistema responsive optimizado para Mac M1
+   Sin Bootstrap - Media Queries nativas
+   ======================================== */
+
+/* ========================================
+   BREAKPOINTS
+   Mobile First Approach
+   ======================================== */
+/* 
+   320px  - Small mobile
+   480px  - Mobile
+   768px  - Tablet
+   1024px - Desktop
+   1200px - Large Desktop
+   1440px - Extra Large (Mac M1 native)
+*/
+
+/* ========================================
+   CONTAINER RESPONSIVE
+   ======================================== */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Mobile (hasta 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+}
+
+/* Tablet (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+}
+
+/* Desktop (769px+) */
+@media (min-width: 769px) {
+    .container {
+        padding: 0 30px;
+    }
+}
+
+/* ========================================
+   GRID SYSTEM FLUIDO
+   Sistema de 12 columnas sin Bootstrap
+   ======================================== */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col {
+    padding: 0 15px;
+    flex: 1;
+}
+
+/* Columnas específicas */
+.col-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+.col-2 { flex: 0 0 16.666%; max-width: 16.666%; }
+.col-3 { flex: 0 0 25%; max-width: 25%; }
+.col-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+.col-5 { flex: 0 0 41.666%; max-width: 41.666%; }
+.col-6 { flex: 0 0 50%; max-width: 50%; }
+.col-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+.col-8 { flex: 0 0 66.666%; max-width: 66.666%; }
+.col-9 { flex: 0 0 75%; max-width: 75%; }
+.col-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+.col-11 { flex: 0 0 91.666%; max-width: 91.666%; }
+.col-12 { flex: 0 0 100%; max-width: 100%; }
+
+/* Columnas responsive para tablet */
+@media (max-width: 768px) {
+    .col-md-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+    .col-md-2 { flex: 0 0 16.666%; max-width: 16.666%; }
+    .col-md-3 { flex: 0 0 25%; max-width: 25%; }
+    .col-md-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+    .col-md-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-md-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* Columnas responsive para móvil */
+@media (max-width: 480px) {
+    .col-sm-12,
+    .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+    .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* ========================================
+   TIPOGRAFÍA RESPONSIVE
+   ======================================== */
+html {
+    /* Base font size - 16px en desktop */
+    font-size: 16px;
+}
+
+/* Mobile: reducir tamaño base */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+/* Tablet */
+@media (min-width: 481px) and (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+/* Desktop grande (Mac M1) */
+@media (min-width: 1440px) {
+    html {
+        font-size: 18px;
+    }
+}
+
+/* Títulos con clamp() para fluidez */
+h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+h3 {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+}
+
+h4 {
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
+}
+
+p, li, label, input, button {
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+}
+
+/* ========================================
+   NAVBAR RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .nav-brand {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px !important;
+        margin-top: 10px;
+    }
+    
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-user {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .nav-user a,
+    .nav-user button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ========================================
+   FORMS RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .registration-form {
+        padding: 1.5rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px; /* Evita zoom en iOS */
+    }
+}
+
+@media (max-width: 480px) {
+    .registration-form {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+    
+    .registration-form legend {
+        font-size: 1.1rem;
+    }
+}
+
+/* ========================================
+   CARDS RESPONSIVE
+   ======================================== */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .card {
+        margin: 0;
+    }
+}
+
+/* ========================================
+   BUTTONS RESPONSIVE
+   ======================================== */
+@media (max-width: 480px) {
+    .btn,
+    .logout-btn,
+    .register-btn {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .form-actions .btn {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   TABLES RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    thead {
+        display: none;
+    }
+    
+    tbody, tr, td {
+        display: block;
+        width: 100%;
+    }
+    
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+    }
+    
+    td {
+        text-align: right;
+        padding: 10px;
+        position: relative;
+        padding-left: 50%;
+    }
+    
+    td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+}
+
+/* ========================================
+   UTILITIES RESPONSIVE
+   ======================================== */
+
+/* Ocultar en móvil */
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+/* Ocultar en desktop */
+@media (min-width: 769px) {
+    .hide-desktop {
+        display: none !important;
+    }
+}
+
+/* Mostrar solo en móvil */
+.show-mobile {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .show-mobile {
+        display: block !important;
+    }
+}
+
+/* Text alignment responsive */
+@media (max-width: 768px) {
+    .text-center-mobile {
+        text-align: center !important;
+    }
+}
+
+/* Padding responsive */
+@media (max-width: 768px) {
+    .p-mobile-1 { padding: 0.5rem !important; }
+    .p-mobile-2 { padding: 1rem !important; }
+    
+    .px-mobile-0 { padding-left: 0 !important; padding-right: 0 !important; }
+    .py-mobile-0 { padding-top: 0 !important; padding-bottom: 0 !important; }
+}
+
+/* ========================================
+   IMAGES RESPONSIVE
+   ======================================== */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.img-responsive {
+    width: 100%;
+    height: auto;
+}
+
+/* ========================================
+   VIEWPORT OPTIMIZATIONS
+   Mac M1 Retina Display Support
+   ======================================== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Optimizaciones para pantallas retina */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* ========================================
+   TOUCH TARGETS (iOS/Mobile)
+   Mínimo 44x44px para accesibilidad
+   ======================================== */
+@media (max-width: 768px) {
+    button,
+    a.btn,
+    input[type="submit"],
+    input[type="button"] {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+@media print {
+    .navbar,
+    .nav-user,
+    .logout-btn,
+    .register-btn {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .container {
+        max-width: 100% !important;
+    }
+}

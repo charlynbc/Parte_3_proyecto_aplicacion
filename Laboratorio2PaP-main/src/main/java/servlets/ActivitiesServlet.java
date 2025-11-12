@@ -10,20 +10,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import uy.edu.pa.central.client.ActividadesService;
-import uy.edu.pa.central.client.ActividadesService_Service;
+import uy.edu.pa.central.client.TurismoService;
+import uy.edu.pa.central.client.TurismoWebService;
 import uy.edu.pa.central.client.ActividadDTO;
 
 @WebServlet(name = "ActivitiesServlet", urlPatterns = {"/activities"})
 public class ActivitiesServlet extends HttpServlet {
-    private ActividadesService service;
+    private TurismoWebService service;
 
     @Override
     public void init() throws ServletException {
         super.init();
         // Inicializar stub SOAP apuntando al endpoint del central en el mismo Tomcat
-        ActividadesService_Service svc = new ActividadesService_Service();
-        service = svc.getActividadesServicePort();
+        TurismoService svc = new TurismoService();
+        service = svc.getTurismoWebServicePort();
     }
 
     @Override

@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 // SOAP stubs
-import uy.edu.pa.central.client.ActividadesService_Service;
-import uy.edu.pa.central.client.ActividadesService;
+import uy.edu.pa.central.client.TurismoService;
+import uy.edu.pa.central.client.TurismoWebService;
 import uy.edu.pa.central.client.UserDTO;
 import uy.edu.pa.central.client.ActividadDTO;
 import uy.edu.pa.central.client.InscripcionDTO;
@@ -55,8 +55,8 @@ public class UserProfileServlet extends HttpServlet {
         
         try {
             // Obtener usuario via SOAP
-            ActividadesService_Service service = new ActividadesService_Service();
-            ActividadesService port = service.getActividadesServicePort();
+            TurismoService service = new TurismoService();
+            TurismoWebService port = service.getTurismoWebServicePort();
             
             UserDTO usuario = port.obtenerUsuario(nickname);
             
@@ -93,7 +93,7 @@ public class UserProfileServlet extends HttpServlet {
         }
     }
     
-    private void loadProveedorData(String nickname, boolean isOwnProfile, HttpServletRequest request, ActividadesService port) {
+    private void loadProveedorData(String nickname, boolean isOwnProfile, HttpServletRequest request, TurismoWebService port) {
         try {
             List<ActividadDTO> todasActividades = port.listarActividades();
             List<ActividadDTO> actividadesProveedor = new ArrayList<>();
@@ -117,7 +117,7 @@ public class UserProfileServlet extends HttpServlet {
         }
     }
     
-    private void loadTuristaData(String nickname, HttpServletRequest request, ActividadesService port) {
+    private void loadTuristaData(String nickname, HttpServletRequest request, TurismoWebService port) {
         try {
             // Obtener inscripciones del turista via SOAP
             List<InscripcionDTO> inscripciones = port.listarInscripcionesPorTurista(nickname);

@@ -14,8 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 // SOAP stubs
-import uy.edu.pa.central.client.AuthService_Service;
-import uy.edu.pa.central.client.AuthService;
+import uy.edu.pa.central.client.TurismoService;
+import uy.edu.pa.central.client.TurismoWebService;
 
 @WebServlet("/register-provider")
 @MultipartConfig(
@@ -79,20 +79,22 @@ public class RegisterProviderServlet extends HttpServlet {
             String sitioWeb = (datos.get("website") != null && !datos.get("website").trim().isEmpty()) 
                 ? datos.get("website").trim() : "";
             
-            System.out.println("4. Calling SOAP registrarProveedor");
+            System.out.println("4. Calling SOAP registrarUsuario");
 
             try {
                 // Llamar al Web Service SOAP
-                AuthService_Service service = new AuthService_Service();
-                AuthService port = service.getAuthServicePort();
+                TurismoService service = new TurismoService();
+                TurismoWebService port = service.getTurismoWebServicePort();
                 
-                boolean exito = port.registrarProveedor(
+                boolean exito = port.registrarUsuario(
                     datos.get("nickname"),
                     datos.get("firstName"),
                     datos.get("lastName"),
                     datos.get("email"),
                     getParameterSafe(request, "password"),
                     birthDateStr,
+                    "",
+                    "proveedor",
                     datos.get("description"),
                     sitioWeb
                 );

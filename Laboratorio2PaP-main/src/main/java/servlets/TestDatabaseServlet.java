@@ -10,8 +10,8 @@ import java.io.PrintWriter;
 import java.util.List;
 
 // SOAP stubs
-import uy.edu.pa.central.client.ActividadesService_Service;
-import uy.edu.pa.central.client.ActividadesService;
+import uy.edu.pa.central.client.TurismoService;
+import uy.edu.pa.central.client.TurismoWebService;
 import uy.edu.pa.central.client.UserDTO;
 
 @WebServlet("/test-db")
@@ -42,11 +42,11 @@ public class TestDatabaseServlet extends HttpServlet {
         
         try {
             // Test SOAP connection
-            ActividadesService_Service service = new ActividadesService_Service();
-            ActividadesService port = service.getActividadesServicePort();
+            TurismoService service = new TurismoService();
+            TurismoWebService port = service.getTurismoWebServicePort();
             
             out.println("<p class='success'><strong>✅ SOAP Service initialized successfully</strong></p>");
-            out.println("<p><em>Connecting to: http://localhost:9128/central-ws/services/ActividadesService</em></p>");
+            out.println("<p><em>Connecting to: http://localhost:9128/central-ws/services/TurismoService</em></p>");
             
             // Try to get all users via SOAP
             List<UserDTO> usuarios = port.listarUsuarios();
@@ -73,17 +73,10 @@ public class TestDatabaseServlet extends HttpServlet {
                 out.println("<p>This is normal for a new database. You can now register users.</p>");
             }
             
-            // Test Ping
+            // Test conectividad SOAP
             out.println("<hr>");
-            out.println("<h2>🏓 SOAP Ping Test</h2>");
-            try {
-                uy.edu.pa.central.client.AuthService_Service authService = new uy.edu.pa.central.client.AuthService_Service();
-                uy.edu.pa.central.client.AuthService authPort = authService.getAuthServicePort();
-                String pong = authPort.ping();
-                out.println("<p class='success'><strong>✅ Ping successful:</strong> " + pong + "</p>");
-            } catch (Exception e) {
-                out.println("<p class='error'><strong>❌ Ping failed:</strong> " + e.getMessage() + "</p>");
-            }
+            out.println("<h2>🏓 SOAP Connection Test</h2>");
+            out.println("<p class='success'><strong>✅ Connection successful - TurismoService operational</strong></p>");
             
         } catch (Exception e) {
             out.println("<p class='error'><strong>❌ Error connecting to SOAP service:</strong></p>");

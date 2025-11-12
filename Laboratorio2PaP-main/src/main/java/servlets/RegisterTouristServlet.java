@@ -10,8 +10,8 @@ import jakarta.servlet.http.Part;
 import java.io.IOException;
 
 // Import Web Service client stubs
-import uy.edu.pa.central.client.AuthService;
-import uy.edu.pa.central.client.AuthService_Service;
+import uy.edu.pa.central.client.TurismoService;
+import uy.edu.pa.central.client.TurismoWebService;
 
 @WebServlet("/register-tourist")
 @MultipartConfig(
@@ -61,19 +61,22 @@ public class RegisterTouristServlet extends HttpServlet {
 
             // 4. Register via SOAP
             try {
-                System.out.println("Calling AuthService.registrarTurista via SOAP");
+                System.out.println("Calling registrarUsuario via SOAP");
                 
-                AuthService_Service service = new AuthService_Service();
-                AuthService port = service.getAuthServicePort();
+                TurismoService service = new TurismoService();
+                TurismoWebService port = service.getTurismoWebServicePort();
                 
-                boolean exito = port.registrarTurista(
+                boolean exito = port.registrarUsuario(
                     nickname,
                     firstName,
                     lastName,
                     email,
                     password,
                     birthDateStr,
-                    nationality
+                    nationality,
+                    "turista",
+                    "",
+                    ""
                 );
                 
                 if (exito) {

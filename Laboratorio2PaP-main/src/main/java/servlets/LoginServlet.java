@@ -1,7 +1,7 @@
 package servlets;
 
-import uy.edu.pa.central.client.AuthService;
-import uy.edu.pa.central.client.AuthService_Service;
+import uy.edu.pa.central.client.TurismoService;
+import uy.edu.pa.central.client.TurismoWebService;
 import uy.edu.pa.central.client.UserDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -58,9 +58,9 @@ public class LoginServlet extends HttpServlet {
 
         try {
             // Consumir SOAP del Central
-            AuthService_Service svc = new AuthService_Service();
-            AuthService port = svc.getAuthServicePort();
-            UserDTO user = port.login(trimmedIdentifier, trimmedPassword);
+            TurismoService svc = new TurismoService();
+            TurismoWebService port = svc.getTurismoWebServicePort();
+            UserDTO user = port.iniciarSesion(trimmedIdentifier, trimmedPassword);
 
             if (user == null || user.getNickname() == null) {
                 request.setAttribute("error", "Credenciales inválidas");

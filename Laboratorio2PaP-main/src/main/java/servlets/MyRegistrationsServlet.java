@@ -9,8 +9,8 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-import uy.edu.pa.central.client.ActividadesService;
-import uy.edu.pa.central.client.ActividadesService_Service;
+import uy.edu.pa.central.client.TurismoService;
+import uy.edu.pa.central.client.TurismoWebService;
 import uy.edu.pa.central.client.InscripcionDTO;
 
 @WebServlet(name = "MyRegistrationsServlet", urlPatterns = {"/mis-salidas"})
@@ -34,7 +34,7 @@ public class MyRegistrationsServlet extends HttpServlet {
         }
 
         try {
-            ActividadesService svc = new ActividadesService_Service().getActividadesServicePort();
+            TurismoWebService svc = new TurismoService().getTurismoWebServicePort();
             List<InscripcionDTO> inscripciones = svc.listarInscripcionesPorTurista(username);
             request.setAttribute("inscripcionesDto", inscripciones);
         } catch (Exception e) {

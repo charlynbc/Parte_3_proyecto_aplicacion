@@ -7,8 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import uy.edu.pa.central.client.ActividadesService;
-import uy.edu.pa.central.client.ActividadesService_Service;
+import uy.edu.pa.central.client.TurismoService;
+import uy.edu.pa.central.client.TurismoWebService;
 import uy.edu.pa.central.client.SalidaDTO;
 import view.DepartureView;
 
@@ -23,7 +23,7 @@ public class DepartureDetailServlet extends HttpServlet {
 			return;
 		}
 
-		ActividadesService svc = new ActividadesService_Service().getActividadesServicePort();
+		TurismoWebService svc = new TurismoService().getTurismoWebServicePort();
 		try {
 			SalidaDTO s = svc.obtenerSalida(id);
 			if (s == null || s.getId() == null) {

@@ -9,8 +9,8 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 
-import uy.edu.pa.central.client.ActividadesService;
-import uy.edu.pa.central.client.ActividadesService_Service;
+import uy.edu.pa.central.client.TurismoService;
+import uy.edu.pa.central.client.TurismoWebService;
 import uy.edu.pa.central.client.ActividadDTO;
 import uy.edu.pa.central.client.SalidaDTO;
 
@@ -55,7 +55,7 @@ public class InscriptionServlet extends HttpServlet {
         String salidaSeleccionada = request.getParameter("salida");
         
         // Cargar todas las actividades vía SOAP
-        ActividadesService svc = new ActividadesService_Service().getActividadesServicePort();
+        TurismoWebService svc = new TurismoService().getTurismoWebServicePort();
         java.util.List<ActividadDTO> actividades = java.util.Collections.emptyList();
         try {
             actividades = svc.listarActividades();
@@ -93,7 +93,7 @@ public class InscriptionServlet extends HttpServlet {
                 for (ActividadDTO a : actividades) {
                     if (actividadSeleccionada.equals(a.getId())) { actSel = a; break; }
                 }
-                if (actSel == null) { actSel = svc.obtenerActividad(actividadSeleccionada); }
+                if (actSel == null) { actSel = svc.obtenerDetalleActividad(actividadSeleccionada); }
                 if (actSel != null && actSel.getSalidas() != null) {
                     for (SalidaDTO s : actSel.getSalidas()) {
                         salidasHtml.append("<option value=\"")
@@ -131,7 +131,7 @@ public class InscriptionServlet extends HttpServlet {
         String turista = (String) session.getAttribute("username");
 
         // Cliente SOAP
-        ActividadesService svc = new ActividadesService_Service().getActividadesServicePort();
+        TurismoWebService svc = new TurismoService().getTurismoWebServicePort();
 
         String actividad = request.getParameter("actividad");
         String salida = request.getParameter("salida");
@@ -159,7 +159,7 @@ public class InscriptionServlet extends HttpServlet {
         // Obtener costo aproximado desde la actividad vía SOAP
         float costo = 0.0f;
         try {
-            ActividadDTO da = svc.obtenerActividad(actividad);
+            ActividadDTO da = svc.obtenerDetalleActividad(actividad);
             if (da != null) costo = da.getCosto();
         } catch (Exception e) {
             System.err.println("[InscriptionServlet] Error SOAP obteniendo costo de actividad: " + e.getMessage());
@@ -168,7 +168,7 @@ public class InscriptionServlet extends HttpServlet {
         // Llamar al servicio SOAP de inscripciones (inscribirTurista)
         boolean exito = false;
         try {
-            exito = svc.inscribirTurista(actividad, salida, turista, cantidad, fecha, costo);
+            exito = svc.inscribirTurista(turista, salida, cantidad, fecha);
         } catch (Exception e) {
             System.err.println("[InscriptionServlet] Error SOAP al inscribir: " + e.getMessage());
             exito = false;

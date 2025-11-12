@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.util.List;
 
 // SOAP stubs
-import uy.edu.pa.central.client.ActividadesService_Service;
-import uy.edu.pa.central.client.ActividadesService;
+import uy.edu.pa.central.client.TurismoService;
+import uy.edu.pa.central.client.TurismoWebService;
 import uy.edu.pa.central.client.ActividadDTO;
 
 @WebServlet("/create-departure")
@@ -38,8 +38,8 @@ public class CreateDepartureViewServlet extends HttpServlet {
         
         try {
             // Obtener actividades via SOAP
-            ActividadesService_Service service = new ActividadesService_Service();
-            ActividadesService port = service.getActividadesServicePort();
+            TurismoService service = new TurismoService();
+            TurismoWebService port = service.getTurismoWebServicePort();
             
             List<ActividadDTO> todasActividades = port.listarActividades();
             

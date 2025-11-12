@@ -50,8 +50,7 @@
               <keep>true</keep>
               <packageName>uy.edu.pa.central.client</packageName>
               <wsdlUrls>
-                <wsdlUrl>${wsdl.baseUrl}/AuthService?wsdl</wsdlUrl>
-                <wsdlUrl>${wsdl.baseUrl}/ActividadesService?wsdl</wsdlUrl>
+                <wsdlUrl>${wsdl.baseUrl}/TurismoService?wsdl</wsdlUrl>
               </wsdlUrls>
             </configuration>
           </execution>
