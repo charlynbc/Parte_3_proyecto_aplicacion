@@ -3116,3 +3116,571 @@ Caused by: java.lang.UnsupportedOperationException: Not supported by BasicDataSo
 12-Nov-2025 18:29:33.049 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/manager] has finished in [21] ms
 12-Nov-2025 18:29:33.053 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
 12-Nov-2025 18:29:33.071 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [21937] milliseconds
+12-Nov-2025 18:32:34.240 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.47
+12-Nov-2025 18:32:34.252 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 2 2025 12:03:51 UTC
+12-Nov-2025 18:32:34.252 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.47.0
+12-Nov-2025 18:32:34.252 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+12-Nov-2025 18:32:34.252 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.8.0-1030-azure
+12-Nov-2025 18:32:34.252 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+12-Nov-2025 18:32:34.253 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-17-openjdk-amd64
+12-Nov-2025 18:32:34.255 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           17.0.16+8-Ubuntu-0ubuntu124.04.1
+12-Nov-2025 18:32:34.255 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+12-Nov-2025 18:32:34.255 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47
+12-Nov-2025 18:32:34.255 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47
+12-Nov-2025 18:32:34.267 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/conf/logging.properties
+12-Nov-2025 18:32:34.268 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+12-Nov-2025 18:32:34.268 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+12-Nov-2025 18:32:34.268 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+12-Nov-2025 18:32:34.268 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+12-Nov-2025 18:32:34.269 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+12-Nov-2025 18:32:34.270 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+12-Nov-2025 18:32:34.270 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+12-Nov-2025 18:32:34.270 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+12-Nov-2025 18:32:34.271 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+12-Nov-2025 18:32:34.271 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+12-Nov-2025 18:32:34.272 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+12-Nov-2025 18:32:34.272 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xms512m
+12-Nov-2025 18:32:34.272 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xmx1024m
+12-Nov-2025 18:32:34.273 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47
+12-Nov-2025 18:32:34.273 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47
+12-Nov-2025 18:32:34.273 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/temp
+12-Nov-2025 18:32:34.276 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+12-Nov-2025 18:32:35.366 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+12-Nov-2025 18:32:35.392 SEVERE [main] org.apache.catalina.util.LifecycleBase.handleSubClassException Failed to initialize component [Connector["http-nio-8080"]]
+	org.apache.catalina.LifecycleException: Protocol handler initialization failed
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1073)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardService.initInternal(StandardService.java:520)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:955)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:709)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:732)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:299)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:472)
+	Caused by: java.net.BindException: Address already in use
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:555)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:337)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:294)
+		at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:266)
+		at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:221)
+		at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1400)
+		at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:1413)
+		at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:633)
+		at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:82)
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1071)
+		... 13 more
+12-Nov-2025 18:32:35.395 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [1570] milliseconds
+12-Nov-2025 18:32:35.439 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+12-Nov-2025 18:32:35.440 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.47]
+12-Nov-2025 18:32:35.463 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/mobile-web.war]
+12-Nov-2025 18:32:36.980 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+12-Nov-2025 18:32:37.186 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/mobile-web.war] has finished in [1,722] ms
+12-Nov-2025 18:32:37.190 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/Laboratorio2PaP.war]
+12-Nov-2025 18:32:37.198 INFO [main] org.apache.catalina.startup.ExpandWar.expand An expanded directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/Laboratorio2PaP] was found with a last modified time that did not match the associated WAR. It will be deleted.
+12-Nov-2025 18:32:40.035 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+🚀 Iniciando conexión a Railway Database...
+🔎 Verificación de conexión a la base de datos completada.
+[JpaUtil] Usando DataSource JNDI 'jdbc/railway'. Probando conexión...
+[EL Info]: 2025-11-12 18:32:42.276--ServerSession(892243123)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+[EL Severe]: 2025-11-12 18:32:42.289--ServerSession(892243123)--java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+[EL Severe]: ejb: 2025-11-12 18:32:42.289--ServerSession(892243123)--java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+12-Nov-2025 18:32:43.091 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/Laboratorio2PaP]
+12-Nov-2025 18:32:43.102 WARNING [Catalina-utility-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [Laboratorio2PaP] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+12-Nov-2025 18:32:43.103 WARNING [Catalina-utility-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [Laboratorio2PaP] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.16/java.lang.Object.wait(Native Method)
+ java.base@17.0.16/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.16/java.lang.Thread.run(Thread.java:840)
+12-Nov-2025 18:32:43.119 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/Laboratorio2PaP.war]
+12-Nov-2025 18:32:44.193 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1396)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:984)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+12-Nov-2025 18:32:44.195 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1396)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:984)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+12-Nov-2025 18:32:45.241 INFO [Catalina-utility-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+🚀 Iniciando conexión a Railway Database...
+🔎 Verificación de conexión a la base de datos completada.
+[JpaUtil] Usando DataSource JNDI 'jdbc/railway'. Probando conexión...
+[JpaUtil] Usando DataSource JNDI 'jdbc/railway'. Probando conexión...
+[EL Info]: 2025-11-12 18:32:47.505--ServerSession(1574700923)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+[EL Severe]: 2025-11-12 18:32:47.511--ServerSession(1574700923)--java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+[EL Severe]: ejb: 2025-11-12 18:32:47.511--ServerSession(1574700923)--java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+[EL Info]: 2025-11-12 18:32:47.583--ServerSession(1342736743)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+🛠️  Migración: normalizados valores de DTYPE/tipo => 17
+✅ Seeding completado (idempotente): proveedores, actividades, salidas, turistas e inscripciones.
+12-Nov-2025 18:32:49.481 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/Laboratorio2PaP.war] has finished in [6,362] ms
+[JpaUtil] Usando DataSource JNDI 'jdbc/railway'. Probando conexión...
+[EL Info]: 2025-11-12 18:32:57.677--ServerSession(1325519594)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+🛠️  Migración: normalizados valores de DTYPE/tipo => 17
+✅ Seeding completado (idempotente): proveedores, actividades, salidas, turistas e inscripciones.
+12-Nov-2025 18:33:00.503 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/Laboratorio2PaP.war] has finished in [23,313] ms
+12-Nov-2025 18:33:00.505 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/ROOT]
+12-Nov-2025 18:33:00.548 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/ROOT] has finished in [43] ms
+12-Nov-2025 18:33:00.548 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/docs]
+12-Nov-2025 18:33:00.586 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/docs] has finished in [38] ms
+12-Nov-2025 18:33:00.587 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/examples]
+12-Nov-2025 18:33:00.902 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/examples] has finished in [315] ms
+12-Nov-2025 18:33:00.903 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/host-manager]
+12-Nov-2025 18:33:00.946 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/host-manager] has finished in [43] ms
+12-Nov-2025 18:33:00.946 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/manager]
+12-Nov-2025 18:33:00.993 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/manager] has finished in [47] ms
+12-Nov-2025 18:33:01.001 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [25604] milliseconds
+12-Nov-2025 18:33:01.004 SEVERE [main] org.apache.catalina.core.StandardServer.await Failed to create server shutdown socket on address [localhost] and port [8005] (base port [8005] and offset [0])
+	java.net.BindException: Address already in use
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:555)
+		at java.base/sun.nio.ch.Net.bind(Net.java:544)
+		at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:648)
+		at java.base/java.net.ServerSocket.bind(ServerSocket.java:388)
+		at java.base/java.net.ServerSocket.<init>(ServerSocket.java:274)
+		at org.apache.catalina.core.StandardServer.await(StandardServer.java:531)
+		at org.apache.catalina.startup.Catalina.await(Catalina.java:848)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:796)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+12-Nov-2025 18:33:01.007 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+12-Nov-2025 18:33:01.007 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+12-Nov-2025 18:33:01.032 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [Laboratorio2PaP] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+12-Nov-2025 18:33:01.039 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [Laboratorio2PaP] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.16/java.lang.Object.wait(Native Method)
+ java.base@17.0.16/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.16/java.lang.Thread.run(Thread.java:840)
+12-Nov-2025 18:33:01.056 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+12-Nov-2025 18:33:01.062 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+
+=== Register Tourist via SOAP ===
+Form data - Nickname: Zorro, Email: zorro1@gmail.com
+Calling registrarUsuario via SOAP
+Tourist registered successfully via SOAP
+UserProfileServlet initialized (SOAP mode)
+
+=== User Profile Request (SOAP) ===
+Using logged user: Zorro
+Loading profile for: Zorro
+User found: Zorro (tipo: turista)
+Is own profile: true
+Inscripciones del turista: 0
+[MisSalidasServlet] Acceso - username: Zorro, tipoUsuario: 'turista'
+[MisSalidasServlet] Acceso denegado - tipoUsuario: 'turista' no es proveedor
+RegisterProviderServlet initialized (SOAP mode)
+
+=== Users List Request via Web Services ===
+Users retrieved via WS: 13
+12-Nov-2025 19:29:09.428 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.47
+12-Nov-2025 19:29:09.440 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 2 2025 12:03:51 UTC
+12-Nov-2025 19:29:09.440 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.47.0
+12-Nov-2025 19:29:09.441 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+12-Nov-2025 19:29:09.441 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.8.0-1030-azure
+12-Nov-2025 19:29:09.441 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+12-Nov-2025 19:29:09.441 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-17-openjdk-amd64
+12-Nov-2025 19:29:09.441 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           17.0.16+8-Ubuntu-0ubuntu124.04.1
+12-Nov-2025 19:29:09.441 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+12-Nov-2025 19:29:09.442 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47
+12-Nov-2025 19:29:09.444 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47
+12-Nov-2025 19:29:09.445 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/conf/logging.properties
+12-Nov-2025 19:29:09.445 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+12-Nov-2025 19:29:09.448 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+12-Nov-2025 19:29:09.449 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+12-Nov-2025 19:29:09.449 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+12-Nov-2025 19:29:09.449 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+12-Nov-2025 19:29:09.449 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+12-Nov-2025 19:29:09.450 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+12-Nov-2025 19:29:09.450 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+12-Nov-2025 19:29:09.450 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+12-Nov-2025 19:29:09.450 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+12-Nov-2025 19:29:09.451 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+12-Nov-2025 19:29:09.452 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xms512m
+12-Nov-2025 19:29:09.452 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xmx1024m
+12-Nov-2025 19:29:09.453 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47
+12-Nov-2025 19:29:09.453 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47
+12-Nov-2025 19:29:09.453 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/temp
+12-Nov-2025 19:29:09.457 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+12-Nov-2025 19:29:09.896 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+12-Nov-2025 19:29:09.926 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [811] milliseconds
+12-Nov-2025 19:29:09.987 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+12-Nov-2025 19:29:09.988 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.47]
+12-Nov-2025 19:29:10.072 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/mobile-web.war]
+12-Nov-2025 19:29:12.426 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+12-Nov-2025 19:29:12.499 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/mobile-web.war] has finished in [2,426] ms
+12-Nov-2025 19:29:12.505 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/Laboratorio2PaP.war]
+12-Nov-2025 19:29:16.477 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+🚀 Iniciando conexión a Railway Database...
+🔎 Verificación de conexión a la base de datos completada.
+[JpaUtil] Usando DataSource JNDI 'jdbc/railway'. Probando conexión...
+[EL Info]: 2025-11-12 19:29:19.271--ServerSession(489674556)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+[EL Severe]: 2025-11-12 19:29:19.287--ServerSession(489674556)--java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+[EL Severe]: ejb: 2025-11-12 19:29:19.288--ServerSession(489674556)--java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+[JpaUtil] Usando DataSource JNDI 'jdbc/railway'. Probando conexión...
+[EL Info]: 2025-11-12 19:29:24.396--ServerSession(2037902642)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+🛠️  Migración: normalizados valores de DTYPE/tipo => 18
+✅ Seeding completado (idempotente): proveedores, actividades, salidas, turistas e inscripciones.
+12-Nov-2025 19:29:26.341 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/Laboratorio2PaP.war] has finished in [13,835] ms
+12-Nov-2025 19:29:26.342 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/ROOT]
+12-Nov-2025 19:29:26.358 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/ROOT] has finished in [15] ms
+12-Nov-2025 19:29:26.358 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/docs]
+12-Nov-2025 19:29:26.377 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/docs] has finished in [19] ms
+12-Nov-2025 19:29:26.378 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/examples]
+12-Nov-2025 19:29:26.697 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/examples] has finished in [319] ms
+12-Nov-2025 19:29:26.697 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/host-manager]
+12-Nov-2025 19:29:26.745 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/host-manager] has finished in [48] ms
+12-Nov-2025 19:29:26.746 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/manager]
+12-Nov-2025 19:29:26.767 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/manager] has finished in [21] ms
+12-Nov-2025 19:29:26.771 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+12-Nov-2025 19:29:26.788 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [16861] milliseconds
+12-Nov-2025 19:34:25.971 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+12-Nov-2025 19:34:25.982 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+12-Nov-2025 19:34:25.991 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+12-Nov-2025 19:34:26.165 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [Laboratorio2PaP] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+12-Nov-2025 19:34:26.177 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [Laboratorio2PaP] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.16/java.lang.Object.wait(Native Method)
+ java.base@17.0.16/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.16/java.lang.Thread.run(Thread.java:840)
+12-Nov-2025 19:34:26.280 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+12-Nov-2025 19:34:26.318 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+12-Nov-2025 19:35:12.974 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.47
+12-Nov-2025 19:35:13.003 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 2 2025 12:03:51 UTC
+12-Nov-2025 19:35:13.003 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.47.0
+12-Nov-2025 19:35:13.003 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+12-Nov-2025 19:35:13.003 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.8.0-1030-azure
+12-Nov-2025 19:35:13.004 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+12-Nov-2025 19:35:13.004 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-17-openjdk-amd64
+12-Nov-2025 19:35:13.010 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           17.0.16+8-Ubuntu-0ubuntu124.04.1
+12-Nov-2025 19:35:13.010 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+12-Nov-2025 19:35:13.010 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47
+12-Nov-2025 19:35:13.010 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47
+12-Nov-2025 19:35:13.031 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/conf/logging.properties
+12-Nov-2025 19:35:13.031 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+12-Nov-2025 19:35:13.031 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+12-Nov-2025 19:35:13.031 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+12-Nov-2025 19:35:13.032 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+12-Nov-2025 19:35:13.032 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+12-Nov-2025 19:35:13.032 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+12-Nov-2025 19:35:13.032 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+12-Nov-2025 19:35:13.032 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+12-Nov-2025 19:35:13.033 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+12-Nov-2025 19:35:13.033 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+12-Nov-2025 19:35:13.033 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+12-Nov-2025 19:35:13.037 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xms512m
+12-Nov-2025 19:35:13.037 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xmx1024m
+12-Nov-2025 19:35:13.038 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47
+12-Nov-2025 19:35:13.041 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47
+12-Nov-2025 19:35:13.041 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/temp
+12-Nov-2025 19:35:13.047 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+12-Nov-2025 19:35:13.626 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+12-Nov-2025 19:35:13.692 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [1101] milliseconds
+12-Nov-2025 19:35:13.752 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+12-Nov-2025 19:35:13.752 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.47]
+12-Nov-2025 19:35:13.798 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/mobile-web.war]
+12-Nov-2025 19:35:15.092 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+12-Nov-2025 19:35:15.178 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/mobile-web.war] has finished in [1,379] ms
+12-Nov-2025 19:35:15.182 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/Laboratorio2PaP.war]
+12-Nov-2025 19:35:20.573 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+🚀 Iniciando conexión a Railway Database...
+🔎 Verificación de conexión a la base de datos completada.
+[JpaUtil] Usando DataSource JNDI 'jdbc/railway'. Probando conexión...
+[EL Info]: 2025-11-12 19:35:23.028--ServerSession(620381176)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+[EL Severe]: 2025-11-12 19:35:23.039--ServerSession(620381176)--java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+[EL Severe]: ejb: 2025-11-12 19:35:23.039--ServerSession(620381176)--java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+[JpaUtil] Usando DataSource JNDI 'jdbc/railway'. Probando conexión...
+[EL Info]: 2025-11-12 19:35:28.153--ServerSession(1380778215)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+🛠️  Migración: normalizados valores de DTYPE/tipo => 18
+✅ Seeding completado (idempotente): proveedores, actividades, salidas, turistas e inscripciones.
+12-Nov-2025 19:35:30.056 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/Laboratorio2PaP.war] has finished in [14,873] ms
+12-Nov-2025 19:35:30.057 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/ROOT]
+12-Nov-2025 19:35:30.085 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/ROOT] has finished in [27] ms
+12-Nov-2025 19:35:30.087 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/docs]
+12-Nov-2025 19:35:30.110 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/docs] has finished in [23] ms
+12-Nov-2025 19:35:30.111 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/examples]
+12-Nov-2025 19:35:30.399 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/examples] has finished in [288] ms
+12-Nov-2025 19:35:30.400 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/host-manager]
+12-Nov-2025 19:35:30.438 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/host-manager] has finished in [38] ms
+12-Nov-2025 19:35:30.438 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/manager]
+12-Nov-2025 19:35:30.462 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/manager] has finished in [24] ms
+12-Nov-2025 19:35:30.469 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+12-Nov-2025 19:35:30.515 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [16821] milliseconds
+RegisterProviderServlet initialized (SOAP mode)
+
+=== Users List Request via Web Services ===
+Users retrieved via WS: 13
+
+=== Register Provider Debug Info ===
+
+=== Register Provider Debug Info ===
+4. Calling SOAP registrarUsuario
+5. Registration failed via SOAP
+
+=== Register Provider Debug Info ===
+4. Calling SOAP registrarUsuario
+5. Provider registered successfully via SOAP
+
+=== Users List Request via Web Services ===
+Users retrieved via WS: 14
+
+=== Register Provider Debug Info ===
+
+=== Register Provider Debug Info ===
+4. Calling SOAP registrarUsuario
+5. Provider registered successfully via SOAP
+UserProfileServlet initialized (SOAP mode)
+
+=== User Profile Request (SOAP) ===
+Using logged user: jorge
+Loading profile for: jorge
+User found: jorge (tipo: proveedor)
+Is own profile: true
+Actividades cargadas: 5
+CreateActivityServlet initialized (SOAP mode)
+
+=== Create Activity (SOAP) ===
+1. Activity data received:
+- Nombre: Surf
+- Ciudad: Punta del Este
+- Proveedor: jorge
+2. Parsed data:
+- Duracion: 2 horas
+- Costo: $200.0
+4. Calling SOAP crearActividad
+5. Activity created successfully via SOAP
+[CreateDepartureView SOAP] Actividades obtenidas: 6
+
+=== Create Departure (SOAP) ===
+1. Departure data received:
+- Activity: Surf en Punta del este
+- Fecha: 1991-10-29
+- Lugar: Playa brava
+2. Parsed data:
+- Nombre salida: Vamos a la playa
+- Cupo: 10
+3. Calling SOAP crearSalida
+4. Departure created successfully via SOAP
+[CreateDepartureView SOAP] Actividades obtenidas: 6
+
+=== Create Departure (SOAP) ===
+1. Departure data received:
+- Activity: Surf
+- Fecha: 2027-10-29
+- Lugar: Playa
+2. Parsed data:
+- Nombre salida: Surf en paracaidas
+- Cupo: 50
+3. Calling SOAP crearSalida
+4. Departure created successfully via SOAP
+12-Nov-2025 19:56:28.954 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+12-Nov-2025 19:56:28.955 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+12-Nov-2025 19:56:28.959 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+12-Nov-2025 19:56:28.981 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [Laboratorio2PaP] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+12-Nov-2025 19:56:28.982 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [Laboratorio2PaP] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.16/java.lang.Object.wait(Native Method)
+ java.base@17.0.16/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.16/java.lang.Thread.run(Thread.java:840)
+12-Nov-2025 19:56:29.001 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+12-Nov-2025 19:56:29.012 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+12-Nov-2025 19:57:52.722 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.47
+12-Nov-2025 19:57:52.733 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 2 2025 12:03:51 UTC
+12-Nov-2025 19:57:52.734 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.47.0
+12-Nov-2025 19:57:52.734 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+12-Nov-2025 19:57:52.735 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.8.0-1030-azure
+12-Nov-2025 19:57:52.736 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+12-Nov-2025 19:57:52.736 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-17-openjdk-amd64
+12-Nov-2025 19:57:52.736 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           17.0.16+8-Ubuntu-0ubuntu124.04.1
+12-Nov-2025 19:57:52.736 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+12-Nov-2025 19:57:52.737 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47
+12-Nov-2025 19:57:52.738 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47
+12-Nov-2025 19:57:52.747 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/conf/logging.properties
+12-Nov-2025 19:57:52.747 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+12-Nov-2025 19:57:52.747 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+12-Nov-2025 19:57:52.747 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+12-Nov-2025 19:57:52.748 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+12-Nov-2025 19:57:52.749 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+12-Nov-2025 19:57:52.749 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+12-Nov-2025 19:57:52.750 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+12-Nov-2025 19:57:52.750 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+12-Nov-2025 19:57:52.750 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+12-Nov-2025 19:57:52.751 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+12-Nov-2025 19:57:52.752 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+12-Nov-2025 19:57:52.752 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xms512m
+12-Nov-2025 19:57:52.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xmx1024m
+12-Nov-2025 19:57:52.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47
+12-Nov-2025 19:57:52.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47
+12-Nov-2025 19:57:52.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/temp
+12-Nov-2025 19:57:52.756 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+12-Nov-2025 19:57:53.185 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+12-Nov-2025 19:57:53.216 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [719] milliseconds
+12-Nov-2025 19:57:53.256 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+12-Nov-2025 19:57:53.257 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.47]
+12-Nov-2025 19:57:53.292 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/mobile-web.war]
+12-Nov-2025 19:57:54.576 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+12-Nov-2025 19:57:54.649 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/mobile-web.war] has finished in [1,356] ms
+12-Nov-2025 19:57:54.652 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/Laboratorio2PaP.war]
+12-Nov-2025 19:57:57.040 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+🚀 Iniciando conexión a Railway Database...
+🔎 Verificación de conexión a la base de datos completada.
+[JpaUtil] Usando DataSource JNDI 'jdbc/railway'. Probando conexión...
+[EL Info]: 2025-11-12 19:57:59.455--ServerSession(1153463229)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+[EL Severe]: 2025-11-12 19:57:59.465--ServerSession(1153463229)--java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+[EL Severe]: ejb: 2025-11-12 19:57:59.466--ServerSession(1153463229)--java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+[JpaUtil] Usando DataSource JNDI 'jdbc/railway'. Probando conexión...
+[EL Info]: 2025-11-12 19:58:04.583--ServerSession(588755151)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+[EL Severe]: 2025-11-12 19:58:04.585--ServerSession(588755151)--java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+[EL Severe]: ejb: 2025-11-12 19:58:04.585--ServerSession(588755151)--java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+[JpaUtil] Usando DataSource JNDI 'jdbc/railway'. Probando conexión...
+[EL Info]: 2025-11-12 19:58:14.688--ServerSession(82823784)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+[EL Severe]: 2025-11-12 19:58:14.689--ServerSession(82823784)--java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+[EL Severe]: ejb: 2025-11-12 19:58:14.689--ServerSession(82823784)--java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+❌ Error durante seeding de datos: java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+jakarta.persistence.PersistenceException: java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:856)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:221)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:199)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:534)
+	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
+	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
+	at jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
+	at utils.JpaUtil.buildEmf(JpaUtil.java:118)
+	at utils.JpaUtil.getEntityManager(JpaUtil.java:203)
+	at servlets.InitDataServlet.initializeTestData(InitDataServlet.java:93)
+	at servlets.InitDataServlet.init(InitDataServlet.java:28)
+	at jakarta.servlet.GenericServlet.init(GenericServlet.java:143)
+	at jakarta.servlet.http.HttpServlet.init(HttpServlet.java:121)
+	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:840)
+	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:797)
+	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:701)
+	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4209)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4496)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:597)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:569)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:652)
+	at org.apache.catalina.startup.HostConfig.deployWAR(HostConfig.java:962)
+	at org.apache.catalina.startup.HostConfig$DeployWar.run(HostConfig.java:1900)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:123)
+	at org.apache.catalina.startup.HostConfig.deployWARs(HostConfig.java:766)
+	at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:417)
+	at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1618)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:300)
+	at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:109)
+	at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:389)
+	at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:336)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:774)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:770)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:201)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:868)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:758)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+Caused by: java.lang.UnsupportedOperationException: Not supported by BasicDataSource
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:735)
+	at org.eclipse.persistence.sessions.JNDIConnector.connect(JNDIConnector.java:149)
+	at org.eclipse.persistence.sessions.DatasourceLogin.connectToDatasource(DatasourceLogin.java:174)
+	at org.eclipse.persistence.internal.databaseaccess.DatasourceAccessor.connectInternal(DatasourceAccessor.java:359)
+	at org.eclipse.persistence.internal.databaseaccess.DatabaseAccessor.connectInternal(DatabaseAccessor.java:318)
+	at org.eclipse.persistence.internal.databaseaccess.DatasourceAccessor.connect(DatasourceAccessor.java:451)
+	at org.eclipse.persistence.sessions.server.ConnectionPool.buildConnection(ConnectionPool.java:219)
+	at org.eclipse.persistence.sessions.server.ExternalConnectionPool.startUp(ExternalConnectionPool.java:154)
+	at org.eclipse.persistence.sessions.server.ServerSession.connect(ServerSession.java:530)
+	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.login(DatabaseSessionImpl.java:824)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryProvider.login(EntityManagerFactoryProvider.java:261)
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:771)
+	... 56 more
+12-Nov-2025 19:58:14.696 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/Laboratorio2PaP.war] has finished in [20,044] ms
+12-Nov-2025 19:58:14.697 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/ROOT]
+12-Nov-2025 19:58:14.718 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/ROOT] has finished in [21] ms
+12-Nov-2025 19:58:14.720 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/docs]
+12-Nov-2025 19:58:14.742 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/docs] has finished in [22] ms
+12-Nov-2025 19:58:14.743 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/examples]
+12-Nov-2025 19:58:14.909 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/examples] has finished in [166] ms
+12-Nov-2025 19:58:14.910 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/host-manager]
+12-Nov-2025 19:58:14.942 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/host-manager] has finished in [32] ms
+12-Nov-2025 19:58:14.943 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/manager]
+12-Nov-2025 19:58:14.963 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/manager] has finished in [19] ms
+12-Nov-2025 19:58:14.967 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+12-Nov-2025 19:58:14.982 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [21764] milliseconds
+12-Nov-2025 20:01:05.000 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/Laboratorio2PaP]
+12-Nov-2025 20:01:05.009 WARNING [Catalina-utility-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [Laboratorio2PaP] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+12-Nov-2025 20:01:05.010 WARNING [Catalina-utility-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [Laboratorio2PaP] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.16/java.lang.Object.wait(Native Method)
+ java.base@17.0.16/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.16/java.lang.Thread.run(Thread.java:840)
+12-Nov-2025 20:01:05.061 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/Laboratorio2PaP.war]
+12-Nov-2025 20:01:06.408 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1396)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:984)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+12-Nov-2025 20:01:06.411 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1396)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:984)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+12-Nov-2025 20:01:07.225 INFO [Catalina-utility-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+🚀 Iniciando conexión a Railway Database...
+🔎 Verificación de conexión a la base de datos completada.
+[JpaUtil] Usando DataSource JNDI 'jdbc/railway'. Probando conexión...
+[EL Info]: 2025-11-12 20:01:09.348--ServerSession(1931279047)--EclipseLink, version: Eclipse Persistence Services - 4.0.2.v202306130914
+🛠️  Migración: normalizados valores de DTYPE/tipo => 20
+✅ Seeding completado (idempotente): proveedores, actividades, salidas, turistas e inscripciones.
+12-Nov-2025 20:01:11.363 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/workspaces/Parte_3_proyecto_aplicacion/apache-tomcat-10.1.47/webapps/Laboratorio2PaP.war] has finished in [6,302] ms
+RegisterProviderServlet initialized (SOAP mode)

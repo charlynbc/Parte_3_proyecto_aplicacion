@@ -41,16 +41,16 @@ public class CreateDepartureViewServlet extends HttpServlet {
             TurismoService service = new TurismoService();
             TurismoWebService port = service.getTurismoWebServicePort();
             
-            List<ActividadDTO> todasActividades = port.listarActividades();
+            // Obtener solo las actividades del proveedor logueado
+            List<ActividadDTO> actividadesProveedor = port.listarActividadesPorProveedor(proveedor);
             
-            // Filtrar solo las del proveedor (simplificado - todas por ahora)
-            request.setAttribute("actividades", todasActividades);
+            request.setAttribute("actividades", actividadesProveedor);
             
             // Generar HTML para el select
             StringBuilder actividadesHtml = new StringBuilder();
-            if (todasActividades != null && !todasActividades.isEmpty()) {
+            if (actividadesProveedor != null && !actividadesProveedor.isEmpty()) {
                 actividadesHtml.append("<option value=\"\">Seleccione una actividad</option>");
-                for (ActividadDTO act : todasActividades) {
+                for (ActividadDTO act : actividadesProveedor) {
                     String id = act.getId() != null ? act.getId() : "";
                     actividadesHtml.append("<option value=\"")
                                   .append(id)
@@ -61,8 +61,8 @@ public class CreateDepartureViewServlet extends HttpServlet {
             }
             request.setAttribute("actividadesHtml", actividadesHtml.toString());
             
-            System.out.println("[CreateDepartureView SOAP] Actividades obtenidas: " + 
-                (todasActividades != null ? todasActividades.size() : 0));
+            System.out.println("[CreateDepartureView SOAP] Actividades del proveedor " + proveedor + ": " + 
+                (actividadesProveedor != null ? actividadesProveedor.size() : 0));
             
         } catch (Exception e) {
             System.err.println("Error loading activities: " + e.getMessage());

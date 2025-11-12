@@ -62,7 +62,8 @@
         </p>
         <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
             <a href="login" class="btn btn-primary">Iniciar Sesión</a>
-            <a href="register-tourist" class="btn btn-secondary">Crear Cuenta</a>
+            <a href="register-tourist" class="btn btn-secondary">Crear Cuenta Turista</a>
+            <a href="register-provider" class="btn btn-outline-primary">Crear Cuenta Proveedor</a>
         </div>
     </div>
     

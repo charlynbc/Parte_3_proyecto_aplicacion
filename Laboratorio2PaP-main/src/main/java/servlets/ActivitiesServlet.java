@@ -13,6 +13,7 @@ import java.util.List;
 import uy.edu.pa.central.client.TurismoService;
 import uy.edu.pa.central.client.TurismoWebService;
 import uy.edu.pa.central.client.ActividadDTO;
+import uy.edu.pa.central.client.SalidaDTO;
 
 @WebServlet(name = "ActivitiesServlet", urlPatterns = {"/activities"})
 public class ActivitiesServlet extends HttpServlet {
@@ -32,6 +33,30 @@ public class ActivitiesServlet extends HttpServlet {
         
         try {
             java.util.List<ActividadDTO> resultado = service.listarActividades();
+            
+            // Para cada actividad, obtener sus salidas con cupos disponibles
+            for (ActividadDTO actividad : resultado) {
+                if (actividad.getId() != null) {
+                    try {
+                        java.util.List<SalidaDTO> salidas = service.listarSalidasDeActividad(actividad.getId());
+                        // Agregar cupos disponibles a cada salida
+                        for (SalidaDTO salida : salidas) {
+                            try {
+                                int cupos = service.obtenerCuposDisponibles(salida.getId());
+                                // Guardar cupos en un atributo temporal
+                                salida.setTuristasMax(cupos); // Usaremos este campo para mostrar cupos disponibles
+                            } catch (Exception e) {
+                                System.err.println("[ActivitiesServlet] Error obteniendo cupos: " + e.getMessage());
+                            }
+                        }
+                        actividad.getSalidas().clear();
+                        actividad.getSalidas().addAll(salidas);
+                    } catch (Exception e) {
+                        System.err.println("[ActivitiesServlet] Error obteniendo salidas: " + e.getMessage());
+                    }
+                }
+            }
+            
             request.setAttribute("activities", resultado);
         } catch (Exception e) {
             request.setAttribute("activities", java.util.Collections.emptyList());

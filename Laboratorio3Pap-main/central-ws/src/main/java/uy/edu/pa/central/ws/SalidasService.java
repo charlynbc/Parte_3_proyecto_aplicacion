@@ -49,4 +49,8 @@ public interface SalidasService {
     List<InscripcionDTO> listarInscripcionesDeSalida(
         @WebParam(name = "salida") String salida
     );
+    
+    @WebMethod(operationName = "ObtenerCuposDisponibles")
+    @WebResult(name = "cuposDisponibles")
+    int obtenerCuposDisponibles(@WebParam(name = "salida") String salida);
 }

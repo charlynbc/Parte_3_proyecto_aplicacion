@@ -136,6 +136,11 @@ public class TurismoWebServiceImpl implements TurismoWebService {
     public List<InscripcionDTO> listarInscripcionesDeSalida(String salida) {
         return salidasService.listarInscripcionesDeSalida(salida);
     }
+    
+    @Override
+    public int obtenerCuposDisponibles(String salida) {
+        return salidasService.obtenerCuposDisponibles(salida);
+    }
 
     @Override
     public List<UserDTO> listarProveedores() {

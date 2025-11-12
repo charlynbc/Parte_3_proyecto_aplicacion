@@ -62,6 +62,51 @@
                                     <%= act.getDescripcion() != null ? act.getDescripcion() : "" %><br><br>
                                     <strong>Costo:</strong> $<%= act.getCosto() %> UYU<br>
                                     <strong>Lugar:</strong> <%= act.getLugar() != null ? act.getLugar() : "-" %>
+                                    
+                                    <%
+                                        // Mostrar salidas asociadas con cupos
+                                        if (act.getSalidas() != null && !act.getSalidas().isEmpty()) {
+                                    %>
+                                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0;">
+                                            <strong>Salidas Disponibles:</strong>
+                                            <div style="margin-top: 10px;">
+                                                <% 
+                                                    String currentUserType = (String) session.getAttribute("userType");
+                                                    boolean esTurista = "Turista".equals(currentUserType);
+                                                    
+                                                    for (uy.edu.pa.central.client.SalidaDTO salida : act.getSalidas()) { 
+                                                %>
+                                                    <div style="background: #f8f9fa; padding: 10px; margin-bottom: 8px; border-radius: 4px;">
+                                                        <div style="font-weight: 500;"><%= salida.getId() %></div>
+                                                        <div style="font-size: 0.9em; color: #666;">
+                                                            📅 <%= salida.getFecha() %> 
+                                                            <% if (salida.getHora() != null) { %>
+                                                                - ⏰ <%= salida.getHora() %>
+                                                            <% } %>
+                                                        </div>
+                                                        <div style="font-size: 0.9em; color: #666;">
+                                                            📍 <%= salida.getLugar() != null ? salida.getLugar() : "" %>
+                                                        </div>
+                                                        <div style="margin-top: 5px;">
+                                                            <% 
+                                                                String colorCupo = salida.getTuristasMax() > 0 ? "#28a745" : "#dc3545";
+                                                                String textoCupo = salida.getTuristasMax() > 0 ? "✓ " + salida.getTuristasMax() + " cupos disponibles" : "✗ Sin cupos";
+                                                            %>
+                                                            <span style="font-weight: 600; color: <%= colorCupo %>;">
+                                                                <%= textoCupo %>
+                                                            </span>
+                                                            <% if (esTurista && salida.getTuristasMax() > 0) { %>
+                                                                <a href="${pageContext.request.contextPath}/inscripcion?actividad=<%= java.net.URLEncoder.encode(act.getId(), "UTF-8") %>&salida=<%= java.net.URLEncoder.encode(salida.getId(), "UTF-8") %>" 
+                                                                   class="btn-small" style="margin-left: 10px; font-size: 0.85em; padding: 4px 10px;">
+                                                                    Inscribirse
+                                                                </a>
+                                                            <% } %>
+                                                        </div>
+                                                    </div>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    <% } %>
                                 </div>
                                 <div class="card-actions">
                                     <a href="${pageContext.request.contextPath}/activity-detail?name=<%= java.net.URLEncoder.encode(act.getId() != null ? act.getId() : "", "UTF-8") %>" class="btn-small">Ver Detalles</a>

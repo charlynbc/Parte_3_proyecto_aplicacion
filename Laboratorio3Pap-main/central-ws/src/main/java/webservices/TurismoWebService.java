@@ -113,6 +113,9 @@ public interface TurismoWebService {
     
     @WebMethod
     List<InscripcionDTO> listarInscripcionesDeSalida(@WebParam(name = "salida") String salida);
+    
+    @WebMethod
+    int obtenerCuposDisponibles(@WebParam(name = "salida") String salida);
 
     // Métodos adicionales
     @WebMethod

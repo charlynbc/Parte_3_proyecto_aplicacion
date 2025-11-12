@@ -262,4 +262,38 @@ public class SalidasServiceImpl implements SalidasService {
         }
         return result;
     }
+    
+    public int obtenerCuposDisponibles(String salida) {
+        if (salida == null || salida.isBlank()) return 0;
+        
+        EntityManager em = null;
+        try {
+            em = JpaUtil.getEntityManager();
+            
+            // Obtener la salida
+            TypedQuery<Salida> salQuery = em.createQuery(
+                "SELECT s FROM Salida s WHERE s.nombre = :nombre", Salida.class);
+            salQuery.setParameter("nombre", salida);
+            List<Salida> salidas = salQuery.getResultList();
+            
+            if (salidas.isEmpty()) return 0;
+            
+            Salida sal = salidas.get(0);
+            int max = sal.getTuristasMax();
+            
+            // Contar turistas inscritos
+            TypedQuery<Long> countQuery = em.createQuery(
+                "SELECT COALESCE(SUM(i.cantTuristas), 0) FROM Inscripcion i WHERE i.salida = :salida", 
+                Long.class);
+            countQuery.setParameter("salida", sal);
+            Long inscriptos = countQuery.getSingleResult();
+            
+            return max - inscriptos.intValue();
+        } catch (Exception e) {
+            System.err.println("[SalidasService] Error obteniendo cupos disponibles: " + e.getMessage());
+            return 0;
+        } finally {
+            if (em != null && em.isOpen()) em.close();
+        }
+    }
 }
