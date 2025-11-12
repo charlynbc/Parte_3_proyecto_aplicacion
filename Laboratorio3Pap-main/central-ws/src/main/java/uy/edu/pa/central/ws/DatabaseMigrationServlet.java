@@ -22,7 +22,7 @@ public class DatabaseMigrationServlet extends HttpServlet {
             if (!columnExists(em, "actividad", "imagen")) {
                 em.getTransaction().begin();
                 try {
-                    em.createNativeQuery("ALTER TABLE actividad ADD COLUMN imagen VARCHAR(5000) NULL").executeUpdate();
+                    em.createNativeQuery("ALTER TABLE actividad ADD COLUMN imagen LONGTEXT NULL").executeUpdate();
                     em.getTransaction().commit();
                     System.out.println("[DatabaseMigration] ✅ Columna 'imagen' agregada a 'actividad' exitosamente");
                 } catch (Exception e) {
@@ -31,13 +31,23 @@ public class DatabaseMigrationServlet extends HttpServlet {
                 }
             } else {
                 System.out.println("[DatabaseMigration] ℹ️ La columna 'imagen' ya existe en 'actividad'");
+                // Intentar modificar el tipo de columna si es necesario
+                try {
+                    em.getTransaction().begin();
+                    em.createNativeQuery("ALTER TABLE actividad MODIFY COLUMN imagen LONGTEXT NULL").executeUpdate();
+                    em.getTransaction().commit();
+                    System.out.println("[DatabaseMigration] ✅ Columna 'imagen' en 'actividad' modificada a LONGTEXT");
+                } catch (Exception e) {
+                    em.getTransaction().rollback();
+                    System.out.println("[DatabaseMigration] ℹ️ No se pudo modificar columna 'imagen' en 'actividad': " + e.getMessage());
+                }
             }
             
             // Verificar y agregar columna imagen a tabla usuarios
             if (!columnExists(em, "usuarios", "imagen")) {
                 em.getTransaction().begin();
                 try {
-                    em.createNativeQuery("ALTER TABLE usuarios ADD COLUMN imagen VARCHAR(5000) NULL").executeUpdate();
+                    em.createNativeQuery("ALTER TABLE usuarios ADD COLUMN imagen LONGTEXT NULL").executeUpdate();
                     em.getTransaction().commit();
                     System.out.println("[DatabaseMigration] ✅ Columna 'imagen' agregada a 'usuarios' exitosamente");
                 } catch (Exception e) {
@@ -46,6 +56,16 @@ public class DatabaseMigrationServlet extends HttpServlet {
                 }
             } else {
                 System.out.println("[DatabaseMigration] ℹ️ La columna 'imagen' ya existe en 'usuarios'");
+                // Intentar modificar el tipo de columna si es necesario
+                try {
+                    em.getTransaction().begin();
+                    em.createNativeQuery("ALTER TABLE usuarios MODIFY COLUMN imagen LONGTEXT NULL").executeUpdate();
+                    em.getTransaction().commit();
+                    System.out.println("[DatabaseMigration] ✅ Columna 'imagen' en 'usuarios' modificada a LONGTEXT");
+                } catch (Exception e) {
+                    em.getTransaction().rollback();
+                    System.out.println("[DatabaseMigration] ℹ️ No se pudo modificar columna 'imagen' en 'usuarios': " + e.getMessage());
+                }
             }
             
             System.out.println("[DatabaseMigration] Migración completada");
