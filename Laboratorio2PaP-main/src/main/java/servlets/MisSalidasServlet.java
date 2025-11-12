@@ -24,16 +24,22 @@ public class MisSalidasServlet extends HttpServlet {
         String username = (session != null) ? (String) session.getAttribute("username") : null;
         String tipoUsuario = (session != null) ? (String) session.getAttribute("tipoUsuario") : null;
 
+        System.out.println("[MisSalidasServlet] Acceso - username: " + username + ", tipoUsuario: '" + tipoUsuario + "'");
+
         if (username == null || username.trim().isEmpty()) {
+            System.out.println("[MisSalidasServlet] Redirigiendo a login - no hay username");
             response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
 
-        if (tipoUsuario == null || !"proveedor".equalsIgnoreCase(tipoUsuario)) {
+        if (tipoUsuario == null || !"proveedor".equalsIgnoreCase(tipoUsuario.trim())) {
+            System.out.println("[MisSalidasServlet] Acceso denegado - tipoUsuario: '" + tipoUsuario + "' no es proveedor");
             request.setAttribute("error", "Solo los proveedores pueden ver sus salidas.");
             request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
             return;
         }
+
+        System.out.println("[MisSalidasServlet] Acceso permitido para proveedor: " + username);
 
         try {
             TurismoWebService svc = new TurismoService().getTurismoWebServicePort();
