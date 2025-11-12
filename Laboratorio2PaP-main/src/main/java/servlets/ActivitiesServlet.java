@@ -46,7 +46,7 @@ public class ActivitiesServlet extends HttpServlet {
                                 // Guardar cupos en un atributo temporal
                                 salida.setTuristasMax(cupos); // Usaremos este campo para mostrar cupos disponibles
                             } catch (Exception e) {
-                                System.err.println("[ActivitiesServlet] Error obteniendo cupos: " + e.getMessage());
+                                System.err.println("[ActivitiesServlet] Error obteniendo cupos para " + salida.getId() + ": " + e.getMessage());
                             }
                         }
                         actividad.getSalidas().clear();

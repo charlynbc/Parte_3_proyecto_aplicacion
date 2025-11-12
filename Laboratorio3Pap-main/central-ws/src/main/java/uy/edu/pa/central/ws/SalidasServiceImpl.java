@@ -281,16 +281,17 @@ public class SalidasServiceImpl implements SalidasService {
             Salida sal = salidas.get(0);
             int max = sal.getTuristasMax();
             
-            // Contar turistas inscritos
-            TypedQuery<Long> countQuery = em.createQuery(
+            // Contar turistas inscritos (usar Number para compatibilidad con diferentes tipos de resultado)
+            TypedQuery<Number> countQuery = em.createQuery(
                 "SELECT COALESCE(SUM(i.cantTuristas), 0) FROM Inscripcion i WHERE i.salida = :salida", 
-                Long.class);
+                Number.class);
             countQuery.setParameter("salida", sal);
-            Long inscriptos = countQuery.getSingleResult();
+            Number inscriptosNumber = countQuery.getSingleResult();
+            int inscriptos = inscriptosNumber != null ? inscriptosNumber.intValue() : 0;
             
-            return max - inscriptos.intValue();
+            return max - inscriptos;
         } catch (Exception e) {
-            System.err.println("[SalidasService] Error obteniendo cupos disponibles: " + e.getMessage());
+            System.err.println("[SalidasService] Error obteniendo cupos disponibles para '" + salida + "': " + e.getMessage());
             return 0;
         } finally {
             if (em != null && em.isOpen()) em.close();
