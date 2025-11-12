@@ -131,6 +131,22 @@ public class UsuariosServiceImpl implements UsuariosService {
                 tipo
             );
             
+            // Campos comunes
+            dto.setApellido(u.getApellido());
+            if (u.getFechaNac() != null) {
+                dto.setFechaNacimiento(u.getFechaNac().toString());
+            }
+            
+            // Campos específicos por tipo
+            if (u instanceof logica.Turista) {
+                logica.Turista turista = (logica.Turista) u;
+                dto.setNacionalidad(turista.getNacionalidad());
+            } else if (u instanceof logica.Proveedor) {
+                logica.Proveedor proveedor = (logica.Proveedor) u;
+                dto.setDescripcionProveedor(proveedor.getDescripcion());
+                dto.setLinkProveedor(proveedor.getSitioWeb());
+            }
+            
             System.out.println("[UsuariosService] Usuario obtenido: " + nickname + " (tipo: " + tipo + ")");
             return dto;
             
@@ -145,7 +161,7 @@ public class UsuariosServiceImpl implements UsuariosService {
     @Override
     public boolean actualizarUsuario(String nickname, String nombre, String apellido, 
                                       String fechaNacimiento, String nacionalidad, 
-                                      String descripcion, String sitioWeb) {
+                                      String descripcion, String sitioWeb, String imagenBase64) {
         EntityManager em = null;
         try {
             em = JpaUtil.getEntityManager();
@@ -163,6 +179,17 @@ public class UsuariosServiceImpl implements UsuariosService {
             if (fechaNacimiento != null && !fechaNacimiento.isBlank()) {
                 java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
                 u.setFechaNac(sdf.parse(fechaNacimiento));
+            }
+            
+            // Actualizar imagen si se proporciona
+            if (imagenBase64 != null && !imagenBase64.isBlank()) {
+                String imagenDataUri;
+                if (imagenBase64.startsWith("data:image/")) {
+                    imagenDataUri = imagenBase64;
+                } else {
+                    imagenDataUri = "data:image/jpeg;base64," + imagenBase64;
+                }
+                u.setImagen(imagenDataUri);
             }
             
             if (u instanceof logica.Turista) {
@@ -191,5 +218,38 @@ public class UsuariosServiceImpl implements UsuariosService {
         } finally {
             if (em != null && em.isOpen()) em.close();
         }
+    }
+
+    private UserDTO convertirUsuarioADTO(logica.Usuario u) {
+        String tipo = "turista";
+        if (u instanceof logica.Proveedor) {
+            tipo = "proveedor";
+        }
+        
+        UserDTO dto = new UserDTO(
+            u.getNickname(),
+            u.getNombre(),
+            u.getEmail(),
+            tipo
+        );
+        
+        dto.setApellido(u.getApellido());
+        dto.setImagen(u.getImagen());
+        
+        if (u.getFechaNac() != null) {
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+            dto.setFechaNacimiento(sdf.format(u.getFechaNac()));
+        }
+        
+        if (u instanceof logica.Turista) {
+            logica.Turista t = (logica.Turista) u;
+            dto.setNacionalidad(t.getNacionalidad());
+        } else if (u instanceof logica.Proveedor) {
+            logica.Proveedor p = (logica.Proveedor) u;
+            dto.setDescripcionProveedor(p.getDescripcion());
+            dto.setLinkProveedor(p.getSitioWeb());
+        }
+        
+        return dto;
     }
 }

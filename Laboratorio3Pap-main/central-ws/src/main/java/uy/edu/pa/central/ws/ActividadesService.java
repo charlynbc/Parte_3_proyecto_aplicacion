@@ -27,7 +27,8 @@ public interface ActividadesService {
         @WebParam(name = "costo") float costo,
         @WebParam(name = "ciudad") String ciudad,
         @WebParam(name = "proveedor") String proveedor,
-        @WebParam(name = "fechaAlta") String fechaAlta
+        @WebParam(name = "fechaAlta") String fechaAlta,
+        @WebParam(name = "imagenBase64") String imagenBase64
     );
 
     @WebMethod(operationName = "ListarActividadesPorProveedor")

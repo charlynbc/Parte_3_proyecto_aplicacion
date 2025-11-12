@@ -7,6 +7,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import uy.edu.pa.central.client.TurismoService;
+import uy.edu.pa.central.client.TurismoWebService;
+import uy.edu.pa.central.client.UserDTO;
 
 @WebServlet("/dashboard")
 public class DashboardServlet extends HttpServlet {
@@ -22,6 +25,19 @@ public class DashboardServlet extends HttpServlet {
         if (username == null || username.trim().isEmpty()) {
             response.sendRedirect(request.getContextPath() + "/login");
             return;
+        }
+
+        // Obtener imagen del usuario via SOAP si no está en sesión
+        if (session.getAttribute("userImage") == null) {
+            try {
+                TurismoWebService svc = new TurismoService().getTurismoWebServicePort();
+                UserDTO user = svc.obtenerUsuario(username);
+                if (user != null && user.getImagen() != null && !user.getImagen().trim().isEmpty()) {
+                    session.setAttribute("userImage", user.getImagen());
+                }
+            } catch (Exception e) {
+                System.err.println("[DashboardServlet] Error obteniendo imagen de usuario: " + e.getMessage());
+            }
         }
 
         // Simplificado según "la letra": el dashboard no debe depender de JPA en el web.

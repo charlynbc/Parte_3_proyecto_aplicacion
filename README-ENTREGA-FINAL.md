@@ -4,8 +4,8 @@
 
 **Proyecto:** Plataforma de turismo Uruguay con arquitectura distribuida  
 **Curso:** Programación de Aplicaciones - Tarea 3  
-**Tecnologías:** Java 11, JAX-WS, Bootstrap 5.3.2, MySQL, Tomcat 10.1  
-**Estado:** ✅ **COMPLETADO Y LISTO PARA ENTREGA**
+**Tecnologías:** Java 17, JAX-WS Metro 4.0.2, CSS Mobile-First, MySQL, Tomcat 10.1  
+**Estado:** ✅ **COMPLETADO CON INTERFAZ MÓVIL RESPONSIVE**
 
 ---
 

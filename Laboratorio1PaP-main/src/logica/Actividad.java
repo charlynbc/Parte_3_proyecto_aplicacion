@@ -30,6 +30,9 @@ public class Actividad {
 
     @Column(name = "estado", nullable = false)
     private String estado;
+    
+    @Column(name = "imagen", length = 500)
+    private String imagen;
 
     @ManyToOne
     @JoinColumn(name = "proveedor", nullable = false, referencedColumnName = "nickname")
@@ -88,6 +91,9 @@ public class Actividad {
 
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
+    
+    public String getImagen() { return imagen; }
+    public void setImagen(String imagen) { this.imagen = imagen; }
 
     public Proveedor getProveedor() { return proveedor; }
     public void setProveedor(Proveedor proveedor) { this.proveedor = proveedor; }

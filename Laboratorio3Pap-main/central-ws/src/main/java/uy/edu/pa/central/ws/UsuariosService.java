@@ -35,6 +35,7 @@ public interface UsuariosService {
         @WebParam(name = "fechaNacimiento") String fechaNacimiento,
         @WebParam(name = "nacionalidad") String nacionalidad,
         @WebParam(name = "descripcion") String descripcion,
-        @WebParam(name = "sitioWeb") String sitioWeb
+        @WebParam(name = "sitioWeb") String sitioWeb,
+        @WebParam(name = "imagenBase64") String imagenBase64
     );
 }

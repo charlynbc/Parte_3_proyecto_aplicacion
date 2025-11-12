@@ -20,6 +20,9 @@ public class Usuario {
 
     private String contra;
 
+    @Column(length = 5000)
+    private String imagen;
+
     public Usuario() {}
 
     public Usuario(String contra, String nickname, String nombre, String apellido, String email, Date fechaNac) {
@@ -38,6 +41,7 @@ public class Usuario {
     public String getEmail() { return email; }
     public Date getFechaNac() { return fechaNac; }
     public String getContra() { return contra; }
+    public String getImagen() { return imagen; }
 
     // Setters
     public void setNickname(String nickname) { this.nickname = nickname; }
@@ -46,4 +50,5 @@ public class Usuario {
     public void setEmail(String email) { this.email = email; }
     public void setFechaNac(Date fechaNac) { this.fechaNac = fechaNac; }
     public void setContra(String contra) { this.contra = contra; }
+    public void setImagen(String imagen) { this.imagen = imagen; }
 }

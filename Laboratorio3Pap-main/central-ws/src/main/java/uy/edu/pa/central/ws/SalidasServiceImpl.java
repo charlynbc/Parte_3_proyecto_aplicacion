@@ -98,6 +98,11 @@ public class SalidasServiceImpl implements SalidasService {
                 dto.setHora(sal.getHora().toString());
             }
             dto.setLugar(sal.getLugar());
+            dto.setTuristasMax(sal.getTuristasMax());
+            dto.setImagen(sal.getImagen());
+            if (sal.getActividad() != null) {
+                dto.setActividadNombre(sal.getActividad().getNombre());
+            }
             
             return dto;
         } catch (Exception e) {
@@ -134,6 +139,11 @@ public class SalidasServiceImpl implements SalidasService {
                     dto.setHora(s.getHora().toString());
                 }
                 dto.setLugar(s.getLugar());
+                dto.setTuristasMax(s.getTuristasMax());
+                dto.setImagen(s.getImagen());
+                if (s.getActividad() != null) {
+                    dto.setActividadNombre(s.getActividad().getNombre());
+                }
                 result.add(dto);
             }
         } catch (Exception e) {
@@ -142,6 +152,79 @@ public class SalidasServiceImpl implements SalidasService {
             if (em != null && em.isOpen()) em.close();
         }
         return result;
+    }
+
+    @Override
+    public boolean modificarSalida(String nombre, String fecha, String hora, String lugar, 
+                                  int cantMax, String imagenBase64) {
+        if (nombre == null || nombre.isBlank()) return false;
+        
+        EntityManager em = null;
+        try {
+            em = JpaUtil.getEntityManager();
+            em.getTransaction().begin();
+            
+            TypedQuery<Salida> query = em.createQuery(
+                "SELECT s FROM Salida s WHERE s.nombre = :nombre", Salida.class);
+            query.setParameter("nombre", nombre);
+            List<Salida> list = query.getResultList();
+            
+            if (list.isEmpty()) {
+                em.getTransaction().rollback();
+                return false;
+            }
+            
+            Salida salida = list.get(0);
+            
+            // Actualizar campos
+            if (fecha != null && !fecha.isBlank()) {
+                try {
+                    java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                    salida.setFecha(df.parse(fecha));
+                } catch (Exception e) {
+                    System.err.println("[SalidasService] Error parseando fecha: " + e.getMessage());
+                }
+            }
+            
+            if (hora != null && !hora.isBlank()) {
+                try {
+                    salida.setHora(java.time.LocalTime.parse(hora));
+                } catch (Exception e) {
+                    System.err.println("[SalidasService] Error parseando hora: " + e.getMessage());
+                }
+            }
+            
+            if (lugar != null && !lugar.isBlank()) {
+                salida.setLugar(lugar);
+            }
+            
+            if (cantMax > 0) {
+                salida.setTuristasMax(cantMax);
+            }
+            
+            // Actualizar imagen si se proporciona
+            if (imagenBase64 != null && !imagenBase64.isBlank()) {
+                String imagenDataUri;
+                if (imagenBase64.startsWith("data:image/")) {
+                    imagenDataUri = imagenBase64;
+                } else {
+                    imagenDataUri = "data:image/jpeg;base64," + imagenBase64;
+                }
+                salida.setImagen(imagenDataUri);
+            }
+            
+            em.merge(salida);
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            System.err.println("[SalidasService] Error modificando salida: " + e.getMessage());
+            if (em != null && em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            return false;
+        } finally {
+            if (em != null && em.isOpen()) em.close();
+        }
     }
 
     @Override

@@ -42,6 +42,22 @@ public class RegisterTouristServlet extends HttpServlet {
             String confirmPassword = request.getParameter("confirmPassword");
             String birthDateStr = request.getParameter("birthDate");
             String nationality = request.getParameter("nationality");
+            
+            // Procesar imagen de perfil
+            String imagenBase64 = "";
+            Part imagePart = request.getPart("profileImage");
+            if (imagePart != null && imagePart.getSize() > 0) {
+                java.io.InputStream imageStream = imagePart.getInputStream();
+                java.io.ByteArrayOutputStream buffer = new java.io.ByteArrayOutputStream();
+                byte[] data = new byte[1024];
+                int nRead;
+                while ((nRead = imageStream.read(data, 0, data.length)) != -1) {
+                    buffer.write(data, 0, nRead);
+                }
+                buffer.flush();
+                byte[] imageBytes = buffer.toByteArray();
+                imagenBase64 = java.util.Base64.getEncoder().encodeToString(imageBytes);
+            }
 
             System.out.println("Form data - Nickname: " + nickname + ", Email: " + email);
             
@@ -66,7 +82,7 @@ public class RegisterTouristServlet extends HttpServlet {
                 TurismoService service = new TurismoService();
                 TurismoWebService port = service.getTurismoWebServicePort();
                 
-                boolean exito = port.registrarUsuario(
+                String resultado = port.registrarUsuario(
                     nickname,
                     firstName,
                     lastName,
@@ -76,16 +92,17 @@ public class RegisterTouristServlet extends HttpServlet {
                     nationality,
                     "turista",
                     "",
-                    ""
+                    "",
+                    imagenBase64 // Enviar imagen Base64
                 );
                 
-                if (exito) {
+                if ("SUCCESS".equals(resultado)) {
                     System.out.println("Tourist registered successfully via SOAP");
                     request.getSession().setAttribute("successMessage", 
                         "¡Registro exitoso! Bienvenido " + firstName + ", por favor inicia sesión");
                     response.sendRedirect(request.getContextPath() + "/login");
                 } else {
-                    request.setAttribute("error", "No se pudo completar el registro");
+                    request.setAttribute("error", "No se pudo completar el registro: " + resultado);
                     request.getRequestDispatcher("/WEB-INF/register-tourist.jsp").forward(request, response);
                 }
                 

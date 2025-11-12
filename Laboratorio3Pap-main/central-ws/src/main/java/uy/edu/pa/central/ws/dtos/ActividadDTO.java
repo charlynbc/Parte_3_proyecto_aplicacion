@@ -13,6 +13,7 @@ public class ActividadDTO implements Serializable {
     private String id; // nombre de actividad
     private String descripcion;
     private String lugar;
+    private int duracion; // horas
     private float costo;
     private String imagen;
     private List<SalidaDTO> salidas = new ArrayList<>();
@@ -35,6 +36,9 @@ public class ActividadDTO implements Serializable {
 
     public String getLugar() { return lugar; }
     public void setLugar(String lugar) { this.lugar = lugar; }
+    
+    public int getDuracion() { return duracion; }
+    public void setDuracion(int duracion) { this.duracion = duracion; }
 
     public float getCosto() { return costo; }
     public void setCosto(float costo) { this.costo = costo; }

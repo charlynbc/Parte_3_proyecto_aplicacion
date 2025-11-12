@@ -1,0 +1,421 @@
+/* ========================================
+   MOBILE-SPECIFIC ENHANCEMENTS
+   Estilos específicos para dispositivos móviles
+   ======================================== */
+
+/* ========================================
+   MOBILE NAVIGATION
+   ======================================== */
+@media (max-width: 768px) {
+    /* Navbar adaptable */
+    .navbar {
+        flex-wrap: wrap;
+        padding: 10px 15px;
+    }
+    
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .nav-links a {
+        padding: 10px 15px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    /* Usuario en navbar */
+    .nav-user {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+        padding: 10px 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+}
+
+/* ========================================
+   MOBILE FORMS
+   ======================================== */
+@media (max-width: 480px) {
+    .form-container {
+        padding: 15px;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .form-group label {
+        font-size: 0.95rem;
+        margin-bottom: 5px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 12px;
+        font-size: 16px; /* Evita zoom en iOS */
+        border-radius: 8px;
+    }
+    
+    /* Botones de formulario en móvil */
+    .form-actions {
+        margin-top: 20px;
+    }
+    
+    .form-actions .btn {
+        margin-bottom: 10px;
+    }
+}
+
+/* ========================================
+   MOBILE LOGIN PAGE
+   ======================================== */
+@media (max-width: 480px) {
+    .page-header {
+        padding: 20px 10px;
+    }
+    
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .page-header p {
+        font-size: 0.9rem;
+    }
+    
+    .card {
+        margin: 15px 0;
+        padding: 20px 15px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+}
+
+/* ========================================
+   MOBILE DASHBOARD
+   ======================================== */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 15px 10px;
+    }
+    
+    .dashboard-section {
+        margin-bottom: 20px;
+    }
+    
+    .dashboard-section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    
+    /* Cards en dashboard */
+    .activity-card,
+    .departure-card {
+        margin-bottom: 15px;
+    }
+}
+
+/* ========================================
+   MOBILE ACTIVITIES LIST
+   ======================================== */
+@media (max-width: 768px) {
+    .activities-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .activities-filter {
+        width: 100%;
+    }
+    
+    .activity-item {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .activity-image {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 15px;
+    }
+    
+    .activity-content {
+        width: 100%;
+    }
+    
+    .activity-actions {
+        justify-content: center;
+        margin-top: 15px;
+    }
+}
+
+/* ========================================
+   MOBILE USER PROFILE
+   ======================================== */
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile-avatar {
+        margin: 0 auto 15px;
+    }
+    
+    .profile-info {
+        text-align: center;
+    }
+    
+    .profile-stats {
+        justify-content: center;
+        gap: 15px;
+    }
+}
+
+/* ========================================
+   MOBILE INSCRIPTIONS
+   ======================================== */
+@media (max-width: 768px) {
+    .inscription-form {
+        padding: 15px;
+    }
+    
+    .inscription-summary {
+        margin-top: 20px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+    
+    .inscription-summary h3 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+}
+
+/* ========================================
+   MOBILE LISTS
+   ======================================== */
+@media (max-width: 768px) {
+    .list-group {
+        padding: 0;
+    }
+    
+    .list-group-item {
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+    
+    .list-group-item h4 {
+        font-size: 1.1rem;
+    }
+}
+
+/* ========================================
+   MOBILE MODALS
+   ======================================== */
+@media (max-width: 480px) {
+    .modal-content {
+        margin: 20px;
+        width: calc(100% - 40px);
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+    }
+    
+    .modal-header {
+        padding: 15px;
+    }
+    
+    .modal-body {
+        padding: 15px;
+    }
+    
+    .modal-footer {
+        padding: 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .modal-footer .btn {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   MOBILE TOUCH IMPROVEMENTS
+   ======================================== */
+@media (max-width: 768px) {
+    /* Áreas táctiles más grandes */
+    a, button {
+        padding: 12px 16px;
+        min-height: 44px;
+    }
+    
+    /* Links en texto */
+    a:not(.btn) {
+        padding: 8px 4px;
+        min-height: unset;
+    }
+    
+    /* Hover no funciona en táctil, usar active */
+    button:active,
+    .btn:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+}
+
+/* ========================================
+   MOBILE TYPOGRAPHY
+   ======================================== */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+    
+    h4 {
+        font-size: 1.1rem;
+    }
+    
+    p {
+        font-size: 0.95rem;
+    }
+}
+
+/* ========================================
+   MOBILE SPACING
+   ======================================== */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 15px 10px;
+    }
+    
+    section {
+        margin-bottom: 25px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* ========================================
+   MOBILE ALERTS & MESSAGES
+   ======================================== */
+@media (max-width: 480px) {
+    .alert,
+    .message {
+        padding: 12px;
+        font-size: 0.9rem;
+        margin: 10px 0;
+        border-radius: 6px;
+    }
+    
+    .alert-icon {
+        font-size: 1.2rem;
+    }
+}
+
+/* ========================================
+   MOBILE FOOTER
+   ======================================== */
+@media (max-width: 768px) {
+    footer {
+        padding: 20px 15px;
+        text-align: center;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* ========================================
+   MOBILE ACCESSIBILITY
+   ======================================== */
+@media (max-width: 768px) {
+    /* Mejora contraste para lectura en móvil */
+    body {
+        -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+    }
+    
+    /* Focus visible para teclados móviles */
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:focus {
+        outline: 2px solid #007bff;
+        outline-offset: 2px;
+    }
+}
+
+/* ========================================
+   MOBILE PERFORMANCE
+   ======================================== */
+@media (max-width: 768px) {
+    /* Hardware acceleration para animaciones */
+    .card,
+    .btn,
+    .modal-content {
+        transform: translateZ(0);
+        will-change: transform;
+    }
+    
+    /* Optimizar scroll en iOS */
+    .scrollable {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* ========================================
+   LANDSCAPE MODE (Móvil horizontal)
+   ======================================== */
+@media (max-width: 768px) and (orientation: landscape) {
+    .page-header {
+        padding: 15px 10px;
+    }
+    
+    .navbar {
+        padding: 8px 15px;
+    }
+    
+    .form-container {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+}
+
+/* ========================================
+   PWA / STANDALONE MODE
+   Para cuando se instala como app
+   ======================================== */
+@media (display-mode: standalone) {
+    body {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    .navbar {
+        padding-top: calc(10px + env(safe-area-inset-top));
+    }
+}

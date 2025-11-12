@@ -13,7 +13,7 @@ import uy.edu.pa.central.client.TurismoService;
 import uy.edu.pa.central.client.TurismoWebService;
 import uy.edu.pa.central.client.InscripcionDTO;
 
-@WebServlet(name = "MyRegistrationsServlet", urlPatterns = {"/mis-salidas"})
+@WebServlet(name = "MyRegistrationsServlet", urlPatterns = {"/my-registrations"})
 public class MyRegistrationsServlet extends HttpServlet {
 
     @Override

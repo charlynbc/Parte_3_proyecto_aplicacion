@@ -1,0 +1,78 @@
+════════════════════════════════════════════════════════════════════════
+✅ SERVICIOS SOAP - TURISMO.UY - CONFIGURACIÓN FINAL
+════════════════════════════════════════════════════════════════════════
+
+🎯 URL PRINCIPAL DEL SERVICIO:
+
+   https://cuddly-space-broccoli-6qw6pq5wr74hrg64-9128.app.github.dev/central-ws/services/TurismoService?wsdl
+
+════════════════════════════════════════════════════════════════════════
+
+📋 CARACTERÍSTICAS:
+
+   ✅ Service Name: TurismoService
+   ✅ Namespace: http://webservices/
+   ✅ Operaciones: 20 (completas)
+   ✅ Formato: Idéntico al ejemplo proporcionado
+   ✅ Runtime: XML-WS Runtime 4.0.2 (Metro JAX-WS)
+
+════════════════════════════════════════════════════════════════════════
+
+🔧 OPERACIONES DISPONIBLES (20):
+
+   AUTENTICACIÓN:
+   • iniciarSesion(nickname, password)
+   • registrarUsuario(nickname, nombre, apellido, email, password, ...)
+   • cerrarSesion(nickname)
+
+   USUARIOS:
+   • listarUsuarios()
+   • listarProveedores()
+   • listarTuristas()
+   • obtenerUsuario(nickname)
+   • editarUsuario(nickname, nombre, apellido, ...)
+
+   ACTIVIDADES:
+   • listarActividades()
+   • obtenerDetalleActividad(id)
+   • crearActividad(nombre, descripcion, duracion, costo, ...)
+   • listarActividadesPorProveedor(proveedor)
+   • listarActividadesPorTurista(turista)
+   • rankingActividades()
+
+   SALIDAS:
+   • crearSalida(nombre, fecha, hora, lugar, cantMax, ...)
+   • obtenerSalida(id)
+   • listarSalidasDeActividad(actividad)
+
+   INSCRIPCIONES:
+   • inscribirTurista(turista, salida, cantidad, fecha)
+   • listarInscripcionesPorTurista(turista)
+   • listarInscripcionesDeSalida(salida)
+
+════════════════════════════════════════════════════════════════════════
+
+💡 CÓMO USAR EN SOAPUI:
+
+   1. Abrir SoapUI
+   2. File → New SOAP Project
+   3. Project Name: TurismoUY
+   4. Initial WSDL: [pegar URL de arriba]
+   5. Click OK
+   6. Expandir: TurismoService → TurismoWebServicePortBinding
+   7. Verás las 20 operaciones disponibles
+
+════════════════════════════════════════════════════════════════════════
+
+🌐 URLS ADICIONALES:
+
+   Aplicación Web:
+   https://cuddly-space-broccoli-6qw6pq5wr74hrg64-8080.app.github.dev/Laboratorio2PaP/
+
+════════════════════════════════════════════════════════════════════════
+
+✅ Configuración optimizada y lista para usar
+✅ Sin servicios modulares innecesarios
+✅ Compatible con el ejemplo de referencia
+
+════════════════════════════════════════════════════════════════════════

@@ -25,7 +25,7 @@
 
             <jsp:include page="/WEB-INF/jsp/includes/messages.jsp"/>
 
-            <form method="post" action="${pageContext.request.contextPath}/create-activity" class="registration-form">
+            <form method="post" action="${pageContext.request.contextPath}/create-activity" class="registration-form" enctype="multipart/form-data">
                 <fieldset>
                     <legend>Información Básica</legend>
                     

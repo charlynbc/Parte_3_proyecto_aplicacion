@@ -155,6 +155,9 @@
                                 <c:if test="${sessionScope.userType eq 'Turista'}">
                                     <a href="${pageContext.request.contextPath}/inscripcion?actividad=${activity.id}&salida=${dep.nombre}" class="btn-small">Inscribirse</a>
                                 </c:if>
+                                <c:if test="${sessionScope.isActivityOwner}">
+                                    <a href="${pageContext.request.contextPath}/edit-departure?id=${dep.nombre}" class="btn-small" style="background:#ff9800;">✏️ Editar</a>
+                                </c:if>
                             </div>
                         </div>
                     </c:forEach>

@@ -2,9 +2,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <jsp:include page="/WEB-INF/jsp/includes/head.jsp"/>
     <title>Dashboard - Turismo.uy</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
 </head>
 <body style="display:block; background: #f5f7fa;">
     
@@ -12,8 +11,30 @@
     
     <div class="main-content container">
         <div class="page-header" style="text-align:center;">
-            <div style="font-size:2.5rem;">👋</div>
+            <%
+                String userImage = (String) session.getAttribute("userImage");
+                boolean hasImage = userImage != null && !userImage.trim().isEmpty();
+            %>
+            <% if (hasImage) { %>
+                <img src="<%= userImage %>" alt="Foto de perfil" 
+                     style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid #667eea;margin-bottom:1rem;">
+            <% } else { %>
+                <div style="font-size:2.5rem;">👋</div>
+            <% } %>
             <h1>Bienvenido, ${sessionScope.username}</h1>
+            <%
+                String userType = (String) session.getAttribute("userType");
+                String userTypeDisplay = "";
+                String userTypeIcon = "";
+                if ("Turista".equals(userType)) {
+                    userTypeDisplay = "Turista";
+                    userTypeIcon = "🧳";
+                } else if ("Proveedor".equals(userType)) {
+                    userTypeDisplay = "Proveedor de Servicios";
+                    userTypeIcon = "🏢";
+                }
+            %>
+            <p style="margin-top:0.5rem;"><%= userTypeIcon %> <strong><%= userTypeDisplay %></strong></p>
             <p>¿Qué deseas hacer hoy?</p>
         </div>
         <%
@@ -36,16 +57,17 @@
         %>
         <div class="navigation-grid">
             <%
-                String userType = (String) session.getAttribute("userType");
                 if ("Turista".equals(userType)) {
             %>
             <a href="${pageContext.request.contextPath}/activities" class="nav-card">🎯 Actividades Turísticas</a>
+            <a href="${pageContext.request.contextPath}/my-registrations" class="nav-card">📋 Mis Inscripciones</a>
             <%
                 }
                 if ("Proveedor".equals(userType)) {
             %>
-            <a href="${pageContext.request.contextPath}/create-departure" class="nav-card">🚌 Nueva Salida Turística</a>
-            <a href="${pageContext.request.contextPath}/create-activity" class="nav-card">📊 Nueva Actividad</a>
+            <a href="${pageContext.request.contextPath}/my-activities" class="nav-card">📊 Mis Actividades</a>
+            <a href="${pageContext.request.contextPath}/create-activity" class="nav-card">➕ Nueva Actividad</a>
+            <a href="${pageContext.request.contextPath}/create-departure" class="nav-card">� Nueva Salida</a>
             <%
                 }
             %>

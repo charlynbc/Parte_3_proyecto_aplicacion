@@ -12,6 +12,9 @@ public class SalidaDTO implements Serializable {
     private String fecha; // ISO yyyy-MM-dd
     private String hora;  // HH:mm
     private String lugar;
+    private int turistasMax;
+    private String imagen;
+    private String actividadNombre;
 
     public SalidaDTO() {}
 
@@ -33,4 +36,13 @@ public class SalidaDTO implements Serializable {
 
     public String getLugar() { return lugar; }
     public void setLugar(String lugar) { this.lugar = lugar; }
+
+    public int getTuristasMax() { return turistasMax; }
+    public void setTuristasMax(int turistasMax) { this.turistasMax = turistasMax; }
+
+    public String getImagen() { return imagen; }
+    public void setImagen(String imagen) { this.imagen = imagen; }
+
+    public String getActividadNombre() { return actividadNombre; }
+    public void setActividadNombre(String actividadNombre) { this.actividadNombre = actividadNombre; }
 }

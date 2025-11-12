@@ -1,18 +1,27 @@
 package servlets;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
 
 // SOAP stubs
 import uy.edu.pa.central.client.TurismoService;
 import uy.edu.pa.central.client.TurismoWebService;
 
 @WebServlet("/create-activity")
+@MultipartConfig(
+    maxFileSize = 1024 * 1024 * 5,      // 5MB max
+    maxRequestSize = 1024 * 1024 * 10,  // 10MB max
+    fileSizeThreshold = 1024 * 1024     // 1MB threshold
+)
 public class CreateActivityServlet extends HttpServlet {
     
     @Override
@@ -109,10 +118,22 @@ public class CreateActivityServlet extends HttpServlet {
             System.out.println("- Duracion: " + duracion + " horas");
             System.out.println("- Costo: $" + costo);
             
+            // Procesar imagen si se subió
+            String imagenBase64 = null;
+            Part filePart = request.getPart("activityImage");
+            if (filePart != null && filePart.getSize() > 0) {
+                System.out.println("3. Processing image - size: " + filePart.getSize());
+                try (InputStream fileContent = filePart.getInputStream()) {
+                    byte[] imageBytes = fileContent.readAllBytes();
+                    imagenBase64 = Base64.getEncoder().encodeToString(imageBytes);
+                    System.out.println("3. Image encoded to Base64 (length: " + imagenBase64.length() + ")");
+                }
+            }
+            
             // Fecha de alta (hoy)
             String fechaAlta = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
             
-            System.out.println("3. Calling SOAP crearActividad");
+            System.out.println("4. Calling SOAP crearActividad");
             
             // Try to create the activity using SOAP
             try {
@@ -126,24 +147,25 @@ public class CreateActivityServlet extends HttpServlet {
                     costo,
                     ciudad.trim(),
                     proveedorNickname,
-                    fechaAlta
+                    fechaAlta,
+                    imagenBase64
                 );
                 
                 if (exito) {
-                    System.out.println("4. Activity created successfully via SOAP");
+                    System.out.println("5. Activity created successfully via SOAP");
                     
                     // Set success message and redirect to dashboard
                     session.setAttribute("successMessage", 
                         "¡Actividad '" + nombre + "' creada exitosamente!");
                     response.sendRedirect(request.getContextPath() + "/dashboard");
                 } else {
-                    System.out.println("4. Activity creation failed via SOAP");
+                    System.out.println("5. Activity creation failed via SOAP");
                     request.setAttribute("error", "Ya existe una actividad con ese nombre o el proveedor no existe.");
                     request.getRequestDispatcher("/WEB-INF/create-activity.jsp").forward(request, response);
                 }
                 
             } catch (Exception e) {
-                System.out.println("4. Activity creation failed - SOAP error: " + e.getMessage());
+                System.out.println("5. Activity creation failed - SOAP error: " + e.getMessage());
                 e.printStackTrace();
                 request.setAttribute("error", "Error al crear la actividad: " + e.getMessage());
                 request.getRequestDispatcher("/WEB-INF/create-activity.jsp").forward(request, response);

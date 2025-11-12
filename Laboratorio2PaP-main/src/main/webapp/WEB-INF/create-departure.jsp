@@ -35,9 +35,12 @@
                         <input type="text" id="nombreSalida" name="nombreSalida" required placeholder="Ej: City Tour Punta del Este">
                     </div>
 
+                    <%@ page import="java.util.List" %>
+                    <%@ page import="uy.edu.pa.central.client.ActividadDTO" %>
                     <%
-                        logica.DataActividad[] actividadesArr = (logica.DataActividad[]) request.getAttribute("actividades");
-                        if (actividadesArr == null || actividadesArr.length == 0) {
+                        @SuppressWarnings("unchecked")
+                        List<ActividadDTO> actividadesList = (List<ActividadDTO>) request.getAttribute("actividades");
+                        if (actividadesList == null || actividadesList.isEmpty()) {
                     %>
                         <div class="alert alert-error">
                             No tienes actividades registradas. Debes crear una actividad antes de poder crear una salida.

@@ -81,6 +81,22 @@ public class UpdateProfileServlet extends HttpServlet {
             String descripcion = request.getParameter("descripcion");
             String sitioWeb = request.getParameter("sitioWeb");
             
+            // Procesar imagen si se proporciona
+            String imagenBase64 = "";
+            jakarta.servlet.http.Part imagePart = request.getPart("profileImage");
+            if (imagePart != null && imagePart.getSize() > 0) {
+                java.io.InputStream imageStream = imagePart.getInputStream();
+                java.io.ByteArrayOutputStream buffer = new java.io.ByteArrayOutputStream();
+                byte[] data = new byte[1024];
+                int nRead;
+                while ((nRead = imageStream.read(data, 0, data.length)) != -1) {
+                    buffer.write(data, 0, nRead);
+                }
+                buffer.flush();
+                byte[] imageBytes = buffer.toByteArray();
+                imagenBase64 = java.util.Base64.getEncoder().encodeToString(imageBytes);
+            }
+            
             System.out.println("Updating user: " + username);
             
             // Actualizar via SOAP
@@ -94,7 +110,8 @@ public class UpdateProfileServlet extends HttpServlet {
                 fechaNacimiento,
                 nacionalidad != null ? nacionalidad : "",
                 descripcion != null ? descripcion : "",
-                sitioWeb != null ? sitioWeb : ""
+                sitioWeb != null ? sitioWeb : "",
+                imagenBase64 // Enviar imagen Base64
             );
             
             if (exito) {

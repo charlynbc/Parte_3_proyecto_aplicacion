@@ -65,13 +65,14 @@ public class RegisterProviderServlet extends HttpServlet {
             
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             
-            // Process image if provided (opcional - no lo enviamos por ahora al SOAP)
-            byte[] imageData = null;
+            // Process image if provided
+            String imagenBase64 = "";
             Part imagePart = request.getPart("profileImage");
             if (imagePart != null && imagePart.getSize() > 0) {
                 try (InputStream is = imagePart.getInputStream()) {
-                    imageData = is.readAllBytes();
-                    System.out.println("3. Image uploaded: " + imageData.length + " bytes");
+                    byte[] imageData = is.readAllBytes();
+                    imagenBase64 = java.util.Base64.getEncoder().encodeToString(imageData);
+                    System.out.println("3. Image uploaded and encoded: " + imageData.length + " bytes");
                 }
             }
             
@@ -86,7 +87,7 @@ public class RegisterProviderServlet extends HttpServlet {
                 TurismoService service = new TurismoService();
                 TurismoWebService port = service.getTurismoWebServicePort();
                 
-                boolean exito = port.registrarUsuario(
+                String resultado = port.registrarUsuario(
                     datos.get("nickname"),
                     datos.get("firstName"),
                     datos.get("lastName"),
@@ -96,10 +97,11 @@ public class RegisterProviderServlet extends HttpServlet {
                     "",
                     "proveedor",
                     datos.get("description"),
-                    sitioWeb
+                    sitioWeb,
+                    imagenBase64 // Enviar imagen Base64
                 );
                 
-                if (exito) {
+                if ("SUCCESS".equals(resultado)) {
                     System.out.println("5. Provider registered successfully via SOAP");
                     
                     // Set success message and redirect to login

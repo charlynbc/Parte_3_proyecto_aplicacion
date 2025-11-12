@@ -26,39 +26,42 @@
                 <p>Usuario no encontrado</p>
             <%
                 } else {
+                    String imagenPerfil = user.getImagen();
+                    boolean tieneImagen = imagenPerfil != null && !imagenPerfil.trim().isEmpty();
             %>
+                <div style="text-align:center;margin-bottom:2rem;">
+                    <% if (tieneImagen) { %>
+                        <img src="<%= imagenPerfil %>" alt="Foto de perfil" 
+                             style="width:150px;height:150px;border-radius:50%;object-fit:cover;border:4px solid #667eea;">
+                    <% } else { %>
+                        <div style="width:150px;height:150px;border-radius:50%;background:#e0e0e0;display:inline-flex;align-items:center;justify-content:center;font-size:4rem;">
+                            👤
+                        </div>
+                    <% } %>
+                </div>
+                
                 <h2><%= user.getNombre() != null ? user.getNombre() : "" %> <%= user.getApellido() != null ? user.getApellido() : "" %></h2>
                 <p>Email: <%= user.getEmail() != null ? user.getEmail() : "No especificado" %></p>
+                <p>Nickname: <%= user.getNickname() != null ? user.getNickname() : "No especificado" %></p>
 
                 <%
-                if (user instanceof logica.DataTurista) {
-                    logica.DataTurista turista = (logica.DataTurista) user;
+                String tipoUsuario = user.getTipoUsuario();
+                if ("turista".equalsIgnoreCase(tipoUsuario)) {
                 %>
                     <p><strong>Turista</strong></p>
-                    <p>Nacionalidad: <%= turista.getNacionalidad() != null ? turista.getNacionalidad() : "No especificada" %></p>
+                    <p>Nacionalidad: <%= user.getNacionalidad() != null ? user.getNacionalidad() : "No especificada" %></p>
+                    <p>Fecha de Nacimiento: <%= user.getFechaNacimiento() != null ? user.getFechaNacimiento() : "No especificada" %></p>
                 <%
-                } else if (user instanceof logica.DataProveedor) {
-                    logica.DataProveedor proveedor = (logica.DataProveedor) user;
+                } else if ("proveedor".equalsIgnoreCase(tipoUsuario)) {
                 %>
                     <p><strong>Proveedor</strong></p>
-                    <p>Sitio web: 
-                        <%
-                        if (proveedor.getSitioWeb() != null && !proveedor.getSitioWeb().isEmpty()) {
-                        %>
-                            <a href="<%= proveedor.getSitioWeb() %>" target="_blank"><%= proveedor.getSitioWeb() %></a>
-                        <%
-                        } else {
-                        %>
-                            <span>No especificado</span>
-                        <%
-                        }
-                        %>
-                    </p>
-                    <p>Descripción: <%= proveedor.getDescripcion() != null ? proveedor.getDescripcion() : "No especificada" %></p>
+                    <p>Descripción: <%= user.getDescripcionProveedor() != null ? user.getDescripcionProveedor() : "No especificada" %></p>
+                    <p>Link: <%= user.getLinkProveedor() != null ? user.getLinkProveedor() : "No especificado" %></p>
                 <%
                 } else {
                 %>
-                    <p><strong>Tipo de usuario desconocido</strong></p>
+                    <p><strong>Usuario</strong></p>
+                    <p>Tipo: <%= tipoUsuario != null ? tipoUsuario : "No especificado" %></p>
                 <%
                 }
                 %>

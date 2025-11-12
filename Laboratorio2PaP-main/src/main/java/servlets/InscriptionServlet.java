@@ -151,9 +151,9 @@ public class InscriptionServlet extends HttpServlet {
             cantidad = 1;
         }
 
-        // Fecha actual en formato simple (yyyy-MM-dd)
+        // Fecha actual en formato simple (yyyy-MM-dd para SOAP)
         java.time.LocalDate hoy = java.time.LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String fecha = hoy.format(formatter);
         
         // Obtener costo aproximado desde la actividad vía SOAP

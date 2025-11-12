@@ -31,13 +31,7 @@ public class ActividadesServiceImpl implements ActividadesService {
             java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
             
             for (logica.Actividad act : actividades) {
-                ActividadDTO dto = new ActividadDTO(
-                    act.getNombre(),
-                    act.getDescripcion(),
-                    act.getCiudad(),
-                    act.getCosto(),
-                    null
-                );
+                ActividadDTO dto = convertirActividadADTO(act);
                 
                 if (act.getSalidas() != null) {
                     for (Salida sal : act.getSalidas()) {
@@ -81,13 +75,7 @@ public class ActividadesServiceImpl implements ActividadesService {
             logica.Actividad act = list.get(0);
             java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
             
-            ActividadDTO dto = new ActividadDTO(
-                act.getNombre(),
-                act.getDescripcion(),
-                act.getCiudad(),
-                act.getCosto(),
-                null
-            );
+            ActividadDTO dto = convertirActividadADTO(act);
             
             if (act.getSalidas() != null) {
                 for (Salida sal : act.getSalidas()) {
@@ -115,7 +103,7 @@ public class ActividadesServiceImpl implements ActividadesService {
 
     @Override
     public boolean crearActividad(String nombre, String descripcion, int duracion, 
-                                   float costo, String ciudad, String proveedor, String fechaAlta) {
+                                   float costo, String ciudad, String proveedor, String fechaAlta, String imagenBase64) {
         EntityManager em = null;
         try {
             em = JpaUtil.getEntityManager();
@@ -142,6 +130,13 @@ public class ActividadesServiceImpl implements ActividadesService {
             act.setProveedor(prov);
             act.setEstado("Ingresada");
             
+            // Procesar imagen si se envió
+            if (imagenBase64 != null && !imagenBase64.isBlank()) {
+                // Guardar imagen como data URI
+                act.setImagen("data:image/jpeg;base64," + imagenBase64);
+                System.out.println("[ActividadesService] Imagen guardada para actividad: " + nombre);
+            }
+            
             if (fechaAlta != null && !fechaAlta.isBlank()) {
                 java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
                 act.setFechaAlta(sdf.parse(fechaAlta));
@@ -158,6 +153,49 @@ public class ActividadesServiceImpl implements ActividadesService {
                 em.getTransaction().rollback();
             }
             System.err.println("[ActividadesService] Error creando actividad: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (em != null && em.isOpen()) em.close();
+        }
+    }
+    
+    public boolean modificarActividad(String nombre, String descripcion, int duracion,
+                                      float costo, String ciudad, String imagenBase64) {
+        EntityManager em = null;
+        try {
+            em = JpaUtil.getEntityManager();
+            em.getTransaction().begin();
+            
+            logica.Actividad act = em.find(logica.Actividad.class, nombre);
+            if (act == null) {
+                System.err.println("[ActividadesService] Actividad no encontrada: " + nombre);
+                return false;
+            }
+            
+            // Actualizar campos
+            act.setDescripcion(descripcion);
+            act.setDuracion(duracion);
+            act.setCosto(costo);
+            act.setCiudad(ciudad);
+            
+            // Actualizar imagen solo si se envió una nueva
+            if (imagenBase64 != null && !imagenBase64.isBlank()) {
+                act.setImagen("data:image/jpeg;base64," + imagenBase64);
+                System.out.println("[ActividadesService] Imagen actualizada para: " + nombre);
+            }
+            
+            em.merge(act);
+            em.getTransaction().commit();
+            
+            System.out.println("[ActividadesService] Actividad modificada: " + nombre);
+            return true;
+            
+        } catch (Exception e) {
+            if (em != null && em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            System.err.println("[ActividadesService] Error modificando actividad: " + e.getMessage());
             e.printStackTrace();
             return false;
         } finally {
@@ -187,7 +225,7 @@ public class ActividadesServiceImpl implements ActividadesService {
                     act.getDescripcion(),
                     act.getCiudad(),
                     act.getCosto(),
-                    null
+                    act.getImagen()
                 );
                 result.add(dto);
             }
@@ -217,7 +255,7 @@ public class ActividadesServiceImpl implements ActividadesService {
                     act.getDescripcion(),
                     act.getCiudad(),
                     act.getCosto(),
-                    null
+                    act.getImagen()
                 );
                 result.add(dto);
             }
@@ -250,7 +288,7 @@ public class ActividadesServiceImpl implements ActividadesService {
                     act.getDescripcion(),
                     act.getCiudad(),
                     act.getCosto(),
-                    null
+                    act.getImagen()
                 );
                 result.add(dto);
             }
@@ -260,5 +298,18 @@ public class ActividadesServiceImpl implements ActividadesService {
             if (em != null && em.isOpen()) em.close();
         }
         return result;
+    }
+    
+    // Método helper para convertir Actividad a DTO
+    private ActividadDTO convertirActividadADTO(logica.Actividad act) {
+        ActividadDTO dto = new ActividadDTO(
+            act.getNombre(),
+            act.getDescripcion(),
+            act.getCiudad(),
+            act.getCosto(),
+            act.getImagen()
+        );
+        dto.setDuracion(act.getDuracion());
+        return dto;
     }
 }

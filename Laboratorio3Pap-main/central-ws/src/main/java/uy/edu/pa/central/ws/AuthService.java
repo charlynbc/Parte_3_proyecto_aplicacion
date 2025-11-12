@@ -19,20 +19,21 @@ public interface AuthService {
                   @WebParam(name = "password") String password) throws Exception;
 
     @WebMethod(operationName = "RegistrarTurista")
-    @WebResult(name = "exito")
-    boolean registrarTurista(
+    @WebResult(name = "resultado")
+    String registrarTurista(
         @WebParam(name = "nickname") String nickname,
         @WebParam(name = "nombre") String nombre,
         @WebParam(name = "apellido") String apellido,
         @WebParam(name = "email") String email,
         @WebParam(name = "password") String password,
         @WebParam(name = "fechaNacimiento") String fechaNacimiento,
-        @WebParam(name = "nacionalidad") String nacionalidad
+        @WebParam(name = "nacionalidad") String nacionalidad,
+        @WebParam(name = "imagenBase64") String imagenBase64
     ) throws Exception;
 
     @WebMethod(operationName = "RegistrarProveedor")
-    @WebResult(name = "exito")
-    boolean registrarProveedor(
+    @WebResult(name = "resultado")
+    String registrarProveedor(
         @WebParam(name = "nickname") String nickname,
         @WebParam(name = "nombre") String nombre,
         @WebParam(name = "apellido") String apellido,
@@ -40,6 +41,7 @@ public interface AuthService {
         @WebParam(name = "password") String password,
         @WebParam(name = "fechaNacimiento") String fechaNacimiento,
         @WebParam(name = "descripcion") String descripcion,
-        @WebParam(name = "link") String link
+        @WebParam(name = "link") String link,
+        @WebParam(name = "imagenBase64") String imagenBase64
     ) throws Exception;
 }

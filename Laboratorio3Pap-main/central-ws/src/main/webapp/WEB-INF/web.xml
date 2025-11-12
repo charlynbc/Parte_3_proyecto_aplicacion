@@ -22,5 +22,10 @@
   <listener>
     <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
   </listener>
+  
+  <!-- Public URL configuration listener for Codespaces -->
+  <listener>
+    <listener-class>uy.edu.pa.central.config.PublicUrlConfigListener</listener-class>
+  </listener>
 
 </web-app>

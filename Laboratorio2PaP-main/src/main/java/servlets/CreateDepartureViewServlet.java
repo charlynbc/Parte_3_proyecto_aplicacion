@@ -46,12 +46,29 @@ public class CreateDepartureViewServlet extends HttpServlet {
             // Filtrar solo las del proveedor (simplificado - todas por ahora)
             request.setAttribute("actividades", todasActividades);
             
+            // Generar HTML para el select
+            StringBuilder actividadesHtml = new StringBuilder();
+            if (todasActividades != null && !todasActividades.isEmpty()) {
+                actividadesHtml.append("<option value=\"\">Seleccione una actividad</option>");
+                for (ActividadDTO act : todasActividades) {
+                    String id = act.getId() != null ? act.getId() : "";
+                    actividadesHtml.append("<option value=\"")
+                                  .append(id)
+                                  .append("\">")
+                                  .append(id)
+                                  .append("</option>");
+                }
+            }
+            request.setAttribute("actividadesHtml", actividadesHtml.toString());
+            
             System.out.println("[CreateDepartureView SOAP] Actividades obtenidas: " + 
                 (todasActividades != null ? todasActividades.size() : 0));
             
         } catch (Exception e) {
             System.err.println("Error loading activities: " + e.getMessage());
+            e.printStackTrace();
             request.setAttribute("actividades", new java.util.ArrayList<ActividadDTO>());
+            request.setAttribute("actividadesHtml", "");
         }
 
         request.getRequestDispatcher("/WEB-INF/create-departure.jsp").forward(request, response);

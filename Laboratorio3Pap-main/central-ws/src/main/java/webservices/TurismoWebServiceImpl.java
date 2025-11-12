@@ -37,21 +37,21 @@ public class TurismoWebServiceImpl implements TurismoWebService {
     }
 
     @Override
-    public boolean registrarUsuario(String nickname, String nombre, String apellido, String email,
+    public String registrarUsuario(String nickname, String nombre, String apellido, String email,
                                    String password, String fechaNacimiento, String nacionalidad,
-                                   String tipo, String descripcion, String sitioWeb) {
+                                   String tipo, String descripcion, String sitioWeb, String imagenBase64) {
         try {
             if ("turista".equalsIgnoreCase(tipo)) {
                 return authService.registrarTurista(nickname, nombre, apellido, email, password, 
-                                                   fechaNacimiento, nacionalidad);
+                                                   fechaNacimiento, nacionalidad, imagenBase64);
             } else if ("proveedor".equalsIgnoreCase(tipo)) {
                 return authService.registrarProveedor(nickname, nombre, apellido, email, password, 
-                                                     fechaNacimiento, descripcion, sitioWeb);
+                                                     fechaNacimiento, descripcion, sitioWeb, imagenBase64);
             }
         } catch (Exception e) {
-            return false;
+            return "ERROR: " + e.getMessage();
         }
-        return false;
+        return "ERROR: Tipo de usuario inválido";
     }
 
     @Override
@@ -72,9 +72,9 @@ public class TurismoWebServiceImpl implements TurismoWebService {
     @Override
     public boolean editarUsuario(String nickname, String nombre, String apellido,
                                 String fechaNacimiento, String nacionalidad,
-                                String descripcion, String sitioWeb) {
+                                String descripcion, String sitioWeb, String imagenBase64) {
         return usuariosService.actualizarUsuario(nickname, nombre, apellido, fechaNacimiento,
-                                                nacionalidad, descripcion, sitioWeb);
+                                                nacionalidad, descripcion, sitioWeb, imagenBase64);
     }
 
     @Override
@@ -89,9 +89,15 @@ public class TurismoWebServiceImpl implements TurismoWebService {
 
     @Override
     public boolean crearActividad(String nombre, String descripcion, int duracion,
-                                 float costo, String ciudad, String proveedor, String fechaAlta) {
+                                 float costo, String ciudad, String proveedor, String fechaAlta, String imagenBase64) {
         return actividadesService.crearActividad(nombre, descripcion, duracion, costo,
-                                                ciudad, proveedor, fechaAlta);
+                                                ciudad, proveedor, fechaAlta, imagenBase64);
+    }
+    
+    @Override
+    public boolean modificarActividad(String nombre, String descripcion, int duracion,
+                                     float costo, String ciudad, String imagenBase64) {
+        return actividadesService.modificarActividad(nombre, descripcion, duracion, costo, ciudad, imagenBase64);
     }
 
     @Override
@@ -108,6 +114,12 @@ public class TurismoWebServiceImpl implements TurismoWebService {
     @Override
     public List<SalidaDTO> listarSalidasDeActividad(String actividad) {
         return salidasService.listarSalidasDeActividad(actividad);
+    }
+
+    @Override
+    public boolean modificarSalida(String nombre, String fecha, String hora, String lugar,
+                                  int cantMax, String imagenBase64) {
+        return salidasService.modificarSalida(nombre, fecha, hora, lugar, cantMax, imagenBase64);
     }
 
     @Override

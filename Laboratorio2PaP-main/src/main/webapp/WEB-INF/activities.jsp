@@ -43,12 +43,18 @@
             <%
                 } else if (activities != null && !activities.isEmpty()) {
                     for (ActividadDTO act : activities) {
+                        String imagen = act.getImagen();
+                        boolean tieneImagen = imagen != null && !imagen.trim().isEmpty();
             %>
                         <div class="card">
                             <div class="card-image">
-                                <div style="width:100%;height:150px;background:#eee;display:flex;align-items:center;justify-content:center;color:#666;">
-                                    🏞️ Imagen no disponible
-                                </div>
+                                <% if (tieneImagen) { %>
+                                    <img src="<%= imagen %>" alt="<%= act.getId() %>" style="width:100%;height:200px;object-fit:cover;">
+                                <% } else { %>
+                                    <div style="width:100%;height:150px;background:#eee;display:flex;align-items:center;justify-content:center;color:#666;">
+                                        🏞️ Imagen no disponible
+                                    </div>
+                                <% } %>
                             </div>
                             <div class="card-content">
                                 <div class="card-title"><%= act.getId() != null ? act.getId() : "Actividad" %></div>

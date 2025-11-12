@@ -82,8 +82,8 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public boolean registrarTurista(String nickname, String nombre, String apellido, String email, 
-                                    String password, String fechaNacimiento, String nacionalidad) throws Exception {
+    public String registrarTurista(String nickname, String nombre, String apellido, String email, 
+                                    String password, String fechaNacimiento, String nacionalidad, String imagenBase64) throws Exception {
         if (nickname == null || nickname.isBlank() || email == null || email.isBlank()) {
             throw new Exception("Nickname y email son obligatorios");
         }
@@ -113,6 +113,17 @@ public class AuthServiceImpl implements AuthService {
             turista.setContra(password); // En producción debería hashearse
             turista.setNacionalidad(nacionalidad);
             
+            // Agregar imagen si se proporciona
+            if (imagenBase64 != null && !imagenBase64.isBlank()) {
+                String imagenDataUri;
+                if (imagenBase64.startsWith("data:image/")) {
+                    imagenDataUri = imagenBase64;
+                } else {
+                    imagenDataUri = "data:image/jpeg;base64," + imagenBase64;
+                }
+                turista.setImagen(imagenDataUri);
+            }
+            
             // Parsear y setear fecha de nacimiento
             if (fechaNacimiento != null && !fechaNacimiento.isBlank()) {
                 try {
@@ -132,7 +143,7 @@ public class AuthServiceImpl implements AuthService {
             em.getTransaction().commit();
             
             System.out.println("[AuthService] Turista registrado: " + nickname);
-            return true;
+            return "SUCCESS";
             
         } catch (Exception e) {
             if (em != null && em.getTransaction().isActive()) {
@@ -148,8 +159,8 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public boolean registrarProveedor(String nickname, String nombre, String apellido, String email,
-                                      String password, String fechaNacimiento, String descripcion, String link) throws Exception {
+    public String registrarProveedor(String nickname, String nombre, String apellido, String email,
+                                      String password, String fechaNacimiento, String descripcion, String link, String imagenBase64) throws Exception {
         if (nickname == null || nickname.isBlank() || email == null || email.isBlank()) {
             throw new Exception("Nickname y email son obligatorios");
         }
@@ -179,6 +190,17 @@ public class AuthServiceImpl implements AuthService {
             proveedor.setContra(password);
             proveedor.setDescripcion(descripcion);
             
+            // Agregar imagen si se proporciona
+            if (imagenBase64 != null && !imagenBase64.isBlank()) {
+                String imagenDataUri;
+                if (imagenBase64.startsWith("data:image/")) {
+                    imagenDataUri = imagenBase64;
+                } else {
+                    imagenDataUri = "data:image/jpeg;base64," + imagenBase64;
+                }
+                proveedor.setImagen(imagenDataUri);
+            }
+            
             // Parsear y setear fecha de nacimiento
             if (fechaNacimiento != null && !fechaNacimiento.isBlank()) {
                 try {
@@ -197,7 +219,7 @@ public class AuthServiceImpl implements AuthService {
             em.getTransaction().commit();
             
             System.out.println("[AuthService] Proveedor registrado: " + nickname);
-            return true;
+            return "SUCCESS";
             
         } catch (Exception e) {
             if (em != null && em.getTransaction().isActive()) {

@@ -18,7 +18,7 @@ public interface TurismoWebService {
                           @WebParam(name = "password") String password);
     
     @WebMethod
-    boolean registrarUsuario(@WebParam(name = "nickname") String nickname,
+    String registrarUsuario(@WebParam(name = "nickname") String nickname,
                             @WebParam(name = "nombre") String nombre,
                             @WebParam(name = "apellido") String apellido,
                             @WebParam(name = "email") String email,
@@ -27,7 +27,8 @@ public interface TurismoWebService {
                             @WebParam(name = "nacionalidad") String nacionalidad,
                             @WebParam(name = "tipo") String tipo,
                             @WebParam(name = "descripcion") String descripcion,
-                            @WebParam(name = "sitioWeb") String sitioWeb);
+                            @WebParam(name = "sitioWeb") String sitioWeb,
+                            @WebParam(name = "imagenBase64") String imagenBase64);
     
     @WebMethod
     String cerrarSesion(@WebParam(name = "nickname") String nickname);
@@ -46,7 +47,10 @@ public interface TurismoWebService {
                          @WebParam(name = "fechaNacimiento") String fechaNacimiento,
                          @WebParam(name = "nacionalidad") String nacionalidad,
                          @WebParam(name = "descripcion") String descripcion,
-                         @WebParam(name = "sitioWeb") String sitioWeb);
+                         @WebParam(name = "sitioWeb") String sitioWeb,
+                         @WebParam(name = "imagenBase64") String imagenBase64);
+
+    // Actividades
 
     // Actividades
     @WebMethod
@@ -62,7 +66,16 @@ public interface TurismoWebService {
                           @WebParam(name = "costo") float costo,
                           @WebParam(name = "ciudad") String ciudad,
                           @WebParam(name = "proveedor") String proveedor,
-                          @WebParam(name = "fechaAlta") String fechaAlta);
+                          @WebParam(name = "fechaAlta") String fechaAlta,
+                          @WebParam(name = "imagenBase64") String imagenBase64);
+    
+    @WebMethod
+    boolean modificarActividad(@WebParam(name = "nombre") String nombre,
+                              @WebParam(name = "descripcion") String descripcion,
+                              @WebParam(name = "duracion") int duracion,
+                              @WebParam(name = "costo") float costo,
+                              @WebParam(name = "ciudad") String ciudad,
+                              @WebParam(name = "imagenBase64") String imagenBase64);
 
     // Salidas
     @WebMethod
@@ -79,6 +92,14 @@ public interface TurismoWebService {
     
     @WebMethod
     List<SalidaDTO> listarSalidasDeActividad(@WebParam(name = "actividad") String actividad);
+
+    @WebMethod
+    boolean modificarSalida(@WebParam(name = "nombre") String nombre,
+                           @WebParam(name = "fecha") String fecha,
+                           @WebParam(name = "hora") String hora,
+                           @WebParam(name = "lugar") String lugar,
+                           @WebParam(name = "cantMax") int cantMax,
+                           @WebParam(name = "imagenBase64") String imagenBase64);
 
     // Inscripciones
     @WebMethod

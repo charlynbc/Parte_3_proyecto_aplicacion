@@ -33,6 +33,17 @@ public interface SalidasService {
         @WebParam(name = "actividad") String actividad
     );
 
+    @WebMethod(operationName = "ModificarSalida")
+    @WebResult(name = "exito")
+    boolean modificarSalida(
+        @WebParam(name = "nombre") String nombre,
+        @WebParam(name = "fecha") String fecha,
+        @WebParam(name = "hora") String hora,
+        @WebParam(name = "lugar") String lugar,
+        @WebParam(name = "cantMax") int cantMax,
+        @WebParam(name = "imagenBase64") String imagenBase64
+    );
+
     @WebMethod(operationName = "ListarInscripcionesDeSalida")
     @WebResult(name = "inscripciones")
     List<InscripcionDTO> listarInscripcionesDeSalida(
